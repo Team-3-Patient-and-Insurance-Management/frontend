@@ -1,16 +1,23 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
-const app = firebase.initializeApp({
-    apiKey: process.env.REACT_APP_FIREBASE_API_Key,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-});
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDtKmW_8y8pCAweHW2RG_p5ClSqad_JrY0",
+    authDomain: "pim-dev-985fa.firebaseapp.com",
+    databaseURL: "https://pim-dev-985fa-default-rtdb.firebaseio.com",
+    projectId: "pim-dev-985fa",
+    storageBucket: "pim-dev-985fa.appspot.com",
+    messagingSenderId: "647742175562",
+    appId: "1:647742175562:web:b827d53301a33db18ba9b3",
+    measurementId: "G-F3N1VTSY7H"
+};
 
-export const auth = app.auth();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
+
+export { auth };
 export default app;

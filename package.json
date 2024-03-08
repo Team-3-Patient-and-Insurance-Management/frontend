@@ -8,9 +8,10 @@
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
-        "@themesberg/react-bootstrap": "^1.4.1",
         "axios": "^1.6.7",
-        "firebase": "^10.8.0",
+        "axois": "^0.0.1-security",
+        "@themesberg/react-bootstrap": "^1.4.1",
+        "firebase": "^10.8.1",
         "moment-timezone": "^0.5.45",
         "primereact": "^10.5.1",
         "react": "^18.2.0",
@@ -48,4 +49,5 @@
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
     }
+
 }
