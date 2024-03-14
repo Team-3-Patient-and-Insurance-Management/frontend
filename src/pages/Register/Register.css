@@ -1,0 +1,107 @@
+.register-page {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-page .content {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+.register-page h2 {
+    color: #67a471;
+    text-align: center;
+}
+
+.register-page input,
+.register-page select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.register-page input {
+    width: 100%;
+}
+
+.register-page select {
+    width: 49.7%;
+    padding: 10px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23667a71" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.personal-information select,
+.address select,
+.react-datepicker-wrapper {
+    width: 49.6%;
+}
+
+.account-information,
+.doctor-content,
+.insurance-content {
+    display: flex;
+    gap: 10px;
+}
+
+.account-information input,
+.doctor-content input,
+.insurance-content input {
+    display: block;
+}
+
+.personal-information,
+.address {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.register-page a {
+    color: #67a471;
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.register-page a:hover {
+    text-decoration: underline;
+}
+
+.register-page button {
+    background-color: #67a471;
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.register-page button:hover {
+    background-color: #4f8257;
+}
+
+.register-page .footer {
+    margin-top: 30px;
+    text-align: center;
+}

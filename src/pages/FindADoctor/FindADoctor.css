@@ -1,0 +1,77 @@
+.findADoctor-page .content {
+    background-color: rgb(189, 41, 41);
+    color: white;
+    padding: 30px 15% 30px;
+    box-shadow: 0px -1px 3px rgb(189, 41, 41);
+}
+
+.findADoctor-page .content h2 {
+    font-weight: 500;
+}
+
+.findADoctor-page form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.findADoctor-page .form-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.findADoctor-page label {
+    font-weight: 300;
+    font-size: 15px;
+}
+
+::placeholder {
+    color: darkgray;
+    font-size: 15px;
+}
+
+.findADoctor-page input,
+.findADoctor-page select {
+    margin: 4px 10px 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    display: block;
+}
+
+.findADoctor-page #doctor-name {
+    width: 350px;
+}
+
+.findADoctor-page #location {
+    width: 210px;
+}
+
+.findADoctor-page form select {
+    width: 180px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23667a71" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+}
+
+.findADoctor-page button {
+    background-color: white;
+    color: brown;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.findADoctor-page button:hover {
+    background-color: rgb(54, 128, 54);
+    color: white;
+    cursor: pointer;
+}

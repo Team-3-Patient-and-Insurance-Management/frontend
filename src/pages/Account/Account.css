@@ -1,0 +1,111 @@
+.account-page {
+    min-height: 100vh;
+}
+
+.account-page .content {
+    width: 80%;
+    max-width: 1000px;
+    margin: 25px auto;
+}
+
+.account-page .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account-page .heading h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.account-page .heading button {
+    color: white;
+    margin-right: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-page .save-btn {
+    background-color: green;
+}
+
+.account-page .logout-btn {
+    background-color: brown;
+}
+
+.account-page form h2 {
+    color: rgb(24, 24, 163);
+    margin-top: 43px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.account-page .basic-information {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-page .portfolio img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.account-page .basic-information-inputs {
+    display: flex;
+    flex: 1;
+}
+
+.account-page form input,
+.account-page form select {
+    margin: 1px 10px 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    display: block;
+}
+
+.account-page form select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23667a71" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+}
+
+.account-page form .react-datepicker-wrapper {
+    display: block;
+}
+
+.account-page .portfolio input {
+    padding: 0;
+    border: none;
+}
+
+.account-page .patient-information {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.account-page .patient-information h3 {
+    color: rgb(24, 24, 163);
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.account-page .home-address {
+    display: flex;
+}
+
+.account-page .personal-information {
+    display: block;
+}
