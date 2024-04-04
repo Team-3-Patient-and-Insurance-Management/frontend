@@ -10,8 +10,9 @@ import Appointments from "./pages/Appointments/Appointments";
 import { AuthProvider } from "./context/AuthContext";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
 import PrivateRoute from "./components/PrivateRoute";
+import Doctor from "./pages/Doctor/Doctor";
+import MyPatients from "./pages/MyPatients/MyPatients";
 
 export default function App() {
     return (
@@ -21,12 +22,16 @@ export default function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="login" element={<LogIn />} />
                     <Route path="register" element={<Register />} />
-                <Route path="patient/dashboard" element={<Patient />} />
-                <Route path="patient/account" element={<Account />} />
-                <Route path="patient/doctor" element={<FindADoctor />} />
-                <Route path="patient/insurance" element={<FindAnInsurance />} />
-                <Route path="patient/appointments" element={<Appointments />} />
+                    <Route path="patient/dashboard" element={<Patient />} />
+                    <Route path="patient/account" element={<Account />} />
+                    <Route path="patient/doctor" element={<FindADoctor />} />
+                    <Route path="patient/insurance" element={<FindAnInsurance />} />
+                    <Route path="patient/appointments" element={<Appointments />} />
                     <Route path="forgot-password" element={<ForgotPassword />} />
+                    
+                    <Route path="doctor/dashboard" element={<Doctor />} />
+                    <Route path="doctor/myPatients" element={<MyPatients />} />
+
                     
                     {/* Define a route with PrivateRoute as the element */}
                     <Route element={<PrivateRoute />}>
