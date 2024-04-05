@@ -1,13 +1,9 @@
 import Navbar from "../../components/NavBar/Navbar";
 
-const Dashboard = () => {
-    return (  
-        <div className="dashboard">
-            <Navbar/>
-    
-
+export default function Dashboard() {
+    return (
+        <div className="dashboard-page">
+            <Navbar />
         </div>
-        );
+    );
 }
- 
-export default Dashboard;

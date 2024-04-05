@@ -37,7 +37,7 @@ export default function Patient() {
                         <h2>Find a Doctor</h2>
                         <hr />
                         <p>Need a doctor? We've got you covered! Find specialists in your area, read what other patients say, and easily chat with doctors to get the answers you need.</p>
-                        <Link to="/patient/appointments">
+                        <Link to="/patient/doctor">
                             <button>BOOK AN APPOINTMENT</button>
                         </Link>
                     </div>

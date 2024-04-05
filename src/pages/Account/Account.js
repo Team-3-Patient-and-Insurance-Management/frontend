@@ -1,15 +1,14 @@
+import { useState, useEffect } from 'react';
+import { useAuth } from "../../contexts/AuthContext";
+import getUser from "../../contexts/getUser";
+import updateUser from "../../contexts/updateUser";
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import userPlaceholder from "../../assets/images/user-placeholder.png";
 import PatientHeader from "../../components/PatientHeader/PatientHeader";
-import DoctorHeader from "../../components/DoctorHeader/DoctorHeader"
-import { useAuth } from "../../context/AuthContext";
-import getUser from "../../context/getUser";
-import updateUser from "../../context/updateUser";
+import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import "./Account.css";
-
 
 export default function Account() {
     const { currentUser, logout } = useAuth();

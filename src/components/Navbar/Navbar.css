@@ -34,7 +34,6 @@
 
 .navbar button {
     background-color: #67a471;
-   
     border: none;
     padding: 8px 16px;
     cursor: pointer;
@@ -44,7 +43,6 @@
 
 .navbar button:hover {
     background-color: #4f8257;
-    
 }
 
 
@@ -60,33 +58,32 @@
     border-radius: 5px;
     border: 1px solid #f5c6cb;
     display: none;
-    
 }
+
 .profile-link {
     border: none;
     display: flex;
-    align-items: center; 
+    align-items: center;
     color: white;
     text-decoration: none;
-    margin-right: 20px; 
+    margin-right: 20px;
     padding: 8px 16px;
-    
-    
 }
+
 .userprofile-link:hover {
     background-color: #4f8257;
     border-radius: 5px;
-
 }
 
 .logout-icon {
     margin-right: 1px;
-    width: 24px; 
-    height: 24px; 
+    width: 24px;
+    height: 24px;
 }
+
 .profile-icon {
-    margin-right: 1px; 
-    width: 24px; 
-    height: 24px; 
-    fill:currentColor;
+    margin-right: 1px;
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
 }
