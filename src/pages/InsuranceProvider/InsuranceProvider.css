@@ -1,0 +1,54 @@
+.insurance-page .insurance-content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.insurance-page .insurance-welcome {
+    margin: 19px 0 16px 10px;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.insurance-page h2 {
+    margin: 10px 0;
+}
+
+
+.insurance-page .browse-insurance-plans,
+.insurance-page .find-an-insurance {
+    margin: 9px;
+    padding: 15px 29px;
+    border-radius: 10px;
+}
+
+.covid-19-precautions {
+    background-color: rgb(240, 145, 134);
+}
+
+.insurance-page .browse-insurance-plans,
+.insurance-page .find-an-insurance {
+    background-color: rgb(113, 176, 227);
+}
+
+.insurance-page .insurance-services {
+    display: flex;
+}
+
+.insurance-page hr {
+    border: 0.5px solid black;
+}
+
+.insurance-page .insurance-services button {
+    background-color: brown;
+    color: white;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.insurance-page .insurance-services button:hover {
+    background-color: rgb(111, 25, 25);
+}
