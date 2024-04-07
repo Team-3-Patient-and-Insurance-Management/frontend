@@ -21,9 +21,6 @@ export default function DoctorHeader() {
                         <Link to="/doctor/bedAvailability">Bed Availability</Link>
                     </li>
                     <li>
-                        <Link to="/doctor/appointments">My Appointments</Link>
-                    </li>
-                    <li>
                         <Link className="user-nav-link" to="/patient/account">
                             <FaUserCircle className="user-icon" />
                             <p>USER</p>

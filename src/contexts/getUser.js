@@ -5,7 +5,7 @@ const getUser = async (userID) => {
     try {
         const response = await axios.get(`${API_URL}getUser`, {
             params: {
-                userID: "yCPdUlDpgHN81tZ4GhUo79ECyYU2"
+                userID: userID ? userID : "yCPdUlDpgHN81tZ4GhUo79ECyYU2"
             }
         });
         return response.data; // Assuming the response contains user data

@@ -21,17 +21,12 @@
     width: 100%;
 }
 
-.card button {
-    background-color: rgb(102, 71, 180);
-    color: white;
-    width: 100%;
-    
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
   }
+
+.card .name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
