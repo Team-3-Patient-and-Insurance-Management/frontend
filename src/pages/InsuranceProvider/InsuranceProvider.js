@@ -34,18 +34,18 @@ export default function InsuranceProvider() {
                 </div>
                 <div className="insurance-services">
                     <div className="browse-insurance-plans">
-                        <h2>Search Insurance Plans</h2>
+                        <h2>View Client List</h2>
                         <hr />
-                        <p>Want to browse your insurance plans? Compare your different plans here!</p>
-                        <Link to="/insurance/plans">
+                        <p>Want to see all of your clients' plans? Look at them all here!</p>
+                        <Link to="/insurance/clients">
                             <button>Browse Plans</button>
                         </Link>
                     </div>
                     <div className="find-an-insurance">
-                        <h2>Find an Insurance</h2>
+                        <h2>View Insurance Plans</h2>
                         <hr />
-                        <p>CareConnect360 simplifies your healthcare experience. Compare different plans here.</p>
-                        <Link to="/patient/insurance">
+                        <p>CareConnect360 has a large variety of insurance plans. Compare them all here!</p>
+                        <Link to="/insurance/plans">
                             <button>SEARCH PLANS</button>
                         </Link>
                     </div>

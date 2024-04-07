@@ -10,6 +10,10 @@ import Account from "./pages/Account/Account";
 import FindADoctor from "./pages/FindADoctor/FindADoctor";
 import FindAnInsurance from "./pages/FindAnInsurance/FindAnInsurance";
 import PatientHistory from "./pages/PatientHistory/PatientHistory";
+import InsuranceDashboard from "./pages/InsuranceProvider/InsuranceProvider";
+import InsurancePlans from "./pages/InsurancePlans/InsurancePlans";
+import InsuranceClients from "./pages/InsuranceClients/InsuranceClients";
+
 
 export default function App() {
     return (
@@ -25,6 +29,10 @@ export default function App() {
                     <Route path="patient/doctor" element={<FindADoctor />} />
                     <Route path="patient/insurance" element={<FindAnInsurance />} />
                     <Route path="patient/history" element={<PatientHistory />} />
+                    <Route path="insurance/dashboard" element={<InsuranceDashboard />} />
+                    <Route path="insurance/plans" element={<InsurancePlans />} />
+                    <Route path="insurance/clients" element={<InsuranceClients />} />
+
 
                     {/* Define a route with PrivateRoute as the element */}
                     {/* <Route element={<PrivateRoute />}> */}

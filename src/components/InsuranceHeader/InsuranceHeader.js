@@ -15,13 +15,10 @@ export default function DoctorHeader() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/insurance/myClients">My Clients</Link>
+                        <Link to="/insurance/clients">My Clients</Link>
                     </li>
                     <li>
                         <Link to="/insurance/plans">Insurance Plans</Link>
-                    </li>
-                    <li>
-                        <Link to="/doctor/appointments">TODO</Link>
                     </li>
                     <li>
                         <Link className="user-nav-link" to="/patient/account">
