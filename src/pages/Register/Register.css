@@ -1,106 +1,175 @@
+body {
+    height: 100%;
+    margin: 0 auto;
+}
+
 .register-page {
-    font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 .register-page .content {
-    width: 80%;
-    max-width: 1200px;
-    margin: 20px;
+    background-color: white;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px;
 }
 
-.register-page h2 {
-    color: #67a471;
+.register-page .content h2 {
     text-align: center;
+    margin-bottom: 20px;
+    color: #67a471;
 }
 
-.register-page input,
-.register-page select {
+
+.register-page .content input[type="text"],
+.register-page .content input[type="email"],
+.register-page .content input[type="password"],
+.register-page .content input[type="date"],
+.register-page .content input[type="number"],
+.register-page .content select {
+
+    padding: 10px;
     margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.register-page input {
-    width: 100%;
-}
-
-.register-page select {
-    width: 49.7%;
-    padding: 10px;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%23667a71" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-    background-position: right 10px center;
-    background-repeat: no-repeat;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.personal-information select,
-.address select,
+.personal-info select,
+.address-details select,
 .react-datepicker-wrapper {
     width: 49.6%;
 }
 
-.account-information,
-.doctor-content,
-.insurance-content {
-    display: flex;
-    gap: 10px;
-}
 
-.account-information input,
-.doctor-content input,
-.insurance-content input {
-    display: block;
-}
-
-.personal-information,
-.address {
+#register-btn {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.register-page a {
-    color: #67a471;
-    margin-top: 20px;
-    display: inline-block;
-    text-decoration: none;
-}
-
-.register-page a:hover {
-    text-decoration: underline;
-}
-
-.register-page button {
+    padding: 15px;
     background-color: #67a471;
     color: white;
-    width: 100%;
-    margin-top: 20px;
-    padding: 15px;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
-.register-page button:hover {
+.account-info,
+.insurance-content,
+.doctor-content {
+
+    display: flex;
+    gap: 10px;
+}
+
+.account-info input,
+.insurance-content input,
+.doctor-content input,
+.doctor-content select {
+    display: block;
+}
+
+
+
+.personal-info,
+.address-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.personal-info input[type="text"],
+.address-details input[type="text"],
+.address-details input[type="number"],
+.personal-info input[type="number"] {
+
+
+    flex: 1 49.5%;
+    max-width: 47.6%;
+}
+
+.react-datepicker__input-container input {
+    flex: 1 49.5%;
+    width: 96.7%;
+}
+
+
+
+.register-page .content label {
+    align-self: flex-start;
+    text-align: left;
+    width: 100%;
+}
+
+.register-page .content select,
+.doctor-content select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: px;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23667a71" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+
+.select-role,
+.doctor-content select {
+    width: 49.7%;
+}
+
+
+
+.register-page .content button:hover,
+#register-btn:hover {
     background-color: #4f8257;
 }
 
-.register-page .footer {
+
+.register-page .content a {
+    color: #67a471;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.register-page .content a:hover {
+    text-decoration: underline;
+}
+
+.register-page footer {
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.register-page input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.error-message-box {
+    border: 1px solid red;
+    background-color: #ffe6e6;
+    color: darkred;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
     text-align: center;
 }

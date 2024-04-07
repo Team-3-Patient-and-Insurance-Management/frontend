@@ -89,7 +89,26 @@
 
 .findADoctor-page .doctor .doctor-details h1 {
     margin-top: 0;
+    margin-bottom: 0;
     font-size: 19px;
+}
+
+.findADoctor-page .doctor .doctor-details .doctor-rating {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.findADoctor-page .doctor .doctor-details .doctor-rating .rating {
+    color: brown;
+    width: 86px;
+    margin-right: 7px;
+    justify-content: space-between;
+}
+
+.findADoctor-page .doctor .doctor-details .doctor-rating p {
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .findADoctor-page .doctor .doctor-details .doctor-address p {

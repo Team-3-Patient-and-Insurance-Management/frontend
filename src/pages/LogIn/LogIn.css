@@ -13,7 +13,7 @@
 .login-page .content {
     background-color: white;
     width: 100%;
-    max-width: 350px;
+    max-width: 383px;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -41,6 +41,28 @@
 
 .login-page button {
     background-color: #67a471;
+    color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-page button:disabled {
+    background-color: gray;
+    color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-page button:hover {
+    background-color: gray;
     color: white;
     margin-top: 10px;
     padding: 10px 20px;

@@ -1,39 +1,153 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
+import { useNavigate } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
 import "./Register.css";
 
-export default function Register() {
-    const [role, setRole] = useState("patient");
-    const [email, setEmai] = useState("");
-    const [password, setPassword] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [gender, setGender] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState(null);
-    const [address, setAddress] = useState("");
-    const [country, setCountry] = useState("");
-    const [state, setState] = useState("");
-    const [city, setCity] = useState("");
-    const [zipCode, setZipCode] = useState("");
-    const [doctorLic, setDoctorLic] = useState("");
-    const [company, setCompany] = useState("");
-    const [companyLic, setCompanyLic] = useState("");
 
-    const handleChange = (date) => {
-        setDateOfBirth(date);
+import register from "../../contexts/register";
+
+
+
+
+const RegisterPage = () => {
+    const [emailid, setEmaiId] = useState('');
+    const [password, setPassword] = useState('');
+    const [role, setRole] = useState('patient');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [gender, setGender] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [dateofbirth, setDateofBirth] = useState(null);
+    const [address, setAddress] = useState('');
+    const [country, setCountry] = useState('');
+    const [state, setState] = useState('');
+    const [city, setCity] = useState('');
+    const [pincode, setPincode] = useState('');
+    const [doctorlic, setDoctorLic] = useState('');
+    const [specialization, setSpecialization] = useState('');
+    const [supportCovid, setSupportCovid] = useState('');
+    const [company, setCompany] = useState('');
+    const [companyLic, setCompanyLic] = useState('');
+    const [error, setError] = useState('');
+    const [msg, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
+
+    const [is2FAEnabled, setIs2FAEnabled] = useState('true');
+    const [isPhoneNumberVerified, seIsPhoneNumberVerified] = useState('true');
+
+
+
+    const getErrorMessage = (errorCode) => {
+        switch (errorCode) {
+            case 'auth/email-already-in-use':
+                return 'This email is already in use.';
+            case 'auth/weak-password':
+                return 'Password should be at least 6 characters.';
+            case 'auth/invalid-email':
+                return 'Please enter a valid email address.';
+            default:
+                return 'An unexpected error occurred. Please try again.';
+        }
+    };
+    const formatDate = (date) => { //Formating the date according to the backend
+        const d = new Date(date);
+        const year = d.getFullYear();
+        const month = (`0${d.getMonth() + 1}`).slice(-2);
+        const day = (`0${d.getDate()}`).slice(-2);
+        return `${year}-${month}-${day}`;
     };
 
-    const formatDateDisplay = (date) => {
-        return date ? date.toLocaleDateString() : "";
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        let userData = {};
+        const formattedDateOfBirth = dateofbirth ? formatDate(dateofbirth) : null;
+        setLoading(true)
+
+        if (role == "patient") {
+
+            userData = {
+                firstName: firstName,
+                lastName: lastName,
+                gender: gender,
+                phoneNumber: phoneNumber,
+                dateOfBirth: formattedDateOfBirth,
+                streetAddress: address,
+                country: country,
+                state: state,
+                city: city,
+                zipCode: pincode,
+                role: role,
+                is2FAEnabled: true,
+                isPhoneNumberVerified: true
+            };
+
+
+
+
+        }
+        else if (role == "doctor") {
+            userData = {
+                firstName: firstName,
+                lastName: lastName,
+                gender: gender,
+                phoneNumber: phoneNumber,
+                dateOfBirth: formattedDateOfBirth,
+                streetAddress: address,
+                country: country,
+                state: state,
+                city: city,
+                zipCode: pincode,
+                role: role,
+                doctorLicense: doctorlic,
+                specialization: specialization,
+                supportCovid: supportCovid,
+                is2FAEnabled: true,
+                isPhoneNumberVerified: true
+            };
+
+        }
+
+
+        console.log("Signup", userData);
+
+        try {
+            const response = await register(userData, emailid, password);
+            console.log("Sign up successfully", response);
+            if (response.includes("uid")) {
+                navigate('/login');
+            }
+            else {
+                setMessage(response);
+                window.scrollTo(0, 0);
+            }
+
+        } catch (err) {
+            window.scrollTo(0, 0);
+            console.error("Signup error", err);
+            setError(err.response?.data?.message || 'An error occurred during signup.');
+
+        }
+
+        setLoading(false);
+        setError(null);
+
     };
 
-    fetch("https://restcountries.com/v3.1/all")
-        .then((response) => response.json())
-        .then((data) => {
-            const countrySelect = document.getElementById("country");
+
+    const handleChange = date => {
+        setDateofBirth(date);
+    };
+
+    fetch('https://restcountries.com/v3.1/all')
+        .then(response => response.json())
+        .then(data => {
+            const countrySelect = document.getElementById('country');
+
 
             data.sort((a, b) => {
                 const nameA = a.name.common.toUpperCase();
@@ -41,20 +155,20 @@ export default function Register() {
                 return nameA.localeCompare(nameB);
             });
 
-            // Populate the dropdown with sorted country names
-            data.forEach((country) => {
-                const option = document.createElement("option");
+
+            data.forEach(country => {
+                const option = document.createElement('option');
                 option.value = country.name.common;
                 option.text = country.name.common;
                 countrySelect.add(option);
             });
         })
-        .catch((error) => console.error("Error fetching countries:", error));
-
+        .catch(error => console.error('Error fetching countries:', error));
+    //
     const renderInputForm = () => {
-        if (role === "patient") {
+        if (role === 'patient') {
             return;
-        } else if (role === "doctor") {
+        } else if (role === 'doctor') {
             return (
                 <div className="doctor-info">
                     <p>Doctor Information</p>
@@ -63,31 +177,46 @@ export default function Register() {
                             type="text"
                             placeholder="License Number"
                             required
-                            value={doctorLic}
-                            onChange={(event) => setDoctorLic(event.target.value)}
-                        />
+                            value={doctorlic}
+                            onChange={(e) => setDoctorLic(e.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="Specialization"
+                            required
+                            value={specialization}
+                            onChange={(e) => setSpecialization(e.target.value)} />
+                        <select
+                            required
+                            className="select-role"
+                            value={supportCovid}
+                            onChange={(e) => setSupportCovid(e.target.value)}>
+
+                            <option value="yes">Provides Covid Support</option>
+                            <option value="no">Does not provide Covid Support</option>
+
+                        </select>
+
                     </div>
                 </div>
             );
-        } else if (role === "insuranceProvider") {
+        } else if (role === 'insuranceProvider') {
             return (
                 <div className="insurance-provider">
                     <p>Insurance Information</p>
                     <div className="insurance-content">
                         <input
-                            type="text"
+                            type='text'
                             placeholder="Insurance Company"
                             required
                             value={company}
-                            onChange={(event) => setCompany(event.target.value)}
-                        />
+                            onChange={(e) => setCompany(e.target.value)} />
+
                         <input
                             type="text"
-                            placeholder="License Number"
                             required
+                            placeholder="License Number"
                             value={companyLic}
-                            onChange={(event) => setCompanyLic(event.target.value)}
-                        />
+                            onChange={(e) => setCompanyLic(e.target.value)} />
                     </div>
                 </div>
             );
@@ -95,141 +224,143 @@ export default function Register() {
             return null;
         }
     };
-
     return (
         <div className="register-page">
             <div className="content">
                 <h2>Registration Form</h2>
-                <form>
-                    <p>Select User Type</p>
+                {error && (
+                    <div className="error-message-box">{error}</div>
+                )}
+                {msg && (
+                    <div className="error-message-box">{msg}</div>
+                )}
+                <form onSubmit={handleSubmit}>
+                    <p>Select User type</p>
                     <select
                         required
+                        className="select-role"
                         value={role}
-                        onChange={(event) => setRole(event.target.value)}
-                    >
+                        onChange={(e) => setRole(e.target.value)}>
+
                         <option value="patient">Patient</option>
                         <option value="doctor">Doctor</option>
-                        <option value="insuranceProvider">Insurance Provider</option>
+                        <option value="insuranceProvider">Insurance Provider </option>
                     </select>
-
                     <p>Account Information</p>
-                    <div className="account-information">
+                    <div className="account-info">
+
+
                         <input
                             type="email"
-                            placeholder="Email Address"
                             required
-                            value={email}
-                            onChange={(event) => setEmai(event.target.value)}
-                        />
+                            placeholder="Email Address"
+                            value={emailid}
+                            onChange={(e) => setEmaiId(e.target.value)} />
+
                         <input
                             type="password"
-                            placeholder="Password"
                             required
+                            placeholder="Password"
                             value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                        />
+                            onChange={(e) => setPassword(e.target.value)} />
                     </div>
-
                     <p>Personal Information</p>
-                    <div className="personal-information">
+                    <div className="personal-info">
+
                         <input
                             type="text"
-                            placeholder="First Name"
                             required
+                            placeholder="First Name"
                             value={firstName}
-                            onChange={(event) => setFirstName(event.target.value)}
-                        />
+                            onChange={(e) => setFirstName(e.target.value)} />
+
                         <input
                             type="text"
                             placeholder="Last Name"
                             required
                             value={lastName}
-                            onChange={(event) => setLastName(event.target.value)}
-                        />
+                            onChange={(e) => setLastName(e.target.value)} />
+
+
+
                         <select
                             required
                             value={gender}
-                            onChange={(e) => setGender(e.target.value)}
-                        >
-                            <option
-                                disabled
-                                selected
-                                value=""
-                            >
-                                Gender
-                            </option>
+                            onChange={(e) => setGender(e.target.value)}>
+
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
                         </select>
                         <input
-                            type="number"
+                            type="text"
                             placeholder="Phone Number"
                             required
                             value={phoneNumber}
-                            onChange={(event) => setPhoneNumber(event.target.value)}
-                        />
+                            onChange={(e) => setPhoneNumber(e.target.value)} />
                         <DatePicker
-                            selected={dateOfBirth}
+
+                            selected={dateofbirth}
                             onChange={handleChange}
                             placeholderText="Date of Birth"
-                            dateFormat="MMMM d, yyyy"
+                            dateFormat="yyyy-MM-dd"
+
                         />
-                        <p>
-                            <p>Selected Date: {formatDateDisplay(dateOfBirth)}</p>
-                        </p>
                     </div>
 
                     <p>Address</p>
-                    <div className="address">
+                    <div className="address-details">
                         <input
                             type="text"
                             placeholder="Street Address"
                             required
                             value={address}
-                            onChange={(event) => setAddress(event.target.value)}
-                        />
+                            onChange={(e) => setAddress(e.target.value)} />
+
                         <select
                             id="country"
                             required
                             value={country}
-                            onChange={(event) => setCountry(event.target.value)}
-                        >
-                            <option disabled selectedvalue="">Country</option>
+                            onChange={(e) => setCountry(e.target.value)}>
+                            <option disabled value="">Country</option>
                         </select>
+
                         <input
                             type="text"
                             placeholder="State"
                             required
                             value={state}
-                            onChange={(event) => setState(event.target.value)}
-                        />
+
+                            onChange={(e) => setState(e.target.value)} />
+
                         <input
                             type="text"
                             placeholder="City"
                             required
                             value={city}
-                            onChange={(event) => setCity(event.target.value)}
-                        />
+                            onChange={(e) => setCity(e.target.value)} />
+
                         <input
                             type="number"
-                            placeholder="ZIP Code"
+                            placeholder="Pincode"
                             required
-                            value={zipCode}
-                            onChange={(event) => setZipCode(event.target.value)}
-                        />
+                            value={pincode}
+                            onChange={(e) => setPincode(e.target.value)} />
+
+
                     </div>
 
                     {renderInputForm()}
 
-                    <button>Register</button>
+                    <button id='register-btn'>Register</button>
                 </form>
-                <div className="footer">
-                    <p>
-                        <Link to="/">Back to Homepage</Link>
-                    </p>
-                </div>
+                <footer>
+                    <div><Link to="/">Back to Homepage</Link>.</div>
+                </footer>
+
             </div>
         </div>
     );
 }
+
+export default RegisterPage;

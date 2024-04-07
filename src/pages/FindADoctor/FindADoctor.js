@@ -1,17 +1,18 @@
 import { useState } from "react";
-import PatientHeader from "../../components/PatientHeader/PatientHeader";
-import Appointment from "../../components/Appointment/Appointment";
+import { GoCheckCircleFill } from "react-icons/go";
+import { Rating } from 'primereact/rating';
+import { SiIfixit } from "react-icons/si";
 import doctorImage from "../../assets/images/doctor.jpg";
 import doctorImage2 from "../../assets/images/doctor2.jpg";
-import { GoCheckCircleFill } from "react-icons/go";
-import { SiIfixit } from "react-icons/si";
+import PatientHeader from "../../components/PatientHeader/PatientHeader";
+import Appointment from "../../components/Appointment/Appointment";
 import "./FindADoctor.css";
 
 export default function FindADoctor() {
     const [speciality, setSpeciality] = useState("");
     const [doctorName, setDoctorName] = useState("");
     const [covid19Care, setCovid19Care] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [appointmentIsOpen, setAppointmentIsOpen] = useState(false);
 
     const handleCovid19CareChange = () => {
         setCovid19Care(!covid19Care);
@@ -66,6 +67,10 @@ export default function FindADoctor() {
                         <img src={doctorImage} alt="Doctor" />
                         <div className="doctor-details">
                             <h1>Jack Joliet</h1>
+                            <div className="doctor-rating">
+                                <Rating value={1} readOnly cancel={false} className="rating" />
+                                <p>(1)</p>
+                            </div>
                             <div className="doctor-address">
                                 <p>527 E 1st St</p>
                                 <p>Bloomington, IN 47401</p>
@@ -81,8 +86,8 @@ export default function FindADoctor() {
                                 <li>Family Medicine</li>
                                 <li>Obstetrics</li>
                             </ul>
-                            <button className="book-online-btn" onClick={() => setIsOpen(true)}>BOOK ONLINE</button>
-                            {isOpen && <Appointment setIsOpen={setIsOpen} />}
+                            <button className="book-online-btn" onClick={() => setAppointmentIsOpen(true)}>BOOK ONLINE</button>
+                            {appointmentIsOpen && <Appointment setAppointmentIsOpen={setAppointmentIsOpen} />}
                         </div>
                     </div>
                 </div>
@@ -91,6 +96,10 @@ export default function FindADoctor() {
                         <img src={doctorImage2} alt="Doctor" />
                         <div className="doctor-details">
                             <h1>Tom Gibbs</h1>
+                            <div className="doctor-rating">
+                                <Rating value={5} readOnly cancel={false} className="rating" />
+                                <p>(1)</p>
+                            </div>
                             <div className="doctor-address">
                                 <p>525 E 1st St</p>
                                 <p>Bloomington, IN 47401</p>
@@ -106,8 +115,8 @@ export default function FindADoctor() {
                                 <li>Emergency Medicine</li>
                                 <li>Neurology</li>
                             </ul>
-                            <button className="book-online-btn" onClick={() => setIsOpen(true)}>BOOK ONLINE</button>
-                            {isOpen && <Appointment setIsOpen={setIsOpen} />}
+                            <button className="book-online-btn" onClick={() => setAppointmentIsOpen(true)}>BOOK ONLINE</button>
+                            {appointmentIsOpen && <Appointment setAppointmentIsOpen={setAppointmentIsOpen} />}
                         </div>
                     </div>
                 </div>

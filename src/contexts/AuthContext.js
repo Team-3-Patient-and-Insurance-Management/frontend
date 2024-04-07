@@ -21,10 +21,17 @@ export function AuthProvider({ children }) {
             });
     }
 
-    function login(email, password) {
-        return signInWithEmailAndPassword(auth, email, password);
-    }
+    const login = async (email, password) => {
 
+
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+        const user = userCredential.user;
+
+        const token = await user.getIdToken();
+        console.log(token);
+        return token;
+    }
     function logout() {
         return signOut(auth);
     }

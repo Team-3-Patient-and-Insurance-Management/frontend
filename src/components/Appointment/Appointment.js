@@ -1,19 +1,19 @@
+import { useState, useMemo, useCallback } from "react";
+import { Rating } from 'primereact/rating';
+import { Datepicker, getJson, Page, setOptions } from '@mobiscroll/react';
+import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 import { IoIosCloseCircle } from "react-icons/io";
 import { GoCheckCircleFill } from "react-icons/go";
 import doctorImage from "../../assets/images/doctor.jpg";
+import Survey from "../Survey/Survey";
 import "./Appointment.css";
-
-import '@mobiscroll/react/dist/css/mobiscroll.min.css';
-import { Datepicker, getJson, Page, setOptions } from '@mobiscroll/react';
-import { useCallback, useState } from 'react';
-import { useMemo } from 'react';
 
 setOptions({
     theme: 'windows',
     themeVariant: 'light'
 });
 
-export default function Appointment({ setIsOpen }) {
+export default function Appointment({ setAppointmentIsOpen }) {
     const [multiple, setMultiple] = useState(['2024-03-11T00:00', '2024-03-16T00:00', '2024-03-17T00:00']);
     const min = '2024-03-22T00:00';
     const max = '2024-09-22T00:00';
@@ -23,6 +23,8 @@ export default function Appointment({ setIsOpen }) {
     const [datetimeInvalid, setDatetimeInvalid] = useState([]);
     const [multipleLabels, setMultipleLabels] = useState([]);
     const [multipleInvalid, setMultipleInvalid] = useState([]);
+
+    const [surveyIsOpen, setSurveyIsOpen] = useState(false);
 
     const invalid = useMemo(() => {
         return [{
@@ -138,7 +140,7 @@ export default function Appointment({ setIsOpen }) {
     return (
         <div className="appointment">
             <div className="appointment-modal">
-                <IoIosCloseCircle className="close-btn" onClick={() => setIsOpen(false)} />
+                <IoIosCloseCircle className="close-btn" onClick={() => setAppointmentIsOpen(false)} />
                 <div className="appointment-header">
                     <img src={doctorImage} alt="Doctor" />
                     <h1>Jack Joliet</h1>
@@ -164,6 +166,62 @@ export default function Appointment({ setIsOpen }) {
                                 <li>Obstetrics</li>
                             </ul>
                         </div>
+                        <div className="doctor-reviews">
+                            <div className="doctor-reviews-header">
+                                <h2>Reviews</h2>
+                                <div className="doctor-rating">
+                                    <Rating value={5} readOnly cancel={false} className="rating" />
+                                    <p>(4)</p>
+                                </div>
+                            </div>
+                            <div className="doctor-reviews-content">
+                                <div className="doctor-review">
+                                    <div className="doctor-review-details">
+                                        <h3>Ethan Behar</h3>
+                                        <div className="doctor-rating">
+                                            <Rating value={5} readOnly cancel={false} className="rating" />
+                                        </div>
+                                    </div>
+                                    <p>Excellent</p>
+                                </div>
+                                <div className="doctor-review">
+                                    <div className="doctor-review-details">
+                                        <h3>Jack Joliet</h3>
+                                        <div className="doctor-rating">
+                                            <Rating value={5} readOnly cancel={false} className="rating" />
+                                        </div>
+                                    </div>
+                                    <p>The doctor was ok.</p>
+                                </div>
+                                <div className="doctor-review">
+                                    <div className="doctor-review-details">
+                                        <h3>Jack Joliet</h3>
+                                        <div className="doctor-rating">
+                                            <Rating value={5} readOnly cancel={false} className="rating" />
+                                        </div>
+                                    </div>
+                                    <p>The doctor was ok.</p>
+                                </div>
+                                <div className="doctor-review">
+                                    <div className="doctor-review-details">
+                                        <h3>Jack Joliet</h3>
+                                        <div className="doctor-rating">
+                                            <Rating value={5} readOnly cancel={false} className="rating" />
+                                        </div>
+                                    </div>
+                                    <p>The doctor was ok.</p>
+                                </div>
+                                <div className="doctor-review">
+                                    <div className="doctor-review-details">
+                                        <h3>Jack Joliet</h3>
+                                        <div className="doctor-rating">
+                                            <Rating value={5} readOnly cancel={false} className="rating" />
+                                        </div>
+                                    </div>
+                                    <p>The doctor was ok.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="book-an-appointment">
                         <h2>Book an Appointment</h2>
@@ -182,7 +240,13 @@ export default function Appointment({ setIsOpen }) {
                                     invalid={datetimeInvalid}
                                     onPageLoading={handlePageLoadingDatetime}
                                     cssClass="booking-datetime"
+                                    onChange={() => {
+                                        setSurveyIsOpen(true);
+                                    }}
                                 />
+                                {surveyIsOpen && (
+                                    <Survey setSurveyIsOpen={setSurveyIsOpen} />
+                                )}
                             </div>
                         </Page>
                     </div>

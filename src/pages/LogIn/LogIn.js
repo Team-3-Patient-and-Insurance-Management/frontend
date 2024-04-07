@@ -2,71 +2,154 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import "./LogIn.css";
+import signin from "../../contexts/signin";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function LogIn() {
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-
-    const { login, logout } = useAuth();
+    const { login } = useAuth();
+    const [sentOtp, setSentOtp] = useState("");
+    const [otp, setOTP] = useState("");
+    const [verfied, setVerifed] = useState(false);
 
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    function onChange(value) {
+        console.log("Captcha value:", value);
+        setVerifed(true);
+    }
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
+        setError("");
         try {
-            setLoading(true)
-            await login(emailId, password)
-            alert("Success");
-            navigate('/dashboard');
+            const response_token = await login(emailId, password);
+            console.log("token", response_token);
+            if (response_token) {
+                const response_signin = await signin.getsigninotp(response_token);
+                if (response_signin.includes('pending')) {
+                    setSentOtp(response_token);
+                    setShow(true);
+                    handleShow();
+                }
+
+                console.log("OTP response", response_signin);
+            }
         } catch (error) {
             console.error("Error signing in:", error);
-            setError("Invalid email or password");
+            setError("Failed to log in. Please check your email or password.");
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
-    async function handleLogout() {
-        setError("")
+    const verifyOTP = async (event) => {
+        console.log(otp);
+        event.preventDefault();
+        setLoading(true);
+        setError("");
         try {
-            await logout()
+            const response_role = await signin.verifyOTP(otp);
+            console.log("Role", response_role);
+
+            if (response_role == "doctor") {
+
+                navigate('/doctor/dashboard');
+            }
+            else if (response_role == "patient") {
+                navigate('/patient/dashboard')
+            }
+            else {
+                navigate('/insurace/dashboard');
+            }
+
         }
-        catch {
-            setError("Failed to logout")
+        catch (error) {
+            console.error("Error signing in:", error);
+            setError("Failed to log in. Please check your email or password.");
+        } finally {
+            setLoading(false);
         }
+
     }
 
+
     return (
-        <div className="login-page">
-            <div className="content">
-                <h2>Log In</h2>
-                {error && <div className="error-message"> {error} </div>}
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Email Address"
-                        required
-                        value={emailId}
-                        onChange={(event) => setEmailId(event.target.value)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        required
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
-                    />
-                    <button>Login</button>
-                </form>
-                <Link to="/forgot-password">Forgot Password?</Link>
-                <div className="footer">
-                    <p>
-                        Don't have an account?
-                        <Link to="/register" onClick={handleLogout}>Register</Link>
-                    </p>
+        <>
+
+            <div className="login-page">
+                <div className="content">
+                    <h2>Log In</h2>
+                    {error && <div className="error-message">{error}</div>}
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            placeholder="Email Address"
+                            required
+                            value={emailId}
+                            onChange={(e) => setEmailId(e.target.value)}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <ReCAPTCHA
+                            sitekey="6LfvwLIpAAAAAHKIrpN22HNCXC4pRlQnS9mFlfSb"
+                            onChange={onChange}
+                        />
+
+                        <button disabled={!verfied}>Login</button>
+                    </form>
+                    <Link to="/forgot-password">Forgot Password?</Link>
+                    <div className="footer">
+                        <p>Don't have an account? <Link to="/register">Register</Link></p>
+                    </div>
                 </div>
+
             </div>
-        </div>
+            {
+                sentOtp &&
+                <>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Two Factor Authentication</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form onSubmit={verifyOTP}>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Enter OTP</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        placeholder="OTP"
+                                        value={otp}
+                                        onChange={(e) => setOTP(e.target.value)}
+                                        autoFocus
+
+                                    /><br />
+                                    <Button variant="success" type="submit" onClick={handleClose}>
+                                        Submit
+                                    </Button>
+
+                                </Form.Group>
+                            </Form>
+                        </Modal.Body>
+
+                    </Modal>
+                </>
+            }
+        </>
+
     );
 }

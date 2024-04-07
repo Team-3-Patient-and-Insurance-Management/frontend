@@ -21,7 +21,7 @@ export default function PatientHeader() {
                         <Link to="/patient/insurance">Find an Insurance</Link>
                     </li>
                     <li>
-                        <Link to="/patient/appointments">My Appointments</Link>
+                        <Link to="/patient/history">Patient History</Link>
                     </li>
                     <li>
                         <Link className="user-nav-link" to="/patient/account">

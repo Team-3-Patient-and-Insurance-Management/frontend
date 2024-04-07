@@ -25,6 +25,11 @@
     height: 85%;
     min-height: 700px;
     position: relative;
+    overflow: scroll;
+}
+
+.appointment .appointment-modal::-webkit-scrollbar {
+    display: none;
 }
 
 .appointment .close-btn {
@@ -60,8 +65,8 @@
 }
 
 .appointment .doctor-details {
-    width: 25%;
-    min-width: 270px;
+    width: 35%;
+    min-width: 280px;
 }
 
 .appointment .appointment-content h2 {
@@ -84,8 +89,49 @@
     align-items: center;
 }
 
+.appointment .doctor-reviews .doctor-reviews-header,
+.appointment .doctor-reviews .doctor-review-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.appointment .doctor-reviews .doctor-reviews-header {
+    margin-bottom: 10px;
+}
+
+.appointment .doctor-reviews button {
+    background-color: brown;
+    color: white;
+    width: 100%;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding: 12px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.appointment .doctor-reviews button:hover {
+    background-color: rgb(104, 0, 0);
+    cursor: pointer;
+}
+
+.appointment .doctor-reviews .doctor-review {
+    margin-bottom: 20px;
+}
+
+.appointment .doctor-reviews .doctor-reviews-header h2 {
+    margin: 0;
+}
+
+.appointment .doctor-reviews h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 .appointment .book-an-appointment {
-    width: 65%;
+    width: 60%;
     height: 100%;
 }
 

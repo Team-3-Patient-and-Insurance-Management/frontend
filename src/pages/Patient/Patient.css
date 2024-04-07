@@ -1,10 +1,9 @@
 .patient-page .patient-content {
-    width: 80%;
-    margin: 0 auto;
+    padding: 0px 15% 10px;
 }
 
 .patient-page .patient-welcome {
-    margin: 19px 0 16px 10px;
+    margin: 15px 0 16px 10px;
     font-size: 26px;
     font-weight: 500;
 }
