@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import { useState, useEffect } from 'react';
-import PatientCard from "./PatientCard";
 import "./PatientInfo.css";
 import { useLocation } from 'react-router-dom';
 import getUser from "../../contexts/getUser";
@@ -53,6 +52,39 @@ export default function PatientInfo() {
         }
     ]);
 
+    const insuranceProviders = [
+        {
+            "planId": "LVloe2ESesTYMbYa12hu",
+            "planName": "ABC",
+            "description": "Something more amazing",
+            "premium": 2300,
+            "deductible": 500,
+            "medicalCoverage": false,
+            "dentalCoverage": true,
+            "visionCoverage": true
+        },
+        {
+            "planId": "kjasehflianwjkefKJhu",
+            "planName": "XYZ",
+            "description": "Something more amazing",
+            "premium": 2300,
+            "deductible": 500,
+            "medicalCoverage": true,
+            "dentalCoverage": false,
+            "visionCoverage": true
+        },
+        {
+            "planId": "wEFLIH78wefLNFEWhuh",
+            "planName": "PQR",
+            "description": "Something more amazing",
+            "premium": 2300,
+            "deductible": 500,
+            "medicalCoverage": true,
+            "dentalCoverage": true,
+            "visionCoverage": false
+        }
+    ];
+
     const fetchInfo = async () => {
         try {
             const patientInfo = {};
@@ -76,6 +108,7 @@ export default function PatientInfo() {
                 patientInfo.positiveCovid90Days = patient.positiveCovid90Days;
                 patientInfo.selfMonitor = patient.selfMonitor;
                 patientInfo.wantCovidTest = patient.wantCovidTest;
+                patientInfo.insuranceProviders = patient.patientInsuranceProviders;
                 setPatientInfo(patientInfo);
             };
         } catch (error) {
@@ -122,13 +155,18 @@ export default function PatientInfo() {
                     <p><strong>Wants COVID-19 test:</strong> {patientInfo.wantCovidTest}</p>
 
                     <h2>Insurance Information</h2>
-                    <p><strong>Insurance Description:</strong> </p>
-                    <p><strong>Plan:</strong> </p>
-                    <p><strong>Deductible:</strong> $ </p>
-                    <p><strong>Premium:</strong> $ </p>
-                    <p><strong>Medical:</strong> </p>
-                    <p><strong>Dental:</strong> </p>
-                    <p><strong>Vision:</strong> </p>
+                    {insuranceProviders.map((provider, index) => (
+                        <div key={index}>
+                            <p><strong>Insurance Description:</strong> {provider.description}</p>
+                            <p><strong>Plan:</strong> {provider.planName}</p>
+                            <p><strong>Deductible:</strong> ${provider.deductible}</p>
+                            <p><strong>Premium:</strong> ${provider.premium}</p>
+                            <p><strong>Medical:</strong> {provider.medicalCoverage ? 'Yes' : 'No'}</p>
+                            <p><strong>Dental:</strong> {provider.dentalCoverage ? 'Yes' : 'No'}</p>
+                            <p><strong>Vision:</strong> {provider.visionCoverage ? 'Yes' : 'No'}</p>
+                            <br></br>
+                        </div>
+                    ))}
                 </div>
 
                 
@@ -136,7 +174,6 @@ export default function PatientInfo() {
                     <div className="top">
                             <h2 className="child1">Chat</h2>
                     </div>
-                
                     <div className="chat-box-outline">
                         <div className="chat-box">
                             <div className="chat-header">today</div>

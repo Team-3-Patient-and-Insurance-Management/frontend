@@ -1,46 +1,55 @@
 import { Link } from "react-router-dom";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import userPlaceholder from "../../assets/images/user-placeholder.png";
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ReviewItem from "./ReviewItem";
+import getDoctorRatings from "../../contexts/getDoctorRatings";
+import getUser from "../../contexts/getUser";
 import "./Doctor.css";
+import { set } from "date-fns/set";
 
 export default function Doctor() {
+    const [avgRating, setAvgRating] = useState(0);
     const [reviews, setReviews] = useState([
-        {
-            userName: 'John Doe',
-            rating: 4.5,
-            title: 'Great Experience for My Child',
-            text: 'Great experience!',
-            profilePictureUrl: 'https://example.com/profile_picture.jpg'
-        },
-        {
-            userName: 'John Doe',
-            rating: 5.0,
-            title: 'Great Experience for My Child',
-            text: 'Great experience!',
-            profilePictureUrl: 'https://example.com/profile_picture.jpg'
-        },
-        {
-            userName: 'Jason Doe',
-            rating: 3.0,
-            title: 'Fixed my knee problems',
-            text: 'They took my leg, dont have a knee anymore.',
-            profilePictureUrl: 'https://example.com/profile_picture.jpg'
-        },
-        {
-            userName: 'Jannet Doe',
-            rating: 3.5,
-            title: 'Not a good experience',
-            text: 'I would not recommend this doctor to anyone.',
-            profilePictureUrl: 'https://example.com/profile_picture.jpg'
-        }
+
     ]);
+    const [drInfo, setDrInfo] = useState({});
+
+    const fetchRatings = async () => {
+        try {
+            const response = await getDoctorRatings();
+            setReviews(response.data);
+        } catch (error) {
+            console.error("Error fetching ratings: ", error);
+        }
+    }
+
+    const fetchInfo = async () => {
+        try {
+            const userData = await getUser();
+            if(userData){
+                drInfo.name = userData.lastName;
+                drInfo.specialty = userData.specialization;
+            }
+            fetchRatings();
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchInfo();
+    }, []);
+
+    useEffect(() => {
+        setAvgRating(calculateAverageRating());
+    }, [reviews]);
 
     const calculateAverageRating = () => {
         if (reviews.length === 0) return 0;
-        const totalRating = reviews.reduce((acc, curr) => acc + curr.rating, 0);
-        return totalRating / reviews.length;
+        const totalRating = reviews.reduce((acc, curr) => acc + parseInt(curr.stars), 0);
+        const averageRating = totalRating / reviews.length;
+        return Math.round(averageRating * 10) / 10;
     };
 
     return (
@@ -52,9 +61,9 @@ export default function Doctor() {
                     <div className="dr-portfolio">
                         <img src={userPlaceholder} alt="User Placeholder" />
                         <div className="dr-info">
-                            <h1>Dr First Last</h1>
-                            <h3>Specialty:</h3>
-                            <h3>Average Rating: {calculateAverageRating()}</h3>
+                            <h1>Dr. {drInfo.name}</h1>
+                            <h3>Specialty: {drInfo.specialty}</h3>
+                            <h3>Average Rating: {avgRating}</h3>
                         </div>
                     </div>
                     <div className="reviews">
