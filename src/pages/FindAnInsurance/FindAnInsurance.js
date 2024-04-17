@@ -1,164 +1,81 @@
-import { useState } from "react";
-import PatientHeader from "../../components/PatientHeader/PatientHeader";
-import { GoCheckCircleFill } from "react-icons/go";
-import { SiIfixit } from "react-icons/si";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import DataTable from 'react-data-table-component';
 import "./FindAnInsurance.css";
-
+import PatientHeader from "../../components/PatientHeader/PatientHeader";
 export default function FindAnInsurance() {
-    const [companyName, setCompanyName] = useState("");
-    const [medicalIncluded, setMedicalIncluded] = useState(false);
-    const [dentalIncluded, setDentalIncluded] = useState(false);
-    const [visionIncluded, setVisionIncluded] = useState(false);
+    const [data, setData] = useState([]);
 
-    const handleMedicalIncludedChange = () => {
-        setMedicalIncluded(!medicalIncluded);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+
+                const response = await axios.get('https://backend-careconnect360.onrender.com/allInsuranceProviders');
+
+                setData(response.data);
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
+    const columns = [
+        {
+            name: 'Full Name',
+            selector: row => row.fullName,
+            sortable: true,
+        },
+        {
+            name: 'Phone Number',
+            selector: row => row.phoneNumber,
+            sortable: true,
+        },
+        {
+            name: 'Company',
+            selector: row => row.company,
+            sortable: true,
+        }
+
+    ];
+    const ExpandedComponent = ({ data }) => {
+        return (
+
+            <div style={{ padding: '10px', backgroundColor: '#f0f0f0' }}>
+                <h4 className="mt-4 mb-4">Insurance Plans:</h4>
+                {data.insurancePlans.map((plan, index) => (
+                    <div key={index} style={{ marginBottom: '10px', paddingBottom: '10px', borderBottom: '1px solid #ccc' }}>
+                        <div><strong>Plan Name:</strong> {plan.planName}</div>
+                        <div><strong>Description:</strong> {plan.description}</div>
+                        <div><strong>Premium:</strong> ${plan.premium.toLocaleString()}</div>
+                        <div><strong>Deductible:</strong> ${plan.deductible.toLocaleString()}</div>
+                        <div><strong>Medical Coverage:</strong> {plan.medicalCoverage ? 'Yes' : 'No'}</div>
+                        <div><strong>Dental Coverage:</strong> {plan.dentalCoverage ? 'Yes' : 'No'}</div>
+                        <div><strong>Vision Coverage:</strong> {plan.visionCoverage ? 'Yes' : 'No'}</div>
+                        <button className="primary mt-4">Get Insurance</button>
+                    </div>
+                ))}
+            </div>
+
+        );
     };
 
-    const handleDentalIncludedChange = () => {
-        setDentalIncluded(!dentalIncluded);
-    };
-
-    const handleVisionIncludedChange = () => {
-        setVisionIncluded(!visionIncluded);
-    };
 
     return (
-        <div className="findAnInsurance-page">
+        <div className="insurance">
             <PatientHeader />
-            <div className="search">
-                <h2>Find an Insurance</h2>
-                <form>
-                    <div>
-                        <div>
-                            <label>Company Name:</label>
-                            <input
-                                type="text"
-                                id="company-name"
-                                placeholder="Company Name"
-                                value={companyName}
-                                onChange={(event) => setCompanyName(event.target.value)}
-                            />
-                        </div>
-                        <div className="medical-included">
-                            <input
-                                type="checkbox"
-                                checked={medicalIncluded}
-                                onChange={handleMedicalIncludedChange}
-                            />
-                            <label>Medical Included</label>
-                        </div>
-                        <div className="dental-included">
-                            <input
-                                type="checkbox"
-                                checked={dentalIncluded}
-                                onChange={handleDentalIncludedChange}
-                            />
-                            <label>Dental Included</label>
-                        </div>
-                        <div className="vision-included">
-                            <input
-                                type="checkbox"
-                                checked={visionIncluded}
-                                onChange={handleVisionIncludedChange}
-                            />
-                            <label>Vision Included</label>
-                        </div>
-                    </div>
-                    <input type="submit" value="SEARCH" />
-                </form>
-            </div>
-            <div className="content">
-                {/* <p>No palns match this search criteria.</p> */}
-                <p>3 Plans</p>
-                <div className="plans">
-                    <div className="plan">
-                        <h2>CareConnect360 Medical Insurance</h2>
-                        <h3>Platinum HSA-GN Plan</h3>
-                        <div className="plan-details-container">
-                            <div className="plan-details">
-                                <div>
-                                    <p>PT.HSAGN-001</p>
-                                    <p>Premium: $200.00</p>
-                                    <p>Deductible: $1500.00</p>
-                                </div>
-                                <div>
-                                    <span>
-                                        <GoCheckCircleFill className="green" />
-                                        <p>Medical</p>
-                                    </span>
-                                    <span>
-                                        <GoCheckCircleFill className="green" />
-                                        <p>Dental</p>
-                                    </span>
-                                    <span>
-                                        <GoCheckCircleFill className="green" />
-                                        <p>Vision</p>
-                                    </span>
-                                </div>
-                            </div>
-                            <button>CHOOSE</button>
-                        </div>
-                        <hr />
-                    </div>
-                    <div className="plan">
-                        <h2>CareConnect360 Medical Insurance</h2>
-                        <h3>Dental Only HSA-GN Plan</h3>
-                        <div className="plan-details-container">
-                            <div className="plan-details">
-                                <div>
-                                    <p>PT.HSAGN-002</p>
-                                    <p>Premium: $100.00</p>
-                                    <p>Deductible: $1000.00</p>
-                                </div>
-                                <div>
-                                    <span>
-                                        <SiIfixit className="red" />
-                                        <p>Medical</p>
-                                    </span>
-                                    <span>
-                                        <GoCheckCircleFill className="green" />
-                                        <p>Dental</p>
-                                    </span>
-                                    <span>
-                                        <SiIfixit className="red" />
-                                        <p>Vision</p>
-                                    </span>
-                                </div>
-                            </div>
-                            <button>CHOOSE</button>
-                        </div>
-                        <hr />
-                    </div>
-                    <div className="plan">
-                        <h2>CareConnect360 Medical Insurance</h2>
-                        <h3>Ultra Premium Plan</h3>
-                        <div className="plan-details-container">
-                            <div className="plan-details">
-                                <div>
-                                    <p>HD-DSG-100</p>
-                                    <p>Premium: $1200.00</p>
-                                    <p>Deductible: $5000.00</p>
-                                </div>
-                                <div>
-                                    <span>
-                                        <GoCheckCircleFill className="green" />
-                                        <p>Medical</p>
-                                    </span>
-                                    <span>
-                                        <GoCheckCircleFill className="green" />
-                                        <p>Dental</p>
-                                    </span>
-                                    <span>
-                                        <GoCheckCircleFill className="green" />
-                                        <p>Vision</p>
-                                    </span>
-                                </div>
-                            </div>
-                            <button>CHOOSE</button>
-                        </div>
-                        <hr />
-                    </div>
-                </div>
+            <div className="findAnInsurance-page mt-4">
+                <DataTable
+                    columns={columns}
+                    data={data}
+                    expandableRows
+                    expandableRowsComponent={ExpandedComponent}
+                    pagination
+                    highlightOnHover
+                    responsive
+                />
             </div>
         </div>
     );

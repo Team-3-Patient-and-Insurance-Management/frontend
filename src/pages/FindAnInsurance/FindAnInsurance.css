@@ -113,8 +113,8 @@
     margin-left: 5px;
 }
 
-.findAnInsurance-page .plan button {
-    background-color: brown;
+.primary {
+    background-color: blueviolet;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -122,8 +122,8 @@
     font-weight: normal;
 }
 
-.findAnInsurance-page .plan button:hover {
-    background-color: rgb(104, 0, 0);
+.primary:hover {
+    background-color: rgb(63, 17, 107);
     cursor: pointer;
 }
 
