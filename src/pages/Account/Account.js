@@ -31,6 +31,11 @@ export default function Account() {
     const [company, setCompany] = useState("");
     const [companyLic, setCompanyLic] = useState("");
     const [isModified, setIsModified] = useState(false);
+     const [theme, setTheme] = useState("light");
+
+    const changeTheme = (selectedTheme) => {
+        setTheme(selectedTheme);
+    };
 
     fetch("https://restcountries.com/v3.1/all")
         .then((response) => response.json())
@@ -119,9 +124,9 @@ export default function Account() {
 
     const renderHeader = () => {
         if (role == "patient") {
-            return <PatientHeader />;
+            return <PatientHeader theme={theme}/>;
         } else if (role === "doctor") {
-            return <DoctorHeader />;
+            return <DoctorHeader theme={theme} />;
         } else if (role === "insuranceProvider") {
             // return <InsuranceProviderHeader />;
         }
@@ -196,9 +201,15 @@ export default function Account() {
     };
 
     return (
-        <div className="account-page">
+        <div className={`account-page ${theme}`}>
+        <div className={`header ${theme}`}>
             {renderHeader()}
+            </div>
             <div className="content">
+            <div className="theme-buttons">
+                <button className="light-button" onClick={() => changeTheme("light")}>Light Theme</button>
+                <button className="dark-button" onClick={() => changeTheme("dark")}>Dark Theme</button>
+            </div>
                 <div className="heading">
                     <h1>Account</h1>
                     <div>
@@ -211,7 +222,7 @@ export default function Account() {
                         </Link>
                     </div>
                 </div>
-                <form>
+                <form className={`account-page ${theme}`}>
                     <h2>Basic Information</h2>
                     <div className="basic-information">
                         <div className="portfolio">

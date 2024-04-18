@@ -3,7 +3,7 @@ import { API_URL } from "../services/config";
 
 const updateUser = async (newUser) => {
     try {
-        const response = await axios.put(`${API_URL}updateUser?userID=yCPdUlDpgHN81tZ4GhUo79ECyYU2`, JSON.stringify(newUser), {
+        const response = await axios.put(`${API_URL}/updateUser`, JSON.stringify(newUser), {
             headers: {
                 "Content-Type": "application/json"
             }

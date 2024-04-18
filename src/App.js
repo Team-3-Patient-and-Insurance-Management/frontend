@@ -14,6 +14,11 @@ import InsuranceDashboard from "./pages/InsuranceProvider/InsuranceProvider";
 import InsurancePlans from "./pages/InsurancePlans/InsurancePlans";
 import InsuranceClients from "./pages/InsuranceClients/InsuranceClients";
 
+import PrivateRoute from "./components/PrivateRoute";
+import Doctor from "./pages/Doctor/Doctor";
+import MyPatients from "./pages/MyPatients/MyPatients";
+import PatientInfo from "./pages/PatientInfo/PatientInfo";
+import BedAvailability from "./pages/BedAvailability/BedAvailability";
 
 export default function App() {
     return (
@@ -28,6 +33,13 @@ export default function App() {
                     <Route path="patient/account" element={<Account />} />
                     <Route path="patient/doctor" element={<FindADoctor />} />
                     <Route path="patient/insurance" element={<FindAnInsurance />} />
+                    {/* <Route path="patient/appointments" element={<Appointments />} /> */}
+                    
+                    <Route path="doctor/dashboard" element={<Doctor />} />
+                    <Route path="doctor/myPatients" element={<MyPatients />} />
+                    <Route path="doctor/bedAvailability" element={<BedAvailability />} />
+                    <Route path="doctor/patientInfo" element={<PatientInfo />} />
+
                     <Route path="patient/history" element={<PatientHistory />} />
                     <Route path="insurance/dashboard" element={<InsuranceDashboard />} />
                     <Route path="insurance/plans" element={<InsurancePlans />} />
