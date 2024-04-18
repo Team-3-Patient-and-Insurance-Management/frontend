@@ -15,18 +15,22 @@ export default function Doctor() {
     ]);
     const [drInfo, setDrInfo] = useState({});
 
+
+
     const fetchRatings = async () => {
         try {
             const response = await getDoctorRatings();
-            setReviews(response.data);
+            setReviews(response);
         } catch (error) {
             console.error("Error fetching ratings: ", error);
         }
     }
 
+
     const fetchInfo = async () => {
         try {
             const userData = await getUser();
+            console.log(userData);
             if(userData){
                 drInfo.name = userData.lastName;
                 drInfo.specialty = userData.specialization;

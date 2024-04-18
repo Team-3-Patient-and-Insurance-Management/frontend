@@ -15,7 +15,7 @@ const searchDoctors = async (searchData) => {
         }
         console.log("params", params);
 
-        const response = await axios.get(`${API_URL}searchDoctors`, { params });
+        const response = await axios.get(`${API_URL}/searchDoctors`, { params });
         return response;
 }
 

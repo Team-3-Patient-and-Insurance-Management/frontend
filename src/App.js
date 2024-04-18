@@ -29,7 +29,7 @@ export default function App() {
                     <Route path="patient/account" element={<Account />} />
                     <Route path="patient/doctor" element={<FindADoctor />} />
                     <Route path="patient/insurance" element={<FindAnInsurance />} />
-                    <Route path="patient/appointments" element={<Appointments />} />
+                    {/* <Route path="patient/appointments" element={<Appointments />} /> */}
                     
                     <Route path="doctor/dashboard" element={<Doctor />} />
                     <Route path="doctor/myPatients" element={<MyPatients />} />

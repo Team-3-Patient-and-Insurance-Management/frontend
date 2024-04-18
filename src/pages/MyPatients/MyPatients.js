@@ -35,6 +35,8 @@ export default function MyPatients() {
     const fetchAppointments = async () => {
         try{
             const response = await getCurrentAppointments(); 
+            console.log("RESPONSE:")
+            console.log(response);
             const appointments = response.data;
             console.log(appointments);
             setPatients(appointments); 
