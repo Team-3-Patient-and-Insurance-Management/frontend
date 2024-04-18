@@ -28,12 +28,8 @@
     cursor: pointer;
 }
 
-.account-page .logout-btn {
-    background-color: brown;
-}
 
 .account-page form h2 {
-    color: rgb(24, 24, 163);
     margin-top: 43px;
     font-size: 20px;
     font-weight: 600;
@@ -92,14 +88,41 @@
 }
 
 .account-page .patient-information h3 {
-    color: rgb(24, 24, 163);
     margin-top: 5px;
     font-size: 18px;
     font-weight: 600;
 }
 
+.account-page.light .patient-information h3,
+.account-page.light .patient-information h2,
+.account-page.light .patient-information h1,
+.account-page.light .patient-information p {
+}
+
+.account-page.dark, 
+.account-page.dark .patient-information p {
+    color: rgb(204, 205, 224); 
+    background-color: #5f6c7a;
+}
+
+.account-page.dark .patient-information h3,
+.account-page.dark .patient-information h2,
+.account-page.dark .patient-information h1 {
+    color: #2d2841; 
+
+}
+
+
 .account-page .home-address {
     display: flex;
+}
+
+.account-page.dark .logout-btn {
+     background-color: #553247;
+}
+
+.account-page.light .logout-btn {
+    background-color: brown;
 }
 
 .account-page .personal-information {
@@ -107,8 +130,12 @@
 }
 
 
-.account-page .save-btn {
+.account-page.light .save-btn {
     background-color: green;
+}
+
+.account-page.dark .save-btn {
+    background-color: rgb(36, 102, 36);
 }
 
 .account-page .save-btn:disabled {
@@ -116,3 +143,38 @@
     color: white; 
     cursor: not-allowed; 
 }
+
+.theme-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.light-button {
+    padding: 10px 20px;
+    background-color: #e3dede; 
+    color: #32303e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dark-button {
+    padding: 10px 20px;
+    background-color: #3d3950;
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dark-button:hover {
+    background-color: #0056b3; 
+}
+.light-button:hover {
+    background-color: #d2dde8;
+}
+
+
+

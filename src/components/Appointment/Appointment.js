@@ -2,6 +2,8 @@ import { useState, useMemo, useCallback } from "react";
 import { Rating } from 'primereact/rating';
 import { Datepicker, getJson, Page, setOptions } from '@mobiscroll/react';
 import '@mobiscroll/react/dist/css/mobiscroll.min.css';
+
+import { SiIfixit } from "react-icons/si";
 import { IoIosCloseCircle } from "react-icons/io";
 import { GoCheckCircleFill } from "react-icons/go";
 import doctorImage from "../../assets/images/doctor.jpg";
@@ -13,7 +15,7 @@ setOptions({
     themeVariant: 'light'
 });
 
-export default function Appointment({ setAppointmentIsOpen }) {
+export default function Appointment({ setAppointmentIsOpen, selectedDoctor }) {
     const [multiple, setMultiple] = useState(['2024-03-11T00:00', '2024-03-16T00:00', '2024-03-17T00:00']);
     const min = '2024-03-22T00:00';
     const max = '2024-09-22T00:00';
@@ -137,33 +139,39 @@ export default function Appointment({ setAppointmentIsOpen }) {
         setMultiple(args.value);
     }, []);
 
+    const covidSupport = (support) => {
+        if(support) {
+            return <GoCheckCircleFill className="green" />
+        } else {
+            return <SiIfixit className="red" />
+        }
+    }
+
     return (
         <div className="appointment">
             <div className="appointment-modal">
                 <IoIosCloseCircle className="close-btn" onClick={() => setAppointmentIsOpen(false)} />
                 <div className="appointment-header">
                     <img src={doctorImage} alt="Doctor" />
-                    <h1>Jack Joliet</h1>
+                    <h1>{selectedDoctor.fullName}</h1>
                 </div>
                 <div className="appointment-content">
                     <div className="doctor-details">
                         <div className="doctor-location">
                             <h2>Location</h2>
-                            <p>527 E 1st</p>
-                            <p>Bloomington, IN 47401</p>
+                            <p>{selectedDoctor.streetAddress}</p>
+                            <p>{selectedDoctor.city}, {selectedDoctor.country} {selectedDoctor.zipCode}</p>
                         </div>
                         <div className="doctor-specializations">
                             <div className="doctor-specializations-header">
                                 <h2>Specializations</h2>
                                 <span>
-                                    <GoCheckCircleFill className="green" />
+                                    {covidSupport(selectedDoctor.supportCovid)}
                                     <p>COVID-19 care</p>
                                 </span>
                             </div>
                             <ul>
-                                <li>Immunology</li>
-                                <li>Family Medicine</li>
-                                <li>Obstetrics</li>
+                                <li>{selectedDoctor.specialization}</li>
                             </ul>
                         </div>
                         <div className="doctor-reviews">

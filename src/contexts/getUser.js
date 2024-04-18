@@ -1,13 +1,9 @@
 import axios from "axios";
 import { API_URL } from "../services/config";
 
-const getUser = async (userID) => {
+const getUser = async () => {
     try {
-        const response = await axios.get(`${API_URL}getUser`, {
-            params: {
-                userID: "yCPdUlDpgHN81tZ4GhUo79ECyYU2"
-            }
-        });
+        const response = await axios.get(`${API_URL}getUser`);
         return response.data; // Assuming the response contains user data
     } catch (error) {
         console.error("Error fetching user data:", error);

@@ -3,9 +3,9 @@ import { FaHome, FaUserCircle } from "react-icons/fa";
 import Logo from "../../components/Logo/Logo";
 import "./PatientHeader.css";
 
-export default function PatientHeader() {
+export default function PatientHeader({ theme }) {
     return (
-        <div className="patient-header">
+        <div className={`patient-header ${theme === "dark" ? "dark" : ""}`}>
             <nav>
                 <Logo />
                 <ul>
