@@ -9,6 +9,7 @@
 }
 
 .patient-page h2 {
+    font-size: 21px;
     margin: 10px 0;
 }
 
@@ -21,6 +22,7 @@
 }
 
 .patient-page .covid-19-precautions h3 {
+    font-size: 19px;
     margin: 25px 0 10px;
 }
 

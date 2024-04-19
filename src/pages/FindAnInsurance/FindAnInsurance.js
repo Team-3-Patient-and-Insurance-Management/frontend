@@ -59,7 +59,6 @@ export default function FindAnInsurance() {
     ];
     const ExpandedComponent = ({ data }) => {
         return (
-
             <div style={{ padding: '10px', backgroundColor: '#f0f0f0' }}>
                 {console.log("My uid", data.uid)}
                 <h4 className="mt-4 mb-4">Insurance Plans:</h4>
@@ -76,7 +75,6 @@ export default function FindAnInsurance() {
                     </div>
                 ))}
             </div>
-
         );
     };
 
