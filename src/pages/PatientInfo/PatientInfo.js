@@ -3,12 +3,14 @@ import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import { useState, useEffect } from 'react';
 import "./PatientInfo.css";
 import { useLocation } from 'react-router-dom';
-import getUser from "../../contexts/getUser";
+import getUserID from "../../contexts/getUserID";
+import { useNavigate } from 'react-router-dom';
 
 export default function PatientInfo() {
     // const location = useLocation();
     // const queryParams = new URLSearchParams(location.search);
     // const patient = JSON.parse(queryParams.get('patient'));
+    const navigate = useNavigate();
     const location = useLocation();
     const patient = location.state;
     const [patientInfo, setPatientInfo] = useState({});
@@ -88,7 +90,7 @@ export default function PatientInfo() {
     const fetchInfo = async () => {
         try {
             const patientInfo = {};
-            const userData = await getUser(patient.patientUID);
+            const userData = await getUserID(patient.patientUID);
             console.log("fetching info")
             console.log(userData);
             if (userData) {
@@ -131,10 +133,21 @@ export default function PatientInfo() {
         }
     };
 
+    const handleClick = () => {
+      // const queryString = new URLSearchParams({ patient: JSON.stringify(patient) }).toString();
+      // window.location.href = `/doctor/PatientInfo?${queryString}`;
+      // const dataToSend = { /* Your object here */ };
+       navigate(`/doctor/finishAppointment`, { state: patient });
+    };
+
     return (
         <div className="doctor-page">
             <DoctorHeader />
             <div className="content">
+                <div className="theme-buttons">
+                    <button className="light-button" onClick={handleClick}>Finish Appointment</button>
+                </div>
+                
                 <div className="patient-info-container">
                     <h2>Patient Information</h2>
                     <p><strong>Name:</strong> {patientInfo.patientName}</p>

@@ -47,11 +47,50 @@ export default function MyPatients() {
         }
     };
 
+    const generatePatients = () => {
+        // Generate your patient data here
+        const generatedPatients = [
+            {
+                closePhysicalContact: "no",
+                formattedDate: "2021-09-01",
+                experiencedSymptoms: "no",
+                patientName: "John Doe",
+                patientUid: "123456",
+                positiveCovid90Days: "no",
+                selfMonitor: "no",
+                bookingTime: "12:00",
+                wantCovidTest: "yes"
+            },
+            {
+                closePhysicalContact: "no",
+                formattedDate: "2021-09-01",
+                experiencedSymptoms: "no",
+                patientName: "Jane Doe",
+                patientUid: "123456",
+                positiveCovid90Days: "no",
+                selfMonitor: "no",
+                bookingTime: "12:00",
+                wantCovidTest: "yes"
+            }
+        ];
+        setPatients(generatedPatients);
+    };
+
+
     useEffect(() => {
-        fetchAppointments();
+        if (patients.length === 0) {
+            generatePatients();
+        } else {
+            fetchAppointments();
+        }
     }, []);
 
     const displayPatients = () => {
+
+        if (patients.length === 0) {
+            return <p>No patients found</p>;
+        }
+
         return patients.map((patient, index) => {
             return (
                 <PatientCard
