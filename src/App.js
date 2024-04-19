@@ -10,6 +10,7 @@ import Account from "./pages/Account/Account";
 import FindADoctor from "./pages/FindADoctor/FindADoctor";
 import FindAnInsurance from "./pages/FindAnInsurance/FindAnInsurance";
 import PatientHistory from "./pages/PatientHistory/PatientHistory";
+
 import InsuranceDashboard from "./pages/InsuranceProvider/InsuranceProvider";
 import InsurancePlans from "./pages/InsurancePlans/InsurancePlans";
 import InsuranceClients from "./pages/InsuranceClients/InsuranceClients";
