@@ -1,0 +1,64 @@
+.book-appointment-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+.calendar-container {
+  max-width: 600px;
+}
+
+.time-slots-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
+
+.time-slot-button {
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: center;
+  min-width: 100px;
+  box-sizing: border-box;
+}
+
+.time-slot-button.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+
+.selected-slot-info {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+
+.btn.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+
+.selected-slot-info {
+  position: static;
+  transform: none;
+  left: auto;
+  bottom: auto;
+  width: auto;
+  max-width: none;
+}

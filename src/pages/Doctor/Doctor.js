@@ -15,11 +15,11 @@ export default function Doctor() {
     ]);
     const [drInfo, setDrInfo] = useState({});
 
-
-
     const fetchRatings = async () => {
         try {
             const response = await getDoctorRatings();
+            console.log("Ratings: ", response);
+            console.log(response)
             setReviews(response);
         } catch (error) {
             console.error("Error fetching ratings: ", error);
@@ -32,17 +32,19 @@ export default function Doctor() {
             const userData = await getUser();
             console.log(userData);
             if(userData){
-                drInfo.name = userData.lastName;
-                drInfo.specialty = userData.specialization;
-            }
-            fetchRatings();
+            setDrInfo({
+                name: userData.lastName,
+                specialty: userData.specialization
+            });
+        }
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
     useEffect(() => {
-        fetchInfo();
+        fetchInfo(); 
+        fetchRatings();
     }, []);
 
     useEffect(() => {
@@ -55,6 +57,15 @@ export default function Doctor() {
         const averageRating = totalRating / reviews.length;
         return Math.round(averageRating * 10) / 10;
     };
+
+    const displayReviews = () => {
+        if (reviews.length === 0) {
+            return <h2>No reviews yet</h2>;
+        }
+        return reviews.map((review, index) => (
+            <ReviewItem key={index} {...review} />
+        ));
+    }
 
     return (
         <div className="doctor-page">
@@ -71,9 +82,7 @@ export default function Doctor() {
                         </div>
                     </div>
                     <div className="reviews">
-                        {reviews.map((review, index) => (
-                            <ReviewItem key={index} {...review} />
-                        ))}
+                        {displayReviews()}
                     </div>
                 </div>
                 <div className="doctor-services">

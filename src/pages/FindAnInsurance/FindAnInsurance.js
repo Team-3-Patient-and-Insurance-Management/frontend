@@ -5,6 +5,7 @@ import "./FindAnInsurance.css";
 import PatientHeader from "../../components/PatientHeader/PatientHeader";
 export default function FindAnInsurance() {
     const [data, setData] = useState([]);
+    const [succssmsg, setsuccessmsg] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +22,22 @@ export default function FindAnInsurance() {
         fetchData();
     }, []);
 
+    const handleAddInsurance = async (insuranceProviderUid, planId) => {
+        console.log("My planID", planId);
+        console.log("My planID", planId);
+        setsuccessmsg('');
+
+        const postUrl = `https://backend-careconnect360.onrender.com/addInsuranceProvider?insuranceProviderUid=${insuranceProviderUid}&insurancePlanId=${planId}`;
+
+        try {
+            const response = await axios.post(postUrl);
+            setsuccessmsg('True');
+            console.log('Insurance added successfully:', response);
+
+        } catch (error) {
+            console.error("Error adding insurance:", error.response);
+        }
+    };
 
     const columns = [
         {
@@ -44,6 +61,7 @@ export default function FindAnInsurance() {
         return (
 
             <div style={{ padding: '10px', backgroundColor: '#f0f0f0' }}>
+                {console.log("My uid", data.uid)}
                 <h4 className="mt-4 mb-4">Insurance Plans:</h4>
                 {data.insurancePlans.map((plan, index) => (
                     <div key={index} style={{ marginBottom: '10px', paddingBottom: '10px', borderBottom: '1px solid #ccc' }}>
@@ -54,7 +72,7 @@ export default function FindAnInsurance() {
                         <div><strong>Medical Coverage:</strong> {plan.medicalCoverage ? 'Yes' : 'No'}</div>
                         <div><strong>Dental Coverage:</strong> {plan.dentalCoverage ? 'Yes' : 'No'}</div>
                         <div><strong>Vision Coverage:</strong> {plan.visionCoverage ? 'Yes' : 'No'}</div>
-                        <button className="primary mt-4">Get Insurance</button>
+                        <button className="primary mt-4" onClick={() => handleAddInsurance(data.uid, plan.planId)}>Get Insurance</button>
                     </div>
                 ))}
             </div>
@@ -66,6 +84,7 @@ export default function FindAnInsurance() {
     return (
         <div className="insurance">
             <PatientHeader />
+            {succssmsg && <div className="alert alert-success">Insurance plan has been added successfully!</div>}
             <div className="findAnInsurance-page mt-4">
                 <DataTable
                     columns={columns}

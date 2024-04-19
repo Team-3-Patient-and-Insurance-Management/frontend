@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import ReCAPTCHA from "react-google-recaptcha";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useHistory } from "react-router-dom";
 
 export default function LogIn() {
     const [emailId, setEmailId] = useState("");
@@ -82,6 +84,27 @@ export default function LogIn() {
 
     }
 
+    const handleGoogleSignIn = async () => {
+        try {
+          const provider = new GoogleAuthProvider();
+          const auth = getAuth();
+          signInWithPopup(auth, provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                navigate('/patient/dashboard');
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+            });
+        } catch (error) {
+          console.error("Error signing in with Google:", error);
+        }
+      };
+
 
     return (
         <>
@@ -112,6 +135,7 @@ export default function LogIn() {
 
                         <button disabled={!verfied}>Login</button>
                     </form>
+                    <button onClick={handleGoogleSignIn}>Sign in with Google</button>
                     <Link to="/forgot-password">Forgot Password?</Link>
                     <div className="footer">
                         <p>Don't have an account? <Link to="/register">Register</Link></p>
