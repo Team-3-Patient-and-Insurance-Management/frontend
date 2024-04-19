@@ -42,11 +42,11 @@ export default function Patient() {
                         </Link>
                     </div>
                     <div className="find-an-insurance">
-                        <h2>Find an Insurance</h2>
+                        <h2>My Insurance</h2>
                         <hr />
-                        <p>CareConnect360 simplifies your healthcare experience. Pick your provider and plan, and it's instantly available and clear for all your doctors to see.</p>
-                        <Link to="/patient/insurance">
-                            <button>SEARCH PLANS</button>
+                        <p>CareConnect360 simplifies your healthcare experience. Check your provider and plan, and it's instantly available and clear for all your doctors to see.</p>
+                        <Link to="/patient/myinsurance">
+                            <button>MY PLANS</button>
                         </Link>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ import PatientHeader from "../../components/PatientHeader/PatientHeader";
 import Appointment from "../../components/Appointment/Appointment";
 import "./FindADoctor.css";
 import searchDoctors from "../../contexts/searchDoctors";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function FindADoctor() {
@@ -17,41 +18,46 @@ export default function FindADoctor() {
     const [appointmentIsOpen, setAppointmentIsOpen] = useState(false);
     const [doctors, setDoctors] = useState([]);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
-
+    const navigate = useNavigate();
+    const handleBookOnlineClick = () => {
+        //history.push(`/profile/${userId}`);
+        const userId = "994Ecqu3SmYHG12sylvMp1yQA7P2";
+        navigate(`/book-appointment/${userId}`);
+    };
 
     const handleCovid19CareChange = () => {
         setCovid19Care(!covid19Care);
     };
 
     const fetchDoctors = async () => {
-       
-            const searchData = {
-                speciality: speciality,
-                doctorName: doctorName,
-                covid19Care: covid19Care
-            };
 
-            console.log(searchData); 
+        const searchData = {
+            speciality: speciality,
+            doctorName: doctorName,
+            covid19Care: covid19Care
+        };
 
-            try{
-                const response = await searchDoctors(searchData); 
-                if (response.status !== 200) {
-                    console.error("Error fetching doctors data");
-                    setDoctors([]);
-                } else {
-                    const doctors = response.data;
-                    console.log(doctors);
-                    setDoctors(doctors); 
-                }
-            }
-            catch(error){
+        console.log(searchData);
+
+        try {
+            const response = await searchDoctors(searchData);
+            if (response.status !== 200) {
+                console.error("Error fetching doctors data");
                 setDoctors([]);
-                console.error("Error fetching doctors data", error);
+            } else {
+                const doctors = response.data;
+                console.log(doctors);
+                setDoctors(doctors);
             }
+        }
+        catch (error) {
+            setDoctors([]);
+            console.error("Error fetching doctors data", error);
+        }
     };
 
     const covidSupport = (support) => {
-        if(support) {
+        if (support) {
             return <GoCheckCircleFill className="green" />
         } else {
             return <SiIfixit className="red" />
@@ -65,40 +71,41 @@ export default function FindADoctor() {
 
     const displayDoctors = () => {
         if (doctors.length > 0) {
-                <p>{doctors.length} Doctors</p>
-                const doctorsContent = doctors.map((doctor, index) => (
-                    <div className="doctors" key={index}>
-                        <div className="doctor">
-                            <img src={doctorImage} alt="Doctor" />
-                            <div className="doctor-details">
-                                <h1>{doctor.fullName}</h1>
-                                <div className="doctor-rating">
-                                    <Rating value={1} readOnly cancel={false} className="rating" />
-                                    <p>(1)</p>
-                                </div>
-                                <div className="doctor-address">
-                                    <p>{doctor.streetAddress}</p>
-                                    <p>{doctor.city}, {doctor.country} {doctor.zipCode}</p>
-                                </div>
+            <p>{doctors.length} Doctors</p>
+            const doctorsContent = doctors.map((doctor, index) => (
+                <div className="doctors" key={index}>
+                    <div className="doctor">
+                        <img src={doctorImage} alt="Doctor" />
+                        <div className="doctor-details">
+                            <h1>{doctor.fullName}</h1>
+                            <div className="doctor-rating">
+                                <Rating value={1} readOnly cancel={false} className="rating" />
+                                <p>(1)</p>
                             </div>
-                            <div className="doctor-speciality">
-                                <span>
-                                    {covidSupport(doctor.supportCovid)}
-                                    <p>COVID-19 care</p>
-                                </span>
-                                <ul>
-                                    {doctor.specialization}
-                                </ul>
-                                <button className="book-online-btn" onClick={() => setAppointmentIsOpen(true)}>BOOK ONLINE</button>
-                                {appointmentIsOpen && <Appointment setAppointmentIsOpen={setAppointmentIsOpen} selectedDoctor={doctor} />}
+                            <div className="doctor-address">
+                                <p>{doctor.streetAddress}</p>
+                                <p>{doctor.city}, {doctor.country} {doctor.zipCode}</p>
                             </div>
                         </div>
+                        <div className="doctor-speciality">
+                            <span>
+                                {covidSupport(doctor.supportCovid)}
+                                <p>COVID-19 care</p>
+                            </span>
+                            <ul>
+                                {doctor.specialization}
+                            </ul>
+                            <button className="book-online-btn" onClick={handleBookOnlineClick}>
+                                BOOK ONLINE
+                            </button>
+                        </div>
                     </div>
-                ));
-                return <div className="content">{doctorsContent}</div>;
-            } else {
-                return <div className="content"><p>No doctors match this search criteria.</p></div>;
-            }
+                </div>
+            ));
+            return <div className="content">{doctorsContent}</div>;
+        } else {
+            return <div className="content"><p>No doctors match this search criteria.</p></div>;
+        }
     };
 
 
@@ -148,9 +155,9 @@ export default function FindADoctor() {
                     <input type="submit" value="SEARCH" onClick={handleSubmit} />
                 </form>
             </div>
-            
+
             {displayDoctors()}
-            
+
         </div>
     );
 }

@@ -15,6 +15,8 @@ import Doctor from "./pages/Doctor/Doctor";
 import MyPatients from "./pages/MyPatients/MyPatients";
 import PatientInfo from "./pages/PatientInfo/PatientInfo";
 import BedAvailability from "./pages/BedAvailability/BedAvailability";
+import BookAppointment from "./pages/BookAppointment/BookApointment";
+import MyInsurance from "./pages/MyInsurance/MyInsurance";
 
 export default function App() {
     return (
@@ -29,6 +31,13 @@ export default function App() {
                     <Route path="patient/account" element={<Account />} />
                     <Route path="patient/doctor" element={<FindADoctor />} />
                     <Route path="patient/insurance" element={<FindAnInsurance />} />
+
+             
+                   
+                   
+                    <Route path="/book-appointment/:userId" element={<BookAppointment />} />
+                    <Route path="patient/myinsurance" element={<MyInsurance />} />
+
                     {/* <Route path="patient/appointments" element={<Appointments />} /> */}
                     
                     <Route path="doctor/dashboard" element={<Doctor />} />
