@@ -355,7 +355,7 @@ const RegisterPage = () => {
                     <button id='register-btn'>Register</button>
                 </form>
                 <footer>
-                    <div><Link to="/">Back to Homepage</Link>.</div>
+                    <div><Link to="/">Back to Homepage</Link></div>
                 </footer>
 
             </div>

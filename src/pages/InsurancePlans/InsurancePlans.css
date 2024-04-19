@@ -2,43 +2,43 @@
     padding: 20px;
 }
 
-.plans-container {
+.insurance-plans-page .plans-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.plans-container h2 {
+.insurance-plans-page .plans-container h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-.plans {
+.insurance-plans-page .plans {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.plan {
+.insurance-plans-page .plan {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
     background-color: #f9f9f9;
 }
 
-.plan h3 {
+.insurance-plans-page .plan h3 {
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.plan p {
+.insurance-plans-page .plan p {
     margin: 5px 0;
 }
 
-.coverage-details {
+.insurance-plans-page .coverage-details {
     margin-top: 10px;
 }
 
-.coverage-details span {
+.insurance-plans-page .coverage-details span {
     display: inline-block;
     padding: 5px 10px;
     margin-right: 5px;
@@ -46,22 +46,22 @@
     font-size: 14px;
 }
 
-.coverage-details .medical {
+.insurance-plans-page .coverage-details .medical {
     background-color: #5cb85c;
     color: white;
 }
 
-.coverage-details .dental {
+.insurance-plans-page .coverage-details .dental {
     background-color: #f0ad4e;
     color: white;
 }
 
-.coverage-details .vision {
+.insurance-plans-page .coverage-details .vision {
     background-color: #5bc0de;
     color: white;
 }
 
-button {
+.insurance-plans-page button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -71,6 +71,6 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.insurance-plans-page button:hover {
     background-color: #0056b3;
 }

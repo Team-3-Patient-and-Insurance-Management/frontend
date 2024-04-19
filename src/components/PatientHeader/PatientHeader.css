@@ -41,11 +41,11 @@
     text-decoration: underline;
 }
 
-.dashboard-icon {
+.patient-header .dashboard-icon {
     font-size: 20px;
 }
 
-.user-nav-link {
+.patient-header .user-nav-link {
     height: 35px;
     padding: 0 10px;
     border: 1px solid black;
@@ -55,7 +55,7 @@
     align-items: center;
 }
 
-.user-nav-link .user-icon {
+.patient-header .user-nav-link .user-icon {
     margin-right: 5px;
     font-size: 17px;
 }
