@@ -1,12 +1,15 @@
 .findADoctor-page .search {
     background-color: rgb(189, 41, 41);
     color: white;
+    margin-bottom: 20px;
     padding: 30px 15% 30px;
     box-shadow: 0px -1px 3px rgb(189, 41, 41);
 }
 
 .findADoctor-page .search h2 {
+    font-size: 26px;
     font-weight: 500;
+    margin-bottom: 10px;
 }
 
 .findADoctor-page .text-inputs {
@@ -49,9 +52,9 @@
 .findADoctor-page .search input[type=submit] {
     background-color: white;
     color: brown;
-    font-weight: bold;
+    font-weight: 600;
     margin-top: 15px;
-    padding: 10px 15px;
+    padding: 8px 14px;
     border: none;
     border-radius: 5px;
 }

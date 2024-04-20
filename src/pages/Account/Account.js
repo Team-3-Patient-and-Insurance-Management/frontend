@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import userPlaceholder from "../../assets/images/user-placeholder.png";
 import PatientHeader from "../../components/PatientHeader/PatientHeader";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
+import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./Account.css";
 import InsuranceHeader from '../../components/InsuranceHeader/InsuranceHeader';
 
@@ -33,7 +34,7 @@ export default function Account() {
     const [company, setCompany] = useState("");
     const [companyLic, setCompanyLic] = useState("");
     const [isModified, setIsModified] = useState(false);
-     const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("light");
 
     const changeTheme = (selectedTheme) => {
         setTheme(selectedTheme);
@@ -127,8 +128,8 @@ export default function Account() {
     }, []);
 
     const renderHeader = () => {
-        if (role == "patient") {
-            return <PatientHeader theme={theme}/>;
+        if (role === "patient") {
+            return <PatientHeader theme={theme} />;
         } else if (role === "doctor") {
             return <DoctorHeader theme={theme} />;
         } else if (role === "insuranceProvider") {
@@ -217,14 +218,14 @@ export default function Account() {
 
     return (
         <div className={`account-page ${theme}`}>
-        <div className={`header ${theme}`}>
-            {renderHeader()}
+            <div className={`header ${theme}`}>
+                {renderHeader()}
             </div>
             <div className="content">
-            <div className="theme-buttons">
-                <button className="light-button" onClick={() => changeTheme("light")}>Light Theme</button>
-                <button className="dark-button" onClick={() => changeTheme("dark")}>Dark Theme</button>
-            </div>
+                <div className="theme-buttons">
+                    <button className="light-button" onClick={() => changeTheme("light")}>Light Theme</button>
+                    <button className="dark-button" onClick={() => changeTheme("dark")}>Dark Theme</button>
+                </div>
                 <div className="heading">
                     <h1>Account</h1>
                     <div>

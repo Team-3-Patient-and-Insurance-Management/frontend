@@ -37,11 +37,11 @@
     text-decoration: underline;
 }
 
-.dashboard-icon {
+.insurance-header .dashboard-icon {
     font-size: 20px;
 }
 
-.user-nav-link {
+.insurance-header .user-nav-link {
     height: 35px;
     padding: 0 10px;
     border: 1px solid black;
@@ -51,7 +51,7 @@
     align-items: center;
 }
 
-.user-nav-link .user-icon {
+.insurance-header .user-nav-link .user-icon {
     margin-right: 5px;
     font-size: 17px;
 }

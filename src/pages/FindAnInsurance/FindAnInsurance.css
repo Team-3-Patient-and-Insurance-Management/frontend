@@ -113,7 +113,7 @@
     margin-left: 5px;
 }
 
-.primary {
+.findAnInsurance-page .primary {
     background-color: blueviolet;
     color: white;
     padding: 10px 15px;
@@ -122,7 +122,7 @@
     font-weight: normal;
 }
 
-.primary:hover {
+.findAnInsurance-page .primary:hover {
     background-color: rgb(63, 17, 107);
     cursor: pointer;
 }

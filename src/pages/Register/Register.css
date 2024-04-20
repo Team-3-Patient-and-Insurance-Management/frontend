@@ -52,7 +52,7 @@ body {
 
 #register-btn {
     width: 100%;
-    padding: 15px;
+    padding: 12px;
     background-color: #67a471;
     color: white;
     border: none;
@@ -76,8 +76,6 @@ body {
     display: block;
 }
 
-
-
 .personal-info,
 .address-details {
     display: flex;
@@ -87,13 +85,10 @@ body {
     width: 100%;
 }
 
-
 .personal-info input[type="text"],
 .address-details input[type="text"],
 .address-details input[type="number"],
 .personal-info input[type="number"] {
-
-
     flex: 1 49.5%;
     max-width: 47.6%;
 }
@@ -102,8 +97,6 @@ body {
     flex: 1 49.5%;
     width: 96.7%;
 }
-
-
 
 .register-page .content label {
     align-self: flex-start;
@@ -130,8 +123,6 @@ body {
     width: 49.7%;
 }
 
-
-
 .register-page .content button:hover,
 #register-btn:hover {
     background-color: #4f8257;
@@ -152,7 +143,6 @@ body {
 .register-page footer {
     text-align: center;
     width: 100%;
-    margin-top: 30px;
 }
 
 .register-page input {

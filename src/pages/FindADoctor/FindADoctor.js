@@ -3,13 +3,10 @@ import { GoCheckCircleFill } from "react-icons/go";
 import { Rating } from 'primereact/rating';
 import { SiIfixit } from "react-icons/si";
 import doctorImage from "../../assets/images/doctor.jpg";
-import doctorImage2 from "../../assets/images/doctor2.jpg";
 import PatientHeader from "../../components/PatientHeader/PatientHeader";
-import Appointment from "../../components/Appointment/Appointment";
 import "./FindADoctor.css";
 import searchDoctors from "../../contexts/searchDoctors";
 import { useNavigate } from 'react-router-dom';
-
 
 export default function FindADoctor() {
     const [speciality, setSpeciality] = useState("");

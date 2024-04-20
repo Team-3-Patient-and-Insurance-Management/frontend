@@ -20,6 +20,7 @@
 .patient-header ul {
     width: 50%;
     min-width: 510px;
+    margin: auto 0;
     padding-inline-start: 0;
     display: flex;
     justify-content: space-around;
@@ -41,21 +42,25 @@
     text-decoration: underline;
 }
 
-.dashboard-icon {
+.patient-header .dashboard-icon {
     font-size: 20px;
 }
 
-.user-nav-link {
+.patient-header .user-nav-link {
     height: 35px;
     padding: 0 10px;
-    border: 1px solid black;
+    border: 1px solid #006997;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.user-nav-link .user-icon {
+.patient-header .user-nav-link p {
+    margin: auto 0;
+}
+
+.patient-header .user-nav-link .user-icon {
     margin-right: 5px;
     font-size: 17px;
 }

@@ -15,6 +15,10 @@
     border-radius: 10px;
 }
 
+.covid-19-precautions {
+    background-color: rgb(240, 145, 134);
+}
+
 .insurance-page .browse-insurance-plans,
 .insurance-page .find-an-insurance {
     background-color: rgb(113, 176, 227);
@@ -41,29 +45,4 @@
 
 .insurance-page .insurance-services button:hover {
     background-color: rgb(111, 25, 25);
-}
-
-.statistics {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.statistic {
-    width: 45%;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.statistic h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-/* Styling for canvas element */
-canvas {
-    width: 100%;
-    height: 200px; /* Adjust height as needed */
 }

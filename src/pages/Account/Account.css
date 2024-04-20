@@ -1,11 +1,51 @@
 .account-page {
-    min-height: 100vh;
+    padding-bottom: 20px;
 }
 
 .account-page .content {
     width: 80%;
     max-width: 1000px;
-    margin: 25px auto;
+    margin: 25px auto 0;
+    padding-bottom: 0;
+}
+
+.account-page .content .theme-buttons {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-page .content .theme-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.account-page .content .theme-buttons .light-button {
+    padding: 10px 20px;
+    background-color: #e3dede; 
+    color: #32303e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-page .content .theme-buttons .dark-button {
+    padding: 10px 20px;
+    background-color: #3d3950;
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-page .content .theme-buttons .dark-button:hover {
+    background-color: #0056b3; 
+}
+
+.account-page .content .theme-buttons .light-button:hover {
+    background-color: #d2dde8;
 }
 
 .account-page .heading {
@@ -27,7 +67,6 @@
     border-radius: 5px;
     cursor: pointer;
 }
-
 
 .account-page form h2 {
     margin-top: 43px;
@@ -109,9 +148,7 @@
 .account-page.dark .patient-information h2,
 .account-page.dark .patient-information h1 {
     color: #2d2841; 
-
 }
-
 
 .account-page .home-address {
     display: flex;
@@ -129,7 +166,6 @@
     display: block;
 }
 
-
 .account-page.light .save-btn {
     background-color: green;
 }
@@ -144,37 +180,12 @@
     cursor: not-allowed; 
 }
 
-.theme-buttons {
-    display: flex;
-    gap: 10px;
+.account-page .doctor-content {
+    margin-bottom: 30px;
+    display: block;
 }
 
-.light-button {
-    padding: 10px 20px;
-    background-color: #e3dede; 
-    color: #32303e;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.account-page .personal-information input,
+.account-page .personal-information select {
+    width: 150px;
 }
-
-.dark-button {
-    padding: 10px 20px;
-    background-color: #3d3950;
-    color: #fff; 
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dark-button:hover {
-    background-color: #0056b3; 
-}
-.light-button:hover {
-    background-color: #d2dde8;
-}
-
-
-
