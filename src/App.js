@@ -36,6 +36,8 @@ export default function App() {
                     <Route path="patient/myinsurance" element={<MyInsurance />} />
                     <Route path="patient/history" element={<PatientHistory />} />
                     <Route path="/book-appointment/:userId" element={<BookAppointment />} />
+
+
                     <Route path="doctor/dashboard" element={<Doctor />} />
                     <Route path="doctor/myPatients" element={<MyPatients />} />
                     <Route path="doctor/bedAvailability" element={<BedAvailability />} />
@@ -46,6 +48,8 @@ export default function App() {
                     <Route path="insurance/dashboard" element={<InsuranceDashboard />} />
                     <Route path="insurance/clients" element={<InsuranceClients />} />
                     <Route path="insurance/account" element={<Account />} />
+                    <Route path="insurance/plans" element={<InsurancePlans />} />
+                    
                 </Routes>
             </AuthProvider>
         </Router>

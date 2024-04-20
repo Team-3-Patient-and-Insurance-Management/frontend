@@ -10,7 +10,6 @@ import PatientHeader from "../../components/PatientHeader/PatientHeader";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./Account.css";
-import InsuranceHeader from '../../components/InsuranceHeader/InsuranceHeader';
 
 export default function Account() {
     const { currentUser, logout } = useAuth();
