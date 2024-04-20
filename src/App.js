@@ -49,11 +49,13 @@ export default function App() {
                     <Route path="doctor/myPatients" element={<MyPatients />} />
                     <Route path="doctor/bedAvailability" element={<BedAvailability />} />
                     <Route path="doctor/patientInfo" element={<PatientInfo />} />
+                    <Route path="doctor/account" element={<Account />} />
 
                     <Route path="patient/history" element={<PatientHistory />} />
                     <Route path="insurance/dashboard" element={<InsuranceDashboard />} />
                     <Route path="insurance/plans" element={<InsurancePlans />} />
                     <Route path="insurance/clients" element={<InsuranceClients />} />
+                    <Route path="insurance/account" element={<Account />} />
 
 
                     {/* Define a route with PrivateRoute as the element */}

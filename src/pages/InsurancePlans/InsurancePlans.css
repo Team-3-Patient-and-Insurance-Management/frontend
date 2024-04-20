@@ -1,76 +1,89 @@
-.insurance-plans-page {
-    padding: 20px;
-}
-
-.plans-container {
-    max-width: 800px;
+.insurance-page .insurance-content {
+    width: 80%;
     margin: 0 auto;
 }
 
-.plans-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 20px;
+    width:100%;
 }
 
-.plans {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.plan {
+.insurance-plan-card {
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 10px);
+    max-width: 364px;
+    margin-bottom: 20px;
+    margin-right: 20px;
     padding: 20px;
-    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+.insurance-plan-details {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
 }
 
-.plan h3 {
-    font-size: 20px;
+.insurance-plan-details h3 {
+    font-size: 1.2rem;
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
-.plan p {
-    margin: 5px 0;
+.insurance-plan-details h4 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    word-wrap: break-word;
 }
 
-.coverage-details {
+.insurance-plan-details p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.insurance-plan-details p:last-child {
+    margin-bottom: 0;
+}
+
+.insurance-plan-details .insurance-plan-features {
     margin-top: 10px;
 }
 
-.coverage-details span {
-    display: inline-block;
-    padding: 5px 10px;
-    margin-right: 5px;
-    border-radius: 5px;
-    font-size: 14px;
+.insurance-provider .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
-.coverage-details .medical {
-    background-color: #5cb85c;
-    color: white;
+.title-container {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.coverage-details .dental {
-    background-color: #f0ad4e;
-    color: white;
+.title-container h2 {
+    margin-top: 20px;
 }
 
-.coverage-details .vision {
-    background-color: #5bc0de;
-    color: white;
+.insurance-plan {
+    width: 30%;
+    margin: 0 auto; 
 }
 
-button {
-    background-color: #007bff;
+.insurance-plan button {
+    background-color: brown;
     color: white;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px 20px;
     border: none;
-    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
 }

@@ -9,10 +9,12 @@ import userPlaceholder from "../../assets/images/user-placeholder.png";
 import PatientHeader from "../../components/PatientHeader/PatientHeader";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import "./Account.css";
+import InsuranceHeader from '../../components/InsuranceHeader/InsuranceHeader';
 
 export default function Account() {
     const { currentUser, logout } = useAuth();
     const [userData, setUserData] = useState(null);
+    const [profilePictureUrl, setProfilePictureUrl] = useState("");
     const [role, setRole] = useState("doctor");
     const [email, setEmai] = useState("");
     const [password, setPassword] = useState("");
@@ -65,6 +67,7 @@ export default function Account() {
             if (userData) {
                 setFirstName(userData.firstName);
                 setLastName(userData.lastName);
+                setProfilePictureUrl(userData.profilePictureUrl);
                 setPhoneNumber(userData.phoneNumber);
                 setAddress(userData.streetAddress);
                 setCountry(userData.country);
@@ -101,6 +104,7 @@ export default function Account() {
         }
         userData.firstName = firstName;
         userData.lastName = lastName;
+        userData.profilePictureUrl = profilePictureUrl;
         userData.phoneNumber = phoneNumber;
         userData.dateOfBirth = dateOfBirth;
         userData.streetAddress = address;
@@ -128,7 +132,7 @@ export default function Account() {
         } else if (role === "doctor") {
             return <DoctorHeader theme={theme} />;
         } else if (role === "insuranceProvider") {
-            // return <InsuranceProviderHeader />;
+            return <InsuranceHeader theme={theme} />;
         }
     };
 
@@ -200,6 +204,17 @@ export default function Account() {
         }
     };
 
+    const handleImageSelection = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setProfilePictureUrl(reader.result);
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    };
+
     return (
         <div className={`account-page ${theme}`}>
         <div className={`header ${theme}`}>
@@ -226,8 +241,8 @@ export default function Account() {
                     <h2>Basic Information</h2>
                     <div className="basic-information">
                         <div className="portfolio">
-                            <img src={userPlaceholder} alt="User Placeholder" />
-                            <input type="file" />
+                            <img src={profilePictureUrl || userPlaceholder} alt="User Placeholder" />
+                            <input type="file" onChange={handleImageSelection} accept="image/*" />
                         </div>
                         <div className="basic-information-inputs">
                             <div>

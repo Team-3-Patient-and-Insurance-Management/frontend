@@ -71,7 +71,7 @@ export default function LogIn() {
                 navigate('/patient/dashboard')
             }
             else {
-                navigate('/insurace/dashboard');
+                navigate('/insurance/dashboard');
             }
 
         }

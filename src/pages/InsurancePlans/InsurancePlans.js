@@ -1,54 +1,66 @@
 import {useEffect, useState} from "react";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./InsurancePlans.css";
+import myInsurancePlans from "../../contexts/getInsuranceProvidersPlans";
 
 function InsurancePlans() {
-    const [plans, setPlans] = useState([]);
+    const [insurancePlans, setInsurancePlans] = useState([]);
 
     useEffect(() => {
-        // Fetch insurance plans from your backend API
         fetchInsurancePlans();
     }, []);
 
     const fetchInsurancePlans = async () => {
+        
         try {
-            // Assuming your backend API endpoint to fetch insurance plans is '/api/insurance/plans'
-            const response = await fetch("/api/insurance/plans");
-            if (!response.ok) {
-                throw new Error("Failed to fetch insurance plans");
+            const response = await myInsurancePlans();
+            if (response.status !== 200) {
+                console.error("Error fetching insurance plan data");
+                setInsurancePlans([]);
+            } else {
+                const insurancePlans = response.data;
+                setInsurancePlans(insurancePlans);
             }
-            const data = await response.json();
-            setPlans(data);
-        } catch (error) {
-            console.error("Error fetching insurance plans:", error.message);
         }
-    };
+        catch (error) {
+            setInsurancePlans([]);
+            console.error("Error fetching insurance plan data", error);
+        }
+    }
+
+    const displayInsurancePlans = () => {
+        if (insurancePlans.length > 0) {
+            <p>{insurancePlans.length} Insurance Plans</p>
+            const insurancePlansContent = insurancePlans.map((plan, index) => (
+                <div className="insurance-plan-card" key={index}>
+                    <div className="insurance-plan-details">
+                        <h3>{plan.planName}</h3>
+                        <h4>{plan.description}</h4>
+                        <p>Premium: {plan.premium}</p>
+                        <p>Deductible: {plan.deductible}</p>
+                        <p>Medical Coverage: {plan.medicalCoverage ? 'Yes' : 'No'}</p>
+                        <p>Vision Coverage: {plan.visionCoverage ? 'Yes' : 'No'}</p>
+                        <p>Dental Coverage: {plan.dentalCoverage ? 'Yes' : 'No'}</p>
+                    </div>
+                </div>
+            ));
+            return <div className="content">{insurancePlansContent}</div>;
+        } else {
+            return <div className="content"><p>You currently dont have any insurance plans</p></div>;
+        }
+    }
 
     return (
-        <div className="insurance-plans-page">
+        <div className="insurance-page">
             <InsuranceHeader />
-            <div className="plans-container">
-                <h2>Insurance Plans</h2>
-                {plans.length === 0 ? (
-                    <p>No plans available</p>
-                ) : (
-                    <div className="plans">
-                        {plans.map((plan) => (
-                            <div className="plan" key={plan.planId}>
-                                <h3>{plan.name}</h3>
-                                <p>{plan.insuranceCompany}</p>
-                                <p>Premium: ${plan.premium}</p>
-                                <p>Deductible: ${plan.deductible}</p>
-                                <div className="coverage-details">
-                                    {plan.medicalCoverage && <span className="medical">Medical</span>}
-                                    {plan.dentalCoverage && <span className="dental">Dental</span>}
-                                    {plan.visionCoverage && <span className="vision">Vision</span>}
-                                </div>
-                                <button>Choose</button>
-                            </div>
-                        ))}
-                    </div>
-                )}
+            <div className="title-container">
+                <h2>My Insurance Plans</h2>
+            </div>
+            <div className="insurance-plan">
+                <button>Add a New Insurance Plan</button>
+            </div>
+            <div className="insurance-content">
+                {displayInsurancePlans()}
             </div>
         </div>
     );

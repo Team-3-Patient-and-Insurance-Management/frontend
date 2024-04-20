@@ -3,7 +3,7 @@ import { FaHome, FaUserCircle } from "react-icons/fa";
 import Logo from "../../components/Logo/Logo";
 import "./InsuranceHeader.css";
 
-export default function DoctorHeader() {
+export default function InsuranceHeader() {
     return (
         <div className="insurance-header">
             <nav>
@@ -21,7 +21,7 @@ export default function DoctorHeader() {
                         <Link to="/insurance/plans">Insurance Plans</Link>
                     </li>
                     <li>
-                        <Link className="user-nav-link" to="/patient/account">
+                        <Link className="user-nav-link" to="/insurance/account">
                             <FaUserCircle className="user-icon" />
                             <p>USER</p>
                         </Link>
