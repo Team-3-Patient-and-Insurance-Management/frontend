@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./InsuranceProvider.css";
 import Chart from "chart.js/auto";
-import {useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 
 export default function InsuranceProvider() {
 
@@ -53,13 +53,13 @@ export default function InsuranceProvider() {
 
     return (
         <div className="insurance-page">
-            <InsuranceHeader/>
-            <h1 className="insurance-welcome" style={{margin: '15px 0 16px 15%'}}>Hello Insurance Provider</h1>
+            <InsuranceHeader />
             <div className="insurance-content">
+                <h1 className="insurance-welcome">Hello Insurance Provider</h1>
                 <div className="insurance-services">
                     <div className="browse-insurance-plans">
                         <h2>View Client List</h2>
-                        <hr/>
+                        <hr />
                         <p>Want to see all of your clients' plans? Look at them all here!</p>
                         <Link to="/insurance/clients">
                             <button>Browse Plans</button>
@@ -67,7 +67,7 @@ export default function InsuranceProvider() {
                     </div>
                     <div className="find-an-insurance">
                         <h2>View Insurance Plans</h2>
-                        <hr/>
+                        <hr />
                         <p>CareConnect360 has a large variety of insurance plans. Compare them all here!</p>
                         <Link to="/insurance/plans">
                             <button>SEARCH PLANS</button>
@@ -75,8 +75,8 @@ export default function InsuranceProvider() {
                     </div>
                 </div>
             </div>
-            <div style={{marginTop: '30px'}}></div>
-            <canvas ref={chartRef} style={{width: '10px', height: '40px', padding: "0px 15% 10px"}}></canvas>
+            <div style={{ marginTop: '30px' }}></div>
+            <canvas ref={chartRef} style={{ width: '10px', height: '40px', padding: "0px 15% 10px" }}></canvas>
         </div>
     );
 }

@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-.content {
+.insurance-page .content {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;

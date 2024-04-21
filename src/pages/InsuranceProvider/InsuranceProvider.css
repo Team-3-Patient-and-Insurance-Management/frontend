@@ -1,11 +1,11 @@
 .insurance-page .insurance-content {
     display: flex;
     flex-direction: column;
-    padding: 0px 15% 10px;
+    padding: 0px 75px 10px;
 }
 
 .insurance-page .insurance-welcome {
-    margin: 25px 0 8px 10px;
+    margin: 20px 0 16px 0px;
     font-size: 26px;
     font-weight: 500;
 }
