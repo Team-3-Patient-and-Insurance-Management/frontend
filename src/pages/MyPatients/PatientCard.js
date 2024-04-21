@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import userPlaceholder from "../../assets/images/user-placeholder.png";
 import "./MyPatients.css";
 import { useNavigate } from 'react-router-dom';
+import getUserID from "../../contexts/getUserID";
 
 const PatientCard = (patient) => {
   const navigate = useNavigate();
@@ -14,8 +15,13 @@ const PatientCard = (patient) => {
        navigate(`/doctor/PatientInfo`, { state: patient });
     };
   const fetchInfo = async () => {
-    const userData = await getUser();
-    setProfilePictureUrl(userData.profilePictureUrl);
+    const userData = await getUserID(patient.patientUID);
+    console.log(userData);
+    if (userData.profilePictureUrl) {
+      setProfilePictureUrl(userData.profilePictureUrl);
+    } else {
+      setProfilePictureUrl("");
+    }
   }
 
   fetchInfo();

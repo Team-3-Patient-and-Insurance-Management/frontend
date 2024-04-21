@@ -97,7 +97,7 @@ export default function MyPatients() {
                     key={index}
                     patientName={patient.patientName}
                     formattedDate={patient.formattedDate}
-                    time={patient.bookingTime ? patient.bookingTime : "10:00 AM"}
+                    time={patient.time ? patient.time : "10:00 AM"}
                     closePhysicalContact={patient.closePhysicalContact}
                     experiencedSymptoms={patient.experiencedSymptoms}
                     positiveCovid90Days={patient.positiveCovid90Days}
