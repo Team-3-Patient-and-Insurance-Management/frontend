@@ -1,3 +1,10 @@
-routes:
-  - path: "/*"
-    static: "index.html"
+services:
+  - type: web
+    name: https://frontend-1-hmaf.onrender.com
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: ./build
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
