@@ -7,6 +7,44 @@
     background-color: rgb(210, 224, 246);
   }
 
+  strong {
+    font-size: 13px;
+  }
+
+  .patient-info-container.dark {
+    background-color: #2e3757; 
+  }
+
+  .patient-info-container.dark h2 {
+    color: #0584ba;
+  }
+
+.btn.light {
+  padding: 10px 20px;
+  background-color: #e3dede; 
+  color: #32303e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn.dark {
+  padding: 10px 20px;
+  background-color: #3d3950;
+  color: #fff; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn.dark:hover {
+    background-color: #0056b3; 
+}
+
+.btn.light:hover {
+    background-color: #d2dde8;
+}
+
   .chat-box-container {
     width: 600px;
     height: 700px;
@@ -52,11 +90,15 @@
     background-color: #e6eef4;
   }
 
-
-
   .chat-box-outline .chat-input {
     width: 100%;
     position: absolute;
     bottom: 0;
     padding-bottom: 5px;
+  }
+
+  .doctor-page.dark,
+  .content.dark {
+    background-color: #5d627f;
+    color: rgb(204, 205, 224); 
   }

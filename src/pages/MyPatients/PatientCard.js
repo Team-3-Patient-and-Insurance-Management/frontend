@@ -9,11 +9,9 @@ const PatientCard = (patient) => {
   const [profilePictureUrl, setProfilePictureUrl] = useState("");
 
   const handleClick = () => {
-      // const queryString = new URLSearchParams({ patient: JSON.stringify(patient) }).toString();
-      // window.location.href = `/doctor/PatientInfo?${queryString}`;
-      // const dataToSend = { /* Your object here */ };
-       navigate(`/doctor/PatientInfo`, { state: patient });
+       navigate(`/doctor/PatientInfo/${patient.theme}`, { state: patient });
     };
+
   const fetchInfo = async () => {
     const userData = await getUserID(patient.patientUID);
     console.log(userData);
