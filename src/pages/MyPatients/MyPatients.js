@@ -15,7 +15,7 @@ export default function MyPatients() {
             patientUid: "123456",
             positiveCovid90Days: "no",
             selfMonitor: "no",
-            bookingTime: "12:00",
+            time: "12:00",
             wantCovidTest: "yes"
         },
         {
@@ -26,7 +26,7 @@ export default function MyPatients() {
             patientUid: "123456",
             positiveCovid90Days: "no",
             selfMonitor: "no",
-            bookingTime: "12:00",
+            time: "12:00",
             wantCovidTest: "yes"
         }
     ]);
@@ -58,7 +58,7 @@ export default function MyPatients() {
                 patientUid: "123456",
                 positiveCovid90Days: "no",
                 selfMonitor: "no",
-                bookingTime: "12:00",
+                time: "12:00",
                 wantCovidTest: "yes"
             },
             {
@@ -69,7 +69,7 @@ export default function MyPatients() {
                 patientUid: "123456",
                 positiveCovid90Days: "no",
                 selfMonitor: "no",
-                bookingTime: "12:00",
+                time: "12:00",
                 wantCovidTest: "yes"
             }
         ];
@@ -97,7 +97,7 @@ export default function MyPatients() {
                     key={index}
                     patientName={patient.patientName}
                     formattedDate={patient.formattedDate}
-                    bookingTime={patient.bookingTime ? patient.bookingTime : "10:00 AM"}
+                    time={patient.bookingTime ? patient.bookingTime : "10:00 AM"}
                     closePhysicalContact={patient.closePhysicalContact}
                     experiencedSymptoms={patient.experiencedSymptoms}
                     positiveCovid90Days={patient.positiveCovid90Days}
