@@ -72,7 +72,9 @@ export default function FindADoctor() {
             const doctorsContent = doctors.map((doctor, index) => (
                 <div className="doctors" key={index}>
                     <div className="doctor">
-                        <img src={doctorImage} alt="Doctor" />
+                    <div className="doctor-img-container">
+                        <img src={doctor.profilePictureUrl || doctorImage} alt="Doctor" />
+                    </div>
                         <div className="doctor-details">
                             <h1>{doctor.fullName}</h1>
                             <div className="doctor-rating">

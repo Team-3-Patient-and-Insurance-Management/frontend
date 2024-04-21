@@ -5,7 +5,6 @@ const getDoctorRatings = async () => {
         try {
                 const response = await axios.get(`${API_URL}/doctorRatings`);
                 console.log("RESPONSE: ", response);
-                console.log(response)
                 return response.data; // Return only the data part of the response
         } catch (error) {
                 // Log the error for debugging

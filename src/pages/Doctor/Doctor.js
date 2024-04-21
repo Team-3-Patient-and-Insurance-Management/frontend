@@ -9,6 +9,7 @@ import "./Doctor.css";
 import { set } from "date-fns/set";
 
 export default function Doctor() {
+    const [userProfilePictureUrl, setUserProfilePictureUrl] = useState("");
     const [avgRating, setAvgRating] = useState(0);
     const [reviews, setReviews] = useState([
 
@@ -36,6 +37,11 @@ export default function Doctor() {
                 name: userData.lastName,
                 specialty: userData.specialization
             });
+            if (userData.profilePictureUrl) {
+                setUserProfilePictureUrl(userData.profilePictureUrl);
+              } else {
+                setUserProfilePictureUrl("");
+              }
         }
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -74,7 +80,7 @@ export default function Doctor() {
                 <h1 className="welcome">Your Reviews</h1>
                 <div className="doctor-reviews">
                     <div className="dr-portfolio">
-                        <img src={userPlaceholder} alt="User Placeholder" />
+                        <img src={userProfilePictureUrl || userPlaceholder} alt="User Placeholder" />
                         <div className="dr-info">
                             <h1>Dr. {drInfo.name}</h1>
                             <h3>Specialty: {drInfo.specialty}</h3>
