@@ -1,10 +1,5 @@
 import {useEffect, useState} from "react";
-import {GoCheckCircleFill} from "react-icons/go";
-import {SiIfixit} from "react-icons/si";
-import clientImage from "../../assets/images/client.jpg";
-import clientImage2 from "../../assets/images/client2.jpg";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
-import Appointment from "../../components/Appointment/Appointment";
 import "./InsuranceClients.css";
 import ClientCard from "./ClientCard";
 import getInsuranceClients from "../../contexts/getInsuranceClients";
@@ -144,7 +139,7 @@ export default function InsuranceClients() {
         <div className="insuranceClients-page">
             <InsuranceHeader/>
             <div className="content">
-                <p className="header">My Client Page</p>
+                <p className="header">My Clients</p>
                 <div className="clients">
                     {displayClients()}
                 </div>

@@ -1,15 +1,17 @@
 .insurance-page .insurance-content {
-    width: 80%;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 15% 10px;
 }
 
 .insurance-page .insurance-welcome {
-    margin: 19px 0 16px 10px;
+    margin: 25px 0 8px 10px;
     font-size: 26px;
     font-weight: 500;
 }
 
 .insurance-page h2 {
+    font-size: 21px;
     margin: 10px 0;
 }
 
@@ -51,4 +53,12 @@
 
 .insurance-page .insurance-services button:hover {
     background-color: rgb(111, 25, 25);
+}
+
+.insurance-page .header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react';
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
-import userPlaceholder from "../../assets/images/user-placeholder.png";
-import React, { useState } from 'react';
 import "./BedAvailability.css";
 
 export default function BedAvailability() {
@@ -38,7 +36,6 @@ export default function BedAvailability() {
             beds: 5,
             available: 0
         }
-
     ]);
 
     const displayHospitals = () => {
@@ -57,7 +54,6 @@ export default function BedAvailability() {
             );
         });
     }
-
 
     return (
         <div className="doctor-page">

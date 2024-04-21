@@ -1,23 +1,28 @@
 .doctor-page .content {
-    width: 80%;
-    margin: 0 auto;
+    padding: 0px 15% 10px;
 }
 
 .doctor-page .welcome {
-    margin: 19px 0 16px 10px;
+    margin: 15px 0 16px 10px;
     font-size: 26px;
     font-weight: 500;
 }
 
 .doctor-page h2 {
+    font-size: 21px;
     margin: 10px 0;
 }
 
-.doctor-page .doctor-reviews h3 {
-    margin: 25px 0 10px;
+.doctor-page .doctor-services p {
+    font-size: 18px;
+}
+
+.doctor-page h3 {
+    font-size: 18px;
 }
 
 .doctor-page .doctor-reviews p {
+    font-size: 16px;
     margin-top: 0;
 }
 
@@ -99,7 +104,6 @@
   padding-left: 20px; 
 }
 
-.doctor-page p{
+.doctor-page p {
     font-size: small;
 }
-

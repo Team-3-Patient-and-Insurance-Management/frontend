@@ -1,20 +1,31 @@
 .doctor-page .content {
-    width: 80%;
-    margin: 0 auto;
+    padding: 0px 15% 10px;
 }
 
 .doctor-page .welcome {
-    margin: 19px 0 16px 10px;
+    margin: 25px 0;
     font-size: 26px;
     font-weight: 500;
 }
 
+.doctor-page .dr-info {
+    margin: 6px;
+}
+
+.doctor-page .dr-info h1 {
+    color: brown;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
 .doctor-page h2 {
+    font-size: 21px;
     margin: 10px 0;
 }
 
-.doctor-page .doctor-reviews h3 {
-    margin: 25px 0 10px;
+.doctor-page h3 {
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .doctor-page .doctor-reviews p {
@@ -71,15 +82,16 @@
   display: flex;
   border: 2px solid #e7e7e7;
   border-radius: 8px;
+  margin: 2px;
   padding: 0.5rem;
-  box-shadow: 0 10px 8px 0 rgba(15, 7, 72, 0.2);
+  box-shadow: 0 3px 8px 0 rgba(15, 7, 72, 0.2);
   transition: 0.3s;
   background-color: #e7e7e7;
 }
 .doctor-page .dr-portfolio img {
     width: 150px;
     border-radius: 10%;
-     margin-right: 15px;
+    margin-right: 15px;
 }
 
 .doctor-page .dr-portfolio {
@@ -102,4 +114,3 @@
 .doctor-page p{
     font-size: small;
 }
-

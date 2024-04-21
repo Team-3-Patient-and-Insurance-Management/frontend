@@ -55,32 +55,6 @@ export default function InsuranceProvider() {
             <InsuranceHeader/>
             <div className="insurance-content">
                 <h1 className="insurance-welcome">Hello Insurance Provider</h1>
-                <div className="covid-19-precautions">
-                    <h2>Key Recommendations to Prevent COVID-19</h2>
-                    <hr/>
-                    {/*<ul>*/}
-                    {/*    <ol>*/}
-                    {/*        <li>*/}
-                    {/*            Don't forget hand hygiene! Wash with soap and water or use sanitizer regularly.*/}
-                    {/*        </li>*/}
-                    {/*        <li>*/}
-                    {/*            Cover your coughs and sneezes with your elbow or a disposable tissue.*/}
-                    {/*        </li>*/}
-                    {/*        <li>*/}
-                    {/*            Maintain a safe distance from individuals who are sneezing, coughing, or experiencing a*/}
-                    {/*            fever.*/}
-                    {/*        </li>*/}
-                    {/*        <li>*/}
-                    {/*            Wash food, cutlery, and shared objects before sharing.*/}
-                    {/*        </li>*/}
-                    {/*        <li>*/}
-                    {/*            Wear a mask when you're around others, especially in crowded indoor spaces.*/}
-                    {/*        </li>*/}
-                    {/*    </ol>*/}
-                    {/*</ul>*/}
-                    <h3>FEELING SICK? GET A COVID-19 TEST RIGHT AWAY IF YOU HAVE SYMPTOMS!</h3>
-                    <p>If you test positive or think you might have COVID-19, isolate yourself for two weeks.</p>
-                </div>
                 <div className="insurance-services">
                     <div className="browse-insurance-plans">
                         <h2>View Client List</h2>
@@ -100,8 +74,8 @@ export default function InsuranceProvider() {
                     </div>
                 </div>
             </div>
-            <div style={{marginBottom: '75px'}}></div>
-            <canvas ref={chartRef} style={{width: '10px', height: '40px'}}></canvas>
+            <div style={{marginTop: '30px'}}></div>
+            <canvas ref={chartRef} style={{width: '10px', height: '40px', padding: "0px 15% 10px"}}></canvas>
         </div>
     );
 }

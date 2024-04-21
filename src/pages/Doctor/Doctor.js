@@ -60,7 +60,7 @@ export default function Doctor() {
 
     const displayReviews = () => {
         if (reviews.length === 0) {
-            return <h2>No reviews yet</h2>;
+            return <p>No reviews yet</p>;
         }
         return reviews.map((review, index) => (
             <ReviewItem key={index} {...review} />
