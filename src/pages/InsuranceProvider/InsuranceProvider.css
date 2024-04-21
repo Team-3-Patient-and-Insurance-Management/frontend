@@ -61,3 +61,30 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+#myTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#myTable th,
+#myTable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+#myTable th {
+    background-color: rgb(113, 176, 227); /* Blue background color */
+    color: white; /* White text color */
+    font-weight: bold; /* Bold font weight */
+}
+
+#myTable td:first-child,
+#myTable th:first-child {
+    width: 25%; /* Adjust width as needed */
+}
+
+#myTable td:last-child {
+    width: 50%; /* Adjust width as needed */
+    padding-right: 20px; /* Adjust padding-right to reduce whitespace */
+}
