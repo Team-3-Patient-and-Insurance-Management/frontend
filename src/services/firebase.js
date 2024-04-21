@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import getUser from "../contexts/getUser";
+import updateUser from "../contexts/updateUser";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -18,6 +21,35 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export { auth };
+const storage = getStorage();
+
+export { auth, storage };
 
 export default app;
+
+export async function upload(file, currentUser, setLoading) {
+    const fileRef = ref(storage, "images/" + currentUser.uid + '.png');
+
+    const profilePictureUrl = "";
+
+    const userData = {};
+
+    setLoading(true);
+
+    const snapshot = await uploadBytes(fileRef, file);
+
+    const photoURL = await getDownloadURL(fileRef);
+
+    userData.profilePictureUrl = photoURL;
+
+    console.log("firebase user data:", userData.profilePictureUrl)
+
+    updateUser(userData);
+
+    updateProfile(currentUser, {photoURL});
+
+    setLoading(false);
+    alert('Profile picture saved!');
+    console.log("firebase currentUser: ", photoURL);
+    return photoURL;
+}

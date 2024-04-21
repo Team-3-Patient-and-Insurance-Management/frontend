@@ -10,6 +10,8 @@ import PatientHeader from "../../components/PatientHeader/PatientHeader";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./Account.css";
+import { upload, storage } from "../../services/firebase";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 export default function Account() {
     const { currentUser, logout } = useAuth();
@@ -34,6 +36,7 @@ export default function Account() {
     const [companyLic, setCompanyLic] = useState("");
     const [isModified, setIsModified] = useState(false);
     const [theme, setTheme] = useState("light");
+    const [loading, setLoading] = useState(false);
 
     const changeTheme = (selectedTheme) => {
         setTheme(selectedTheme);
@@ -67,8 +70,8 @@ export default function Account() {
             if (userData) {
                 setFirstName(userData.firstName);
                 setLastName(userData.lastName);
-                setProfilePictureUrl(userData.profilePictureUrl);
                 setPhoneNumber(userData.phoneNumber);
+                setProfilePictureUrl(userData.profilePictureUrl);
                 setAddress(userData.streetAddress);
                 setCountry(userData.country);
                 const countrySelect = document.getElementById("country");
@@ -104,6 +107,7 @@ export default function Account() {
         }
         userData.firstName = firstName;
         userData.lastName = lastName;
+        upload(photo, currentUser, setLoading);
         userData.profilePictureUrl = profilePictureUrl;
         userData.phoneNumber = phoneNumber;
         userData.dateOfBirth = dateOfBirth;
@@ -204,14 +208,12 @@ export default function Account() {
         }
     };
 
-    const handleImageSelection = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setProfilePictureUrl(reader.result);
-        };
-        if (file) {
-            reader.readAsDataURL(file);
+    const [photo, setPhoto] = useState(null);
+
+    function handleChange(e) {
+        if (e.target.files[0]) {
+            setPhoto(e.target.files[0]);
+            setIsModified(true);
         }
     };
 
@@ -228,7 +230,7 @@ export default function Account() {
                 <div className="heading">
                     <h1>Account</h1>
                     <div>
-                        <button className="save-btn" disabled={!isModified} onClick={saveData}>
+                        <button className="save-btn" disabled={!isModified || loading || !photo} onClick={saveData}>
                             SAVE
                         </button>
 
@@ -242,7 +244,7 @@ export default function Account() {
                     <div className="basic-information">
                         <div className="portfolio">
                             <img src={profilePictureUrl || userPlaceholder} alt="User Placeholder" />
-                            <input type="file" onChange={handleImageSelection} accept="image/*" />
+                            <input type="file" onChange={handleChange} />
                         </div>
                         <div className="basic-information-inputs">
                             <div>
