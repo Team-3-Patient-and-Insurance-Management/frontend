@@ -129,7 +129,7 @@ export default function LogIn() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <ReCAPTCHA
-                            sitekey="6LfvwLIpAAAAAHKIrpN22HNCXC4pRlQnS9mFlfSb"
+                            sitekey="6LfjucIpAAAAAGWgwmCfAU-apkho3liPq871FZRr"
                             onChange={onChange}
                         />
 
