@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./InsuranceProvider.css";
-import Chart from "chart.js/auto";
 import { useEffect, useRef } from "react";
 
 export default function InsuranceProvider() {
