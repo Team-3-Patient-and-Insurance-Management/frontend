@@ -6,6 +6,11 @@
   grid-auto-rows: auto;
 
   grid-gap: 1rem;
+
+}
+
+.cards.dark {
+  background-color: #5d627f;
 }
 
 .card {
@@ -29,4 +34,19 @@
 .card .name {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.doctor-page.dark .card .name{
+  color: #0584ba;
+}
+
+
+.doctor-page.dark .card {
+  background-color: #2e3757; 
+  color: rgb(204, 205, 224); 
+}
+
+.doctor-page.dark {
+  background-color: #5d627f;
+  color: rgb(204, 205, 224); 
 }

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import userPlaceholder from "../../assets/images/user-placeholder.png";
 import { useState, useEffect } from 'react';
@@ -7,14 +7,27 @@ import getDoctorRatings from "../../contexts/getDoctorRatings";
 import getUser from "../../contexts/getUser";
 import "./Doctor.css";
 import { set } from "date-fns/set";
+import React from 'react';
+
 
 export default function Doctor() {
+    const [pageTheme, setPageTheme] = useState("light");
+    const {theme} = useParams();
+    console.log("Theme: ", theme);
+    
     const [userProfilePictureUrl, setUserProfilePictureUrl] = useState("");
     const [avgRating, setAvgRating] = useState(0);
     const [reviews, setReviews] = useState([
 
     ]);
     const [drInfo, setDrInfo] = useState({});
+
+    const ifThemePresent = () => {
+        if (theme !== "undefined") {
+            console.log("Theme present: ", theme)
+            setPageTheme(theme);
+        }
+    }
 
     const fetchRatings = async () => {
         try {
@@ -30,6 +43,7 @@ export default function Doctor() {
 
     const fetchInfo = async () => {
         try {
+            ifThemePresent();
             const userData = await getUser();
             console.log(userData);
             if(userData){
@@ -74,11 +88,11 @@ export default function Doctor() {
     }
 
     return (
-        <div className="doctor-page">
-            <DoctorHeader />
+        <div className={`doctor-page ${pageTheme}`}>
+            <DoctorHeader theme={pageTheme}/>
             <div className="content">
                 <h1 className="welcome">Your Reviews</h1>
-                <div className="doctor-reviews">
+                <div className={`doctor-reviews ${pageTheme}`}>
                     <div className="dr-portfolio">
                         <img src={userProfilePictureUrl || userPlaceholder} alt="User Placeholder" />
                         <div className="dr-info">
@@ -96,7 +110,7 @@ export default function Doctor() {
                         <h2>Find a Patient</h2>
                         <hr />
                         <p>Looking for your patients' details? We've got you covered! Click here to access all your patients' information conveniently organized for easy access.</p>
-                        <Link to="/doctor/myPatients">
+                        <Link to={`/doctor/myPatients/${pageTheme}`}>
                             <button>MY PATIENTS</button>
                         </Link>
                     </div>
@@ -104,7 +118,7 @@ export default function Doctor() {
                         <h2>Find Bed Availability</h2>
                         <hr />
                         <p>CareConnect360 simplifies your patient care experience. Pick a hospital, and find bed availablility for your patients comfort.</p>
-                        <Link to="/doctors/bedAvailability">
+                        <Link to={`/doctor/myPatients/${pageTheme}`}>
                             <button>SEARCH BED AVAILABILITY</button>
                         </Link>
                     </div>

@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import { useState, useEffect } from 'react';
 import PatientCard from "./PatientCard";
 import "./MyPatients.css";
 import getCurrentAppointments from "../../contexts/getCurrentAppointments";
+import { useParams } from "react-router-dom";
 
 export default function MyPatients() {
+    const {theme} = useParams();
     const [patients, setPatients] = useState([
         {
             closePhysicalContact: "no",
@@ -104,17 +105,18 @@ export default function MyPatients() {
                     selfMonitor={patient.selfMonitor}
                     wantCovidTest={patient.wantCovidTest}
                     patientUID={patient.patientUid}
+                    theme={theme}
                 />
             );
         });
     };
 
     return (
-        <div className="doctor-page">
-            <DoctorHeader />
+        <div className={`doctor-page ${theme}`}>
+            <DoctorHeader theme={theme}/>
             <div className="content">
                 <h1 className="welcome">Your Patients</h1>
-                <div className="cards">
+                <div className={`cards ${theme}`}>
                     {displayPatients()}
                 </div>
                 

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import { useState, useEffect } from 'react';
 import "./PatientInfo.css";
@@ -23,6 +22,7 @@ export default function PatientInfo() {
     const [testResults, setTestResults] = useState('');
     const [medicalHistory, setMedicalHistory] = useState('');
     const [insuranceDetails, setInsuranceDetails] = useState('');
+    const {theme} = useParams();
     
     const navigate = useNavigate();
     const location = useLocation();
@@ -167,7 +167,7 @@ export default function PatientInfo() {
         console.log(response);
         if (response.status === 200) {
             setShowModal(false);
-            navigate('/doctor/MyPatients');
+            navigate(`/doctor/MyPatients/${theme}`);
         }
     };
 
@@ -242,15 +242,15 @@ export default function PatientInfo() {
     };
 
     return (
-        <div className="doctor-page">
-            <DoctorHeader />
-            <div className="content">
+        <div className={`doctor-page ${theme}`}>
+            <DoctorHeader theme={theme}/>
+            <div className={`content ${theme}`}>
                 <div className="theme-buttons">
-                    <button className="light-button" onClick={handleClick}>Finish Appointment</button>
+                    <button className={`btn ${theme}`} onClick={handleClick}>Finish Appointment</button>
                 </div>
                 {showModal && showAppointmentDtlsForm()}
                 
-                <div className="patient-info-container">
+                <div className={`patient-info-container ${theme}`}>
                     <h2>Patient Information</h2>
                     <p><strong>Name:</strong> {patientInfo.patientName}</p>
                     <p><strong>Phone Number:</strong> {patientInfo.phoneNumber}</p>
