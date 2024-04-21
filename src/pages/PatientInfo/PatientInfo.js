@@ -5,19 +5,31 @@ import "./PatientInfo.css";
 import { useLocation } from 'react-router-dom';
 import getUserID from "../../contexts/getUserID";
 import { useNavigate } from 'react-router-dom';
+import '@progress/kendo-theme-default/dist/all.css';
+import { Calendar } from "@progress/kendo-react-dateinputs";
+import { Modal, Form, Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import FinishAppointment from "../../contexts/FinishAppointment";
 
 export default function PatientInfo() {
     // const location = useLocation();
     // const queryParams = new URLSearchParams(location.search);
     // const patient = JSON.parse(queryParams.get('patient'));
+    const [showModal, setShowModal] = useState(false);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const [diagnosis, setDiagnosis] = useState('');
+    const [covidSymptomDetails, setCovidSymptomDetails] = useState('');
+    const [testResults, setTestResults] = useState('');
+    const [medicalHistory, setMedicalHistory] = useState('');
+    const [insuranceDetails, setInsuranceDetails] = useState('');
+    
     const navigate = useNavigate();
     const location = useLocation();
     const patient = location.state;
     const [patientInfo, setPatientInfo] = useState({});
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
-
-    console.log("Patient Info: ", patient)
 
     const [patients, setPatients] = useState([
         {
@@ -104,14 +116,16 @@ export default function PatientInfo() {
                 patientInfo.gender = userData.gender;
                 patientInfo.patientName = patient.patientName;
                 patientInfo.formattedDate = patient.formattedDate;
-                patientInfo.bookingTime = patient.bookingTime;
+                patientInfo.time = patient.time;
                 patientInfo.closePhysicalContact = patient.closePhysicalContact;
                 patientInfo.experiencedSymptoms = patient.experiencedSymptoms;
                 patientInfo.positiveCovid90Days = patient.positiveCovid90Days;
                 patientInfo.selfMonitor = patient.selfMonitor;
                 patientInfo.wantCovidTest = patient.wantCovidTest;
                 patientInfo.insuranceProviders = patient.patientInsuranceProviders;
+                patientInfo.patientUid = patient.patientUID;
                 setPatientInfo(patientInfo);
+                console.log("FULL PATIENT INFO: ", patientInfo)
             };
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -134,10 +148,97 @@ export default function PatientInfo() {
     };
 
     const handleClick = () => {
-      // const queryString = new URLSearchParams({ patient: JSON.stringify(patient) }).toString();
-      // window.location.href = `/doctor/PatientInfo?${queryString}`;
-      // const dataToSend = { /* Your object here */ };
-       navigate(`/doctor/finishAppointment`, { state: patient });
+        setShowModal(true); 
+    };
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const appointmentDetails = {
+            diagnosis,
+            covidSymptomDetails,
+            testResults,
+            medicalHistory,
+            insuranceDetails
+        };
+
+        console.log("HANDLING SUBMIT")
+        const response = await FinishAppointment(patientInfo.patientUid, patientInfo.formattedDate, patientInfo.time, appointmentDetails);
+        console.log(response);
+        if (response.status === 200) {
+            setShowModal(false);
+            navigate('/doctor/MyPatients');
+        }
+    };
+
+    const showAppointmentDtlsForm = () => {
+        return (
+            <Modal show={showModal} fullscreen={false} onHide={() => setShowModal(false)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Finish Appointment With Your Patient</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form onSubmit={handleSubmit}>
+                             <Form.Group>
+                                <Form.Label>Diagnosis:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter diagnosis"
+                                    onChange={(event) => {
+                                        setDiagnosis(event.target.value);
+                                    }}
+                                />
+                            </Form.Group>
+
+                             <Form.Group>
+                                <Form.Label>Covid-19 Symptom Details:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter diagnosis"
+                                    onChange={(event) => {
+                                        setCovidSymptomDetails(event.target.value);
+                                    }}
+                                />
+                            </Form.Group>
+
+                             <Form.Group>
+                                <Form.Label>Test Results:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter diagnosis"
+                                    onChange={(event) => {
+                                        setTestResults(event.target.value);
+                                    }}
+                                />
+                            </Form.Group>
+
+                            <Form.Group>
+                                <Form.Label>Medical History:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter diagnosis"
+                                    onChange={(event) => {
+                                        setMedicalHistory(event.target.value);
+                                    }}
+                                />
+                            </Form.Group>
+
+                            <Form.Group>
+                                <Form.Label>Insurance Details:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter diagnosis"
+                                    onChange={(event) => {
+                                        setInsuranceDetails(event.target.value);
+                                    }}
+                                />
+                            </Form.Group>
+                            <Button type="submit">Submit</Button>
+                        </Form>
+                    </Modal.Body>
+                </Modal>
+        );
+
     };
 
     return (
@@ -147,6 +248,7 @@ export default function PatientInfo() {
                 <div className="theme-buttons">
                     <button className="light-button" onClick={handleClick}>Finish Appointment</button>
                 </div>
+                {showModal && showAppointmentDtlsForm()}
                 
                 <div className="patient-info-container">
                     <h2>Patient Information</h2>
@@ -158,7 +260,7 @@ export default function PatientInfo() {
 
                     <h2>Appointment Information</h2>
                     <p><strong>Date:</strong> {patientInfo.formattedDate}</p>
-                    <p><strong>Booking Time:</strong> {patientInfo.bookingTime}</p>
+                    <p><strong>Booking Time:</strong> {patientInfo.time}</p>
 
                     <h2>COVID-19 Information</h2>
                     <p><strong>Close Physical Contact:</strong> {patientInfo.closePhysicalContact}</p>

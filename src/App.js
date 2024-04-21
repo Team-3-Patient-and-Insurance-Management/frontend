@@ -19,6 +19,7 @@ import InsuranceDashboard from "./pages/InsuranceProvider/InsuranceProvider";
 import InsuranceClients from "./pages/InsuranceClients/InsuranceClients";
 import InsurancePlans from "./pages/InsurancePlans/InsurancePlans";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FinishAppointment from "./pages/FinishAppointment/FinishAppointment";
 
 export default function App() {
     return (
@@ -43,6 +44,7 @@ export default function App() {
                     <Route path="doctor/bedAvailability" element={<BedAvailability />} />
                     <Route path="doctor/patientInfo" element={<PatientInfo />} />
                     <Route path="doctor/account" element={<Account />} />
+                    <Route path="doctor/finishAppointment" element={<FinishAppointment />} />
 
                     <Route path="patient/history" element={<PatientHistory />} />
                     <Route path="insurance/dashboard" element={<InsuranceDashboard />} />
