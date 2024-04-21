@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from "../../contexts/AuthContext";
 import getUser from "../../contexts/getUser";
 import updateUser from "../../contexts/updateUser";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import userPlaceholder from "../../assets/images/user-placeholder.png";
@@ -35,12 +35,19 @@ export default function Account() {
     const [company, setCompany] = useState("");
     const [companyLic, setCompanyLic] = useState("");
     const [isModified, setIsModified] = useState(false);
-    const [theme, setTheme] = useState("light");
+    const [pageTheme, setPageTheme] = useState("light");
+    const { theme } = useParams();
     const [loading, setLoading] = useState(false);
 
-    const changeTheme = (selectedTheme) => {
-        setTheme(selectedTheme);
+    const changeTheme = (theme) => {
+        setPageTheme(theme);
     };
+
+    const ifThemePresent = () => {
+        if (theme) {
+            setPageTheme(theme);
+        }
+    }
 
     fetch("https://restcountries.com/v3.1/all")
         .then((response) => response.json())
@@ -65,6 +72,7 @@ export default function Account() {
 
     const fetchInfo = async () => {
         try {
+            ifThemePresent();
             const userData = await getUser();
             console.log(userData);
             if (userData) {
@@ -132,11 +140,11 @@ export default function Account() {
 
     const renderHeader = () => {
         if (role === "patient") {
-            return <PatientHeader theme={theme} />;
+            return <PatientHeader theme={pageTheme} />;
         } else if (role === "doctor") {
-            return <DoctorHeader theme={theme} />;
+            return <DoctorHeader theme={pageTheme} />;
         } else if (role === "insuranceProvider") {
-            return <InsuranceHeader theme={theme} />;
+            return <InsuranceHeader theme={pageTheme} />;
         }
     };
 
@@ -218,8 +226,8 @@ export default function Account() {
     };
 
     return (
-        <div className={`account-page ${theme}`}>
-            <div className={`header ${theme}`}>
+        <div className={`account-page ${pageTheme}`}>
+            <div className={`header ${pageTheme}`}>
                 {renderHeader()}
             </div>
             <div className="content">
@@ -239,7 +247,7 @@ export default function Account() {
                         </Link>
                     </div>
                 </div>
-                <form className={`account-page ${theme}`}>
+                <form className={`account-page ${pageTheme}`}>
                     <h2>Basic Information</h2>
                     <div className="basic-information">
                         <div className="portfolio">
