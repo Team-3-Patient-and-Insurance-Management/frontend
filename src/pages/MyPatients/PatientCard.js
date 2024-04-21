@@ -18,7 +18,7 @@ const PatientCard = (patient) => {
         <img src={userPlaceholder} alt="User Placeholder" />
             <p className="name">{patient.patientName}</p>
             <p>Date: {patient.formattedDate}</p>
-            <p>Time: {patient.bookingTime}</p>
+            <p>Time: {patient.time}</p>
       </div>
     );
 };
