@@ -2,75 +2,29 @@
     padding: 0px 15% 10px;
 }
 
+.doctor-page.dark{
+    color: rgb(204, 205, 224);
+    background-color: #5d627f;
+}
+
 .doctor-page .welcome {
     margin: 25px 0;
     font-size: 26px;
     font-weight: 500;
 }
 
-.doctor-page .dr-info {
-    margin: 6px;
-}
-
-.doctor-page .dr-info h1 {
+.doctor-page.light .dr-info h1 {
     color: brown;
     font-size: 23px;
     margin-bottom: 15px;
 }
 
-.doctor-page h2 {
-    font-size: 21px;
-    margin: 10px 0;
-}
-
 .doctor-page h3 {
     font-size: 18px;
     font-weight: 400;
+    color: rgb(182, 168, 168);
 }
 
-.doctor-page .doctor-reviews p {
-    margin-top: 0;
-}
-
-.doctor-page .doctor-reviews,
-.doctor-page .find-a-patient,
-.doctor-page .bedAvailability {
-    margin: 9px;
-    padding: 15px 29px;
-    border-radius: 10px;
-}
-
-.doctor-reviews {
-    background-color: rgb(195, 211, 236);
-}
-
-.doctor-page .find-a-patient,
-.doctor-page .bedAvailability {
-    background-color: rgb(175, 152, 208);
-}
-
-.doctor-page .doctor-services {
-    display: flex;
-}
-
-.doctor-page hr {
-    border: 0.5px solid black;
-}
-
-.doctor-page .doctor-services button {
-    background-color: rgb(102, 71, 180);
-    color: white;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.doctor-page .doctor-services button:hover {
-    background-color: rgb(37, 32, 130);
-}
 
 .doctor-page .hospitals {
   display: grid;
@@ -88,29 +42,22 @@
   transition: 0.3s;
   background-color: #e7e7e7;
 }
-.doctor-page .dr-portfolio img {
-    width: 150px;
-    border-radius: 10%;
-    margin-right: 15px;
+
+.doctor-page.dark .title {
+    font-weight: 500;
+    color: rgb(126, 123, 160);
 }
 
-.doctor-page .dr-portfolio {
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    margin-bottom: 10px;
+.doctor-page.light .title {
+    font-weight: 500;
+    color: rgb(133, 111, 111);
 }
 
-.doctor-page .portfolio img {
-    width: 50px;
-    border-radius: 50%;
+.doctor-page.dark .hospital {
+    background-color: #2e3757; 
+    border: 2px solid #2e3757; 
 }
-
 
 .doctor-page .text-content {
   padding-left: 20px; 
-}
-
-.doctor-page p{
-    font-size: small;
 }

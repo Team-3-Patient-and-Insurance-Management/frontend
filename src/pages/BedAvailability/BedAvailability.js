@@ -1,8 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DoctorHeader from "../../components/DoctorHeader/DoctorHeader";
 import "./BedAvailability.css";
+import { useParams } from "react-router-dom";
+
 
 export default function BedAvailability() {
+    const {theme} = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" ? "light" : theme);
+    
+    console.log("Theme: ", theme);
     const [hospitals, setHospitals] = useState([
         {
             hospital: 'St Helena Hospital',
@@ -39,16 +45,17 @@ export default function BedAvailability() {
     ]);
 
     const displayHospitals = () => {
+        
         return hospitals.map((hospital, index) => {
             return (
                 <div className="hospital" key={index}>
                     <div className="dr-info">
                         <h1>{hospital.hospital}</h1>
-                        <h3>Address: {hospital.address}</h3>
-                        <h3>Phone: {hospital.phone}</h3>
-                        <h3>Covid Support: {hospital.covidSupport ? "Yes" : "No"}</h3>
-                        <h3>Total Beds: {hospital.beds}</h3>
-                        <h3>Beds Available: {hospital.available}</h3>
+                        <h3><span class="title">Address:</span> {hospital.address}</h3>
+                        <h3><span class="title">Phone:</span> {hospital.phone}</h3>
+                        <h3><span class="title">Covid Support:</span> {hospital.covidSupport ? "Yes" : "No"}</h3>
+                        <h3><span class="title">Total Beds:</span> {hospital.beds}</h3>
+                        <h3><span class="title">Beds Available:</span> {hospital.available}</h3>
                     </div>
                 </div>
             );
@@ -56,14 +63,13 @@ export default function BedAvailability() {
     }
 
     return (
-        <div className="doctor-page">
-            <DoctorHeader />
-            <div className="content">
+        <div className={`doctor-page ${pageTheme}`}>
+            <DoctorHeader theme={pageTheme}/>
+            <div className={`content ${pageTheme}`}>
                 <h1 className="welcome">Beds Available</h1>
                 <div className="hospitals">
                     {displayHospitals()}
                 </div>
-                
             </div>
         </div>
     );
