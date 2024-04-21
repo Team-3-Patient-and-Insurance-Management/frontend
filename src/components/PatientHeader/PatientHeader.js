@@ -21,7 +21,7 @@ export default function PatientHeader({ theme }) {
                         <Link to="/patient/insurance">Find an Insurance</Link>
                     </li>
                     <li>
-                        <Link to="/patient/history">Patient History</Link>
+                        <Link to="/patient/appointments">Upcoming Appointments</Link>
                     </li>
                     <li>
                         <Link className="user-nav-link" to="/patient/account">

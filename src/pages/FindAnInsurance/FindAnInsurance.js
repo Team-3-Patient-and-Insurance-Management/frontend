@@ -3,6 +3,7 @@ import axios from "axios";
 import DataTable from 'react-data-table-component';
 import "./FindAnInsurance.css";
 import PatientHeader from "../../components/PatientHeader/PatientHeader";
+import { Button } from "react-bootstrap";
 export default function FindAnInsurance() {
     const [data, setData] = useState([]);
     const [succssmsg, setsuccessmsg] = useState('');
@@ -61,7 +62,7 @@ export default function FindAnInsurance() {
         return (
             <div style={{ padding: '10px', backgroundColor: '#f0f0f0' }}>
                 {console.log("My uid", data.uid)}
-                <h4 className="mt-4 mb-4">Insurance Plans:</h4>
+                <h6 className="mt-4 mb-4">Insurance Plans:</h6>
                 {data.insurancePlans.map((plan, index) => (
                     <div key={index} style={{ marginBottom: '10px', paddingBottom: '10px', borderBottom: '1px solid #ccc' }}>
                         <div><strong>Plan Name:</strong> {plan.planName}</div>
@@ -71,7 +72,7 @@ export default function FindAnInsurance() {
                         <div><strong>Medical Coverage:</strong> {plan.medicalCoverage ? 'Yes' : 'No'}</div>
                         <div><strong>Dental Coverage:</strong> {plan.dentalCoverage ? 'Yes' : 'No'}</div>
                         <div><strong>Vision Coverage:</strong> {plan.visionCoverage ? 'Yes' : 'No'}</div>
-                        <button className="primary mt-4" onClick={() => handleAddInsurance(data.uid, plan.planId)}>Get Insurance</button>
+                        <Button className="mt-4" onClick={() => handleAddInsurance(data.uid, plan.planId)}>Get Insurance</Button>
                     </div>
                 ))}
             </div>
@@ -82,6 +83,7 @@ export default function FindAnInsurance() {
     return (
         <div className="insurance">
             <PatientHeader />
+            <h2 className="insuranceheader">Insurance Providers</h2>
             {succssmsg && <div className="alert alert-success">Insurance plan has been added successfully!</div>}
             <div className="findAnInsurance-page mt-4">
                 <DataTable

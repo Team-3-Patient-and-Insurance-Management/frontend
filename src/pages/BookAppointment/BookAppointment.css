@@ -6,6 +6,15 @@
   align-items: flex-start;
 }
 
+.doctor-info {
+  background-color: #f3f8fa;
+  /* Lightened version for contrast */
+  border-radius: 8px;
+  box-shadow: 0 9px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+}
+
 .calendar-container {
   max-width: 600px;
 }
@@ -17,42 +26,22 @@
 }
 
 .time-slot-button {
-  background-color: #f3f3f3;
-  border: 1px solid #ccc;
+  background-color: #e3f2fd;
+  border: 1px solid #006997;
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
   text-align: center;
   min-width: 100px;
   box-sizing: border-box;
+  border-radius: 7px;
 }
 
 .time-slot-button.selected {
-  background-color: #007bff;
+  background-color: #006997;
   color: white;
-  border-color: #007bff;
+  border-color: #004c70;
 }
-
-
-.selected-slot-info {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 600px;
-  padding: 10px;
-  box-sizing: border-box;
-  background: white;
-  border: 1px solid #ccc;
-  text-align: center;
-}
-
-
-.btn.mt-4 {
-  margin-top: 1.5rem !important;
-}
-
 
 .selected-slot-info {
   position: static;
@@ -61,4 +50,45 @@
   bottom: auto;
   width: auto;
   max-width: none;
+  padding: 10px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.btn.mt-4 {
+  margin-top: 1.5rem !important;
+  background-color: #006997;
+  border-color: #004c70;
+  color: white;
+}
+
+.insuranceheader {
+  color: #006997;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-family: 'Arial', sans-serif;
+}
+
+.k-calendar .k-calendar-td.k-selected .k-link {
+
+  background-color: #004c70 !important;
+}
+
+.time-slot-button:disabled {
+  background-color: #cccccc;
+
+  color: #666666;
+
+  cursor: not-allowed;
+
+  border-color: #999999;
+
+}
+
+.k-calendar .k-calendar-view .k-today {
+  color: #004c70;
 }

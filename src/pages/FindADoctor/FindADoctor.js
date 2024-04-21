@@ -16,10 +16,11 @@ export default function FindADoctor() {
     const [doctors, setDoctors] = useState([]);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
     const navigate = useNavigate();
-    const handleBookOnlineClick = () => {
-        //history.push(`/profile/${userId}`);
+
+    const handleBookOnlineClick = (uId) => {
+        console.log(uId)
         const userId = "994Ecqu3SmYHG12sylvMp1yQA7P2";
-        navigate(`/book-appointment/${userId}`);
+        navigate(`/book-appointment/${uId}`);
     };
 
     const handleCovid19CareChange = () => {
@@ -94,7 +95,7 @@ export default function FindADoctor() {
                             <ul>
                                 {doctor.specialization}
                             </ul>
-                            <button className="book-online-btn" onClick={handleBookOnlineClick}>
+                            <button className="book-online-btn" onClick={() => handleBookOnlineClick(doctor.uid)}>
                                 BOOK ONLINE
                             </button>
                         </div>

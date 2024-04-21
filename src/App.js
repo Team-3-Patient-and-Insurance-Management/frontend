@@ -8,6 +8,8 @@ import Patient from "./pages/Patient/Patient";
 import Account from "./pages/Account/Account";
 import FindADoctor from "./pages/FindADoctor/FindADoctor";
 import FindAnInsurance from "./pages/FindAnInsurance/FindAnInsurance";
+import PatientHistory from "./pages/PatientAppointments/PatientAppointments";
+import PrivateRoute from "./components/PrivateRoute";
 import MyInsurance from "./pages/MyInsurance/MyInsurance";
 import PatientHistory from "./pages/PatientHistory/PatientHistory";
 import BookAppointment from "./pages/BookAppointment/BookApointment";
@@ -39,6 +41,11 @@ export default function App() {
                     <Route path="/book-appointment/:userId" element={<BookAppointment />} />
 
 
+                    <Route path="/book-appointment/:doctorUid" element={<BookAppointment />} />
+                    <Route path="patient/myinsurance" element={<MyInsurance />} />
+
+                    {/* <Route path="patient/appointments" element={<Appointments />} /> */}
+                    
                     <Route path="doctor/dashboard" element={<Doctor />} />
                     <Route path="doctor/myPatients" element={<MyPatients />} />
                     <Route path="doctor/bedAvailability" element={<BedAvailability />} />
@@ -46,7 +53,7 @@ export default function App() {
                     <Route path="doctor/account" element={<Account />} />
                     <Route path="doctor/finishAppointment" element={<FinishAppointment />} />
 
-                    <Route path="patient/history" element={<PatientHistory />} />
+                    <Route path="patient/appointments" element={<PatientAppointments />} />
                     <Route path="insurance/dashboard" element={<InsuranceDashboard />} />
                     <Route path="insurance/clients" element={<InsuranceClients />} />
                     <Route path="insurance/account" element={<Account />} />
