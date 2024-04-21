@@ -46,7 +46,7 @@ export async function upload(file, currentUser, setLoading) {
 
     updateUser(userData);
 
-    updateProfile(currentUser, {photoURL});
+    updateProfile(currentUser, { photoURL });
 
     setLoading(false);
     alert('Profile picture saved!');

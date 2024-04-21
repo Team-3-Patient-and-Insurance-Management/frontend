@@ -94,9 +94,7 @@ export default function BookAppointment(props) {
             .then(response => {
                 if (response.data === true) {
                     toast.success("Your appointment has been successfully booked.");
-                    setTimeout(() => {
-                        navigate(`/patient/appointments`);
-                    }, 7000);
+                   
                 } else {
                     toast.error("Failed to book the appointment. Please try again.");
                 }

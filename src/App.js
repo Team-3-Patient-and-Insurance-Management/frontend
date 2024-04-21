@@ -8,10 +8,8 @@ import Patient from "./pages/Patient/Patient";
 import Account from "./pages/Account/Account";
 import FindADoctor from "./pages/FindADoctor/FindADoctor";
 import FindAnInsurance from "./pages/FindAnInsurance/FindAnInsurance";
-import PatientHistory from "./pages/PatientAppointments/PatientAppointments";
 import PrivateRoute from "./components/PrivateRoute";
 import MyInsurance from "./pages/MyInsurance/MyInsurance";
-
 import BookAppointment from "./pages/BookAppointment/BookApointment";
 import Doctor from "./pages/Doctor/Doctor";
 import MyPatients from "./pages/MyPatients/MyPatients";
@@ -23,6 +21,7 @@ import InsurancePlans from "./pages/InsurancePlans/InsurancePlans";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FinishAppointment from "./pages/FinishAppointment/FinishAppointment";
 import PatientAppointments from "./pages/PatientAppointments/PatientAppointments";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
     return (
@@ -38,26 +37,25 @@ export default function App() {
                     <Route path="patient/doctor" element={<FindADoctor />} />
                     <Route path="patient/insurance" element={<FindAnInsurance />} />
                     <Route path="patient/myinsurance" element={<MyInsurance />} />
-                    <Route path="patient/history" element={<PatientAppointments />} />
 
                     <Route path="/book-appointment/:doctorUid" element={<BookAppointment />} />
                     <Route path="patient/myinsurance" element={<MyInsurance />} />
 
                     {/* <Route path="patient/appointments" element={<Appointments />} /> */}
-                    
-                    <Route path="doctor/dashboard/:theme" element={<Doctor />} />
-                    <Route path="doctor/myPatients/:theme" element={<MyPatients />} />
-                    <Route path="doctor/bedAvailability/:theme" element={<BedAvailability />} />
-                    <Route path="doctor/patientInfo/:theme" element={<PatientInfo />} />
-                    <Route path="doctor/account/:theme" element={<Account />} />
-                    <Route path="doctor/finishAppointment/:theme" element={<FinishAppointment />} />
+
+                    <Route path="doctor/dashboard" element={<Doctor />} />
+                    <Route path="doctor/myPatients" element={<MyPatients />} />
+                    <Route path="doctor/bedAvailability" element={<BedAvailability />} />
+                    <Route path="doctor/patientInfo" element={<PatientInfo />} />
+                    <Route path="doctor/account" element={<Account />} />
+                    <Route path="doctor/finishAppointment" element={<FinishAppointment />} />
 
                     <Route path="patient/appointments" element={<PatientAppointments />} />
                     <Route path="insurance/dashboard" element={<InsuranceDashboard />} />
                     <Route path="insurance/clients" element={<InsuranceClients />} />
                     <Route path="insurance/account" element={<Account />} />
                     <Route path="insurance/plans" element={<InsurancePlans />} />
-                    
+
                 </Routes>
             </AuthProvider>
         </Router>

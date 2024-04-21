@@ -86,24 +86,24 @@ export default function LogIn() {
 
     const handleGoogleSignIn = async () => {
         try {
-          const provider = new GoogleAuthProvider();
-          const auth = getAuth();
-          signInWithPopup(auth, provider)
-            .then((result) => {
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                const user = result.user;
-                navigate('/patient/dashboard');
-            }).catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                const email = error.customData.email;
-                const credential = GoogleAuthProvider.credentialFromError(error);
-            });
+            const provider = new GoogleAuthProvider();
+            const auth = getAuth();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+                    const user = result.user;
+                    navigate('/patient/dashboard');
+                }).catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    const email = error.customData.email;
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                });
         } catch (error) {
-          console.error("Error signing in with Google:", error);
+            console.error("Error signing in with Google:", error);
         }
-      };
+    };
 
 
     return (
@@ -129,6 +129,7 @@ export default function LogIn() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <ReCAPTCHA
+                            //sitekey="6LfvwLIpAAAAAHKIrpN22HNCXC4pRlQnS9mFlfSb"
                             sitekey="6LfjucIpAAAAAGWgwmCfAU-apkho3liPq871FZRr"
                             onChange={onChange}
                         />
