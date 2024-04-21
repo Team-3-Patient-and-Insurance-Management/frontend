@@ -11,7 +11,7 @@ import FindAnInsurance from "./pages/FindAnInsurance/FindAnInsurance";
 import PatientHistory from "./pages/PatientAppointments/PatientAppointments";
 import PrivateRoute from "./components/PrivateRoute";
 import MyInsurance from "./pages/MyInsurance/MyInsurance";
-import PatientHistory from "./pages/PatientHistory/PatientHistory";
+
 import BookAppointment from "./pages/BookAppointment/BookApointment";
 import Doctor from "./pages/Doctor/Doctor";
 import MyPatients from "./pages/MyPatients/MyPatients";
@@ -22,6 +22,7 @@ import InsuranceClients from "./pages/InsuranceClients/InsuranceClients";
 import InsurancePlans from "./pages/InsurancePlans/InsurancePlans";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FinishAppointment from "./pages/FinishAppointment/FinishAppointment";
+import PatientAppointments from "./pages/PatientAppointments/PatientAppointments";
 
 export default function App() {
     return (
@@ -37,9 +38,7 @@ export default function App() {
                     <Route path="patient/doctor" element={<FindADoctor />} />
                     <Route path="patient/insurance" element={<FindAnInsurance />} />
                     <Route path="patient/myinsurance" element={<MyInsurance />} />
-                    <Route path="patient/history" element={<PatientHistory />} />
-                    <Route path="/book-appointment/:userId" element={<BookAppointment />} />
-
+                    <Route path="patient/history" element={<PatientAppointments />} />
 
                     <Route path="/book-appointment/:doctorUid" element={<BookAppointment />} />
                     <Route path="patient/myinsurance" element={<MyInsurance />} />
