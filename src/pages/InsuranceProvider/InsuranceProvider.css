@@ -15,7 +15,6 @@
     margin: 10px 0;
 }
 
-
 .insurance-page .browse-insurance-plans,
 .insurance-page .find-an-insurance {
     margin: 9px;
@@ -23,7 +22,7 @@
     border-radius: 10px;
 }
 
-.insurance-page .covid-19-precautions {
+.covid-19-precautions {
     background-color: rgb(240, 145, 134);
 }
 

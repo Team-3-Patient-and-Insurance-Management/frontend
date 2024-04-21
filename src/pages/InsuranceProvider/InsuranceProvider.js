@@ -5,6 +5,7 @@ import Chart from "chart.js/auto";
 import {useEffect, useRef} from "react";
 
 export default function InsuranceProvider() {
+
     const chartRef = useRef(null);
 
     useEffect(() => {
@@ -53,8 +54,8 @@ export default function InsuranceProvider() {
     return (
         <div className="insurance-page">
             <InsuranceHeader/>
+            <h1 className="insurance-welcome" style={{margin: '15px 0 16px 15%'}}>Hello Insurance Provider</h1>
             <div className="insurance-content">
-                <h1 className="insurance-welcome">Hello Insurance Provider</h1>
                 <div className="insurance-services">
                     <div className="browse-insurance-plans">
                         <h2>View Client List</h2>

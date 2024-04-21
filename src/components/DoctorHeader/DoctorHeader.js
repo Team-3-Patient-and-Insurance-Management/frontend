@@ -21,7 +21,7 @@ export default function DoctorHeader({ theme }) {
                         <Link to="/doctor/bedAvailability">Bed Availability</Link>
                     </li>
                     <li>
-                        <Link className="user-nav-link" to="/patient/account">
+                        <Link className="user-nav-link" to="/doctor/account">
                             <FaUserCircle className="user-icon" />
                             <p>USER</p>
                         </Link>
