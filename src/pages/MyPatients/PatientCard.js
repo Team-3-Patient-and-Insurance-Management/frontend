@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PatientCard = (patient) => {
   const navigate = useNavigate();
+  const [profilePictureUrl, setProfilePictureUrl] = useState("");
 
   const handleClick = () => {
       // const queryString = new URLSearchParams({ patient: JSON.stringify(patient) }).toString();
@@ -12,10 +13,14 @@ const PatientCard = (patient) => {
       // const dataToSend = { /* Your object here */ };
        navigate(`/doctor/PatientInfo`, { state: patient });
     };
+  const fetchInfo = async () => {
+    const userData = await getUser();
+    setProfilePictureUrl(userData.profilePictureUrl);
+  }
 
     return (
       <div className="card" onClick={handleClick}>
-        <img src={userPlaceholder} alt="User Placeholder" />
+        <img src={profilePictureUrl || userPlaceholder} alt="User Placeholder" />
             <p className="name">{patient.patientName}</p>
             <p>Date: {patient.formattedDate}</p>
             <p>Time: {patient.time}</p>
