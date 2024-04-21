@@ -18,6 +18,8 @@ const PatientCard = (patient) => {
     setProfilePictureUrl(userData.profilePictureUrl);
   }
 
+  fetchInfo();
+
     return (
       <div className="card" onClick={handleClick}>
         <img src={profilePictureUrl || userPlaceholder} alt="User Placeholder" />
