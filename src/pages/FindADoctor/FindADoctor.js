@@ -7,6 +7,7 @@ import PatientHeader from "../../components/PatientHeader/PatientHeader";
 import "./FindADoctor.css";
 import searchDoctors from "../../contexts/searchDoctors";
 import { useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 export default function FindADoctor() {
     const [speciality, setSpeciality] = useState("");
@@ -16,6 +17,8 @@ export default function FindADoctor() {
     const [doctors, setDoctors] = useState([]);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
     const navigate = useNavigate();
+    const {theme} = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
 
     const handleBookOnlineClick = (uId) => {
         console.log(uId)
@@ -115,8 +118,8 @@ export default function FindADoctor() {
     };
 
     return (
-        <div className="findADoctor-page">
-            <PatientHeader />
+        <div className={`findADoctor-page ${pageTheme}`}>
+            <PatientHeader theme={pageTheme}/>
             <div className="search">
                 <h2>Find a Doctor</h2>
                 <form>

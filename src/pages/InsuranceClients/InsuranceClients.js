@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import myInsuranceClients from "../../contexts/getInsuranceClients";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./InsuranceClients.css";
-import { useParams } from "react-router-dom";
 
 export default function InsuranceClients() {
     const [clients, setClients] = useState([]);

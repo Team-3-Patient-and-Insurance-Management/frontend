@@ -9,6 +9,11 @@
     margin-left: 10px;
 }
 
+
+.cards.dark {
+  background-color: #5d627f;
+}
+
 .card {
     border: 2px solid #e7e7e7;
     border-radius: 4px;
@@ -37,4 +42,20 @@
     /* Using !important to ensure override */
     color: #f7b924;
     /* Example color, adjust as needed */
+}
+
+.doctor-page.dark .card .name{
+  color: #0584ba;
+}
+
+
+.doctor-page.dark .card {
+  background-color: #2e3757; 
+  color: rgb(204, 205, 224); 
+  border: 2px solid #2e3757; 
+}
+
+.doctor-page.dark {
+  background-color: #5d627f;
+  color: rgb(204, 205, 224); 
 }

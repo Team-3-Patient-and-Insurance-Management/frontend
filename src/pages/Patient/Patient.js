@@ -6,14 +6,8 @@ import { useState, useEffect } from 'react';
 
 export default function Patient() {
     const {theme} = useParams();
-    const [pageTheme, setPageTheme] = useState(theme == "undefined" ? "light" : theme);
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
 
-    const ifThemePresent = () => {
-        if (theme !== "undefined") {
-            console.log("Theme present: ", theme)
-            setPageTheme(theme);
-        }
-    }
 
     return (
         <div className={`patient-page ${pageTheme}`}>
@@ -49,7 +43,7 @@ export default function Patient() {
                         <h2>Find a Doctor</h2>
                         <hr />
                         <p>Need a doctor? We've got you covered! Find specialists in your area, read what other patients say, and easily chat with doctors to get the answers you need.</p>
-                        <Link to="/patient/doctor">
+                        <Link to={`/patient/doctor/${pageTheme}`}>
                             <button>BOOK AN APPOINTMENT</button>
                         </Link>
                     </div>
@@ -57,7 +51,7 @@ export default function Patient() {
                         <h2>My Insurance</h2>
                         <hr />
                         <p>CareConnect360 simplifies your healthcare experience. Check your provider and plan, and it's instantly available and clear for all your doctors to see.</p>
-                        <Link to="/patient/myinsurance">
+                        <Link to={`/patient/myinsurance/${pageTheme}`}>
                             <button>MY PLANS</button>
                         </Link>
                     </div>

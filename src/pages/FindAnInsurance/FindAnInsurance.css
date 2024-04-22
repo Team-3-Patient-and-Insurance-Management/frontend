@@ -3,6 +3,16 @@
     border-color: black;
 }
 
+.findAnInsurance-page.dark {
+    background-color: #3d425e;
+}
+
+.insurance.dark, 
+.insurance.dark h2{
+    color: rgb(204, 205, 224); 
+    background-color: #5d627f;
+}
+
 .findAnInsurance-page .search {
     background-color: #006997;
     /* Using theme color */
@@ -25,6 +35,11 @@
 }
 
 .fpBGKh {
+    border: 0.5px solid gray;
+    box-shadow: 4px 4px 8px 0 rgba(0, 102, 153, 0.3);
+}
+
+.findAnInsurance-page.dark .fpBGKh {
     border: 0.5px solid gray;
     box-shadow: 4px 4px 8px 0 rgba(0, 102, 153, 0.3);
 }

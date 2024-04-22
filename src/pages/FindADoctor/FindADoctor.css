@@ -6,6 +6,16 @@
     box-shadow: 0px -1px 3px rgb(189, 41, 41);
 }
 
+.findADoctor-page.dark {
+    color: rgb(204, 205, 224); 
+    background-color: #5d627f;
+}
+
+.findADoctor-page.dark .search {
+    background-color: #2e3757;
+    box-shadow: 0px -1px 3px rgb(36, 60, 116)
+}
+
 .findADoctor-page .search h2 {
     font-size: 26px;
     font-weight: 500;
@@ -58,7 +68,9 @@
     border: none;
     border-radius: 5px;
 }
-
+.findADoctor-page.dark .search input[type=submit]:hover {
+    background-color: rgb(152, 100, 147);
+}
 .findADoctor-page .search input[type=submit]:hover {
     background-color: rgb(54, 128, 54);
     color: white;
@@ -72,13 +84,17 @@
 .findADoctor-page .doctor {
     border: 1px solid black;
     border-radius: 5px;
-    width: 540px;
-    height: 160px;
+    width: 510px;
+    height: 150px;
     margin-bottom: 15px;
     padding: 15px 30px 15px 15px;
     display: flex;
     flex-direction: row;
     min-height: 150px;
+}
+
+.findADoctor-page.dark .doctor {
+    background-color: #2e3757; 
 }
 
 .findADoctor-page .doctor img {
@@ -89,10 +105,9 @@
 
 .findADoctor-page .doctor .doctor-details {
     flex: 1;
-    width: 200px;
-    height: 100%;
-    margin-left: 15px;
+    width: 140px;
     margin-right: 15px;
+    overflow: scroll;
 }
 
 .findADoctor-page .doctor .doctor-details h1 {
@@ -114,10 +129,13 @@
     justify-content: space-between;
 }
 
+.findADoctor-page.dark .doctor .doctor-details .doctor-rating .rating {
+    color: #0584ba;
+}
+
 .findADoctor-page .doctor .doctor-details .doctor-rating p {
     font-size: 13px;
     font-weight: 500;
-    margin: 0;
 }
 
 .findADoctor-page .doctor .doctor-details .doctor-address p {
@@ -159,6 +177,14 @@
     border: none;
     border-radius: 5px;
     font-weight: normal;
+}
+
+.findADoctor-page.dark .book-online-btn {
+    background-color: rgb(152, 100, 147);
+}
+
+.findADoctor-page.dark .book-online-btn:hover {
+    background-color: rgb(37, 32, 130);
 }
 
 .findADoctor-page .book-online-btn:hover {

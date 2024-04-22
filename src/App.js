@@ -32,12 +32,12 @@ export default function App() {
                     <Route path="register" element={<Register />} />
                     <Route path="forgot-password" element={<ForgotPassword />} />
 
-                    <Route path="patient/dashboard" element={<Patient />} />
-                    <Route path="patient/account" element={<Account />} />
-                    <Route path="patient/doctor" element={<FindADoctor />} />
-                    <Route path="patient/insurance" element={<FindAnInsurance />} />
-                    <Route path="patient/myinsurance" element={<MyInsurance />} />
-                    <Route path="patient/appointments" element={<PatientAppointments />} />
+                    <Route path="patient/dashboard/:theme" element={<Patient />} />
+                    <Route path="patient/account/:theme" element={<Account />} />
+                    <Route path="patient/doctor/:theme" element={<FindADoctor />} />
+                    <Route path="patient/insurance/:theme" element={<FindAnInsurance />} />
+                    <Route path="patient/myinsurance/:theme" element={<MyInsurance />} />
+                    <Route path="patient/appointments/:theme" element={<PatientAppointments />} />
                     <Route path="/book-appointment/:doctorUid" element={<BookAppointment />} />
 
                     <Route path="doctor/dashboard/:theme" element={<Doctor />} />

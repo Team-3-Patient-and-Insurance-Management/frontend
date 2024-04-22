@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import { Rating } from 'primereact/rating';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 export default function PatientAppointments() {
     const [patients, setPatients] = useState([]);
@@ -17,6 +18,9 @@ export default function PatientAppointments() {
     const [ratings, setRatings] = useState('');
     const [comments, setComments] = useState('');
     const naviagte = useNavigate();
+
+    const {theme} = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
 
     
     useEffect(() => {
@@ -68,10 +72,10 @@ export default function PatientAppointments() {
     };
 
     return (
-        <div>
-            <PatientHeader />
+        <div className={`doctor-page ${pageTheme}`}>
+            <PatientHeader theme={pageTheme}/>
             <ToastContainer />
-            <div className="cards">
+            <div className={`cards ${pageTheme}`}>
                 {patients && patients.map((item, index) => (
                     <div key={index} className="card mt-4" onClick={() => handleOpenReviewModal(item)}>
                         <img src={userPlaceholder} alt="User Placeholder" />

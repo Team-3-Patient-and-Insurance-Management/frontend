@@ -4,10 +4,14 @@ import DataTable from 'react-data-table-component';
 import "./FindAnInsurance.css";
 import PatientHeader from "../../components/PatientHeader/PatientHeader";
 import { Button } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+
 export default function FindAnInsurance() {
     const [data, setData] = useState([]);
     const [succssmsg, setsuccessmsg] = useState('');
-
+    
+    const {theme} = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -81,8 +85,8 @@ export default function FindAnInsurance() {
 
 
     return (
-        <div className="insurance">
-            <PatientHeader />
+        <div className={`insurance ${pageTheme}`}>
+            <PatientHeader theme={pageTheme}/>
             <h2 className="insuranceheader">Insurance Providers</h2>
             {succssmsg && <div className="alert alert-success">Insurance plan has been added successfully!</div>}
             <div className="findAnInsurance-page mt-4">
