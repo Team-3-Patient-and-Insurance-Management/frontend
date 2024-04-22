@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_URL } from "../services/config";
 
 
-const finishAppointment = async (patientUid, date, time, appointmentDetails) => {
+const FinishAppointment = async (patientUid, date, time, appointmentDetails) => {
     try {
         const response = await axios.post(`${API_URL}/finishAppointment?patientUid=${patientUid}&date=${date}&time=${time}`, appointmentDetails);
         return response;
@@ -13,4 +13,4 @@ const finishAppointment = async (patientUid, date, time, appointmentDetails) => 
     }
 };
 
-export default finishAppointment;
+export default FinishAppointment;

@@ -8,7 +8,7 @@ import '@progress/kendo-theme-default/dist/all.css';
 import { Calendar } from "@progress/kendo-react-dateinputs";
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import finishAppointment from "../../contexts/finishAppointment";
+import FinishAppointment from "../../contexts/FinishAppointment";
 
 export default function PatientInfo() {
     // const location = useLocation();
@@ -163,7 +163,7 @@ export default function PatientInfo() {
         };
 
         console.log("HANDLING SUBMIT")
-        const response = await finishAppointment(patientInfo.patientUid, patientInfo.formattedDate, patientInfo.time, appointmentDetails);
+        const response = await FinishAppointment(patientInfo.patientUid, patientInfo.formattedDate, patientInfo.time, appointmentDetails);
         console.log(response);
         if (response.status === 200) {
             setShowModal(false);
