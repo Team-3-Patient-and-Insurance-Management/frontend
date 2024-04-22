@@ -92,7 +92,7 @@ export default function LogIn() {
                     const credential = GoogleAuthProvider.credentialFromResult(result);
                     const token = credential.accessToken;
                     const user = result.user;
-                    navigate('/patient/dashboard');
+                    navigate('/patient/dashboard/light');
                 }).catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;

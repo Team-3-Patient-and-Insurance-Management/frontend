@@ -285,7 +285,7 @@ export default function PatientInfo() {
                 </div>
 
                 
-                <div className="chat-box-container">
+                {/* <div className="chat-box-container">
                     <div className="top">
                             <h2 className="child1">Chat</h2>
                     </div>
@@ -311,7 +311,7 @@ export default function PatientInfo() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

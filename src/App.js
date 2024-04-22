@@ -18,7 +18,6 @@ import InsuranceDashboard from "./pages/InsuranceProvider/InsuranceProvider";
 import InsuranceClients from "./pages/InsuranceClients/InsuranceClients";
 import InsurancePlans from "./pages/InsurancePlans/InsurancePlans";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FinishAppointment from "./pages/FinishAppointment/FinishAppointment";
 import PatientAppointments from "./pages/PatientAppointments/PatientAppointments";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -45,7 +44,6 @@ export default function App() {
                     <Route path="doctor/bedAvailability/:theme" element={<BedAvailability />} />
                     <Route path="doctor/patientInfo/:theme" element={<PatientInfo />} />
                     <Route path="doctor/account/:theme" element={<Account />} />
-                    <Route path="doctor/finishAppointment/:theme" element={<FinishAppointment />} />
 
                     <Route path="insurance/dashboard/:theme" element={<InsuranceDashboard />} />
                     <Route path="insurance/clients/:theme" element={<InsuranceClients />} />
