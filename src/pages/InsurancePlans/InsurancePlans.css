@@ -3,6 +3,11 @@
     margin: 0 auto;
 }
 
+.insurance-page.dark {
+    color: rgb(204, 205, 224);
+    background-color: #5d627f;
+}
+
 .insurance-page .content {
     display: flex;
     flex-wrap: wrap;
@@ -22,6 +27,20 @@
     padding: 20px;
     box-sizing: border-box;
 }
+
+.insurance-page.dark .insurance-plan-card {
+    background-color: #2e3757;
+    border: 1px solid #2e3757;
+}
+
+.insurance-page.dark .insurance-plan-card h3 {
+    color: #0584ba;
+}
+
+.insurance-page.dark .insurance-plan-card h4 {
+    color: #6570ab;
+}
+
 .insurance-plan-details {
     display: flex;
     flex-direction: column;
@@ -74,7 +93,7 @@
 
 .insurance-plan {
     width: 30%;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .insurance-plan button {
@@ -86,4 +105,12 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.insurance-plan.dark button {
+    background-color: rgb(152, 100, 147);
+}
+
+.insurance-plan button:hover {
+    background-color: rgb(37, 32, 130);
 }

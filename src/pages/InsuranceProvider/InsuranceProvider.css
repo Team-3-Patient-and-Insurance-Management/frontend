@@ -1,3 +1,7 @@
+.insurance-page {
+    height: 100vh;
+}
+
 .insurance-page .insurance-content {
     display: flex;
     flex-direction: column;
@@ -31,6 +35,11 @@
     background-color: rgb(113, 176, 227);
 }
 
+.insurance-page.dark .browse-insurance-plans,
+.insurance-page.dark .find-an-insurance {
+    background-color: #2e3757;
+}
+
 .insurance-page .insurance-services {
     display: flex;
 }
@@ -54,6 +63,14 @@
     background-color: rgb(111, 25, 25);
 }
 
+.insurance-page.dark .insurance-services button {
+    background-color: rgb(152, 100, 147);
+}
+
+.insurance-page.dark .insurance-services button:hover {
+    background-color: rgb(37, 32, 130);
+}
+
 .insurance-page .header {
     font-size: 24px;
     font-weight: bold;
@@ -74,17 +91,24 @@
 }
 
 #myTable th {
-    background-color: rgb(113, 176, 227); /* Blue background color */
-    color: white; /* White text color */
-    font-weight: bold; /* Bold font weight */
+    background-color: rgb(113, 176, 227);
+    color: white;
+    font-weight: bold;
+}
+
+.insurance-page.dark #myTable th {
+    background-color: #3d477d;
+    color: #1f2753;
+    font-weight: bold;
+    border: 1px solid #1f2753;
 }
 
 #myTable td:first-child,
 #myTable th:first-child {
-    width: 25%; /* Adjust width as needed */
+    width: 25%;
 }
 
 #myTable td:last-child {
-    width: 50%; /* Adjust width as needed */
-    padding-right: 20px; /* Adjust padding-right to reduce whitespace */
+    width: 50%;
+    padding-right: 20px;
 }
