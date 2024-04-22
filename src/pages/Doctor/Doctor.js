@@ -11,7 +11,7 @@ import React from 'react';
 
 
 export default function Doctor() {
-    const [pageTheme, setPageTheme] = useState("light");
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
     const {theme} = useParams();
     console.log("Theme: ", theme);
     
