@@ -17,13 +17,13 @@ export default function FindADoctor() {
     const [doctors, setDoctors] = useState([]);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
     const navigate = useNavigate();
-    const {theme} = useParams();
+    const { theme } = useParams();
     const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
 
     const handleBookOnlineClick = (uId) => {
         console.log(uId)
         const userId = "994Ecqu3SmYHG12sylvMp1yQA7P2";
-        navigate(`/book-appointment/${uId}`);
+        navigate(`/book-appointment/${uId}/${pageTheme}`);
     };
 
     const handleCovid19CareChange = () => {
@@ -76,9 +76,9 @@ export default function FindADoctor() {
             const doctorsContent = doctors.map((doctor, index) => (
                 <div className="doctors" key={index}>
                     <div className="doctor">
-                    <div className="doctor-img-container">
-                        <img src={doctor.profilePictureUrl || doctorImage} alt="Doctor" />
-                    </div>
+                        <div className="doctor-img-container">
+                            <img src={doctor.profilePictureUrl || doctorImage} alt="Doctor" />
+                        </div>
                         <div className="doctor-details">
                             <h1>{doctor.fullName}</h1>
                             <div className="doctor-rating">
@@ -119,7 +119,7 @@ export default function FindADoctor() {
 
     return (
         <div className={`findADoctor-page ${pageTheme}`}>
-            <PatientHeader theme={pageTheme}/>
+            <PatientHeader theme={pageTheme} />
             <div className="search">
                 <h2>Find a Doctor</h2>
                 <form>
