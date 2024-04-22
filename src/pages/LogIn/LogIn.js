@@ -65,7 +65,7 @@ export default function LogIn() {
 
             if (response_role == "doctor") {
 
-                navigate('/doctor/dashboard');
+                navigate('/doctor/dashboard/:theme');
             }
             else if (response_role == "patient") {
                 navigate('/patient/dashboard')
