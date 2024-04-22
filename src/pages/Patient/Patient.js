@@ -1,11 +1,23 @@
 import { Link } from "react-router-dom";
 import PatientHeader from "../../components/PatientHeader/PatientHeader";
 import "./Patient.css";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
 export default function Patient() {
+    const {theme} = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" ? "light" : theme);
+
+    const ifThemePresent = () => {
+        if (theme !== "undefined") {
+            console.log("Theme present: ", theme)
+            setPageTheme(theme);
+        }
+    }
+
     return (
-        <div className="patient-page">
-            <PatientHeader />
+        <div className={`patient-page ${pageTheme}`}>
+            <PatientHeader theme={pageTheme}/>
             <div className="patient-content">
                 <h1 className="patient-welcome">Hello User</h1>
                 <div className="covid-19-precautions">

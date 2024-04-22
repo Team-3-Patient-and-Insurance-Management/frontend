@@ -10,15 +10,15 @@ export default function PatientHeader({ theme }) {
                 <Logo />
                 <ul>
                     <li>
-                        <Link to="/patient/dashboard">
+                        <Link to={`/patient/dashboard/${theme}`}>
                             <FaHome className="dashboard-icon" />
                         </Link>
                     </li>
                     <li>
-                        <Link to="/patient/doctor">Find a Doctor</Link>
+                        <Link to={`/patient/doctor/${theme}`}>Find a Doctor</Link>
                     </li>
                     <li>
-                        <Link to="/patient/insurance">Find an Insurance</Link>
+                        <Link to={`/patient/insurance/${theme}`}>Find an Insurance</Link>
                     </li>
                     <li>
                         <Link to="/patient/history">Patient History</Link>
