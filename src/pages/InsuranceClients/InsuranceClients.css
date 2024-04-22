@@ -3,6 +3,11 @@
     margin: 0 auto;
 }
 
+.insurance-page.dark {
+    color: rgb(204, 205, 224);
+    background-color: #5d627f;
+}
+
 .insurance-page .content {
     display: flex;
     flex-wrap: wrap;
@@ -21,6 +26,17 @@
     margin-right: 20px;
     padding: 20px;
     box-sizing: border-box;
+}
+
+.insurance-page.dark .insurance-clients-card {
+    background-color: #2e3757; 
+    border: 2px solid #2e3757; 
+}
+.insurance-page.dark .insurance-clients-card h3 {
+    color: #0584ba;
+}
+.insurance-page.dark .insurance-clients-card span {
+    color: #6570ab;
 }
 .insurance-clients-details {
     display: flex;

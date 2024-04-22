@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./InsurancePlans.css";
 import myInsurancePlans from "../../contexts/getInsuranceProvidersPlans";
@@ -16,6 +17,11 @@ function InsurancePlans() {
     const [medicalCoverage, setMedicalCoverage] = useState(false);
     const [dentalCoverage, setDentalCoverage] = useState(false);
     const [planName, setPlanName] = useState('');
+    const {theme} = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
+
+    console.log("Theme: ", theme);
+    console.log("Pagetheme", pageTheme);
 
     useEffect(() => {
         fetchInsurancePlans();
@@ -103,12 +109,12 @@ function InsurancePlans() {
     
 
     return (
-        <div className="insurance-page">
-            <InsuranceHeader />
+        <div className={`insurance-page ${pageTheme}`}>
+            <InsuranceHeader theme={pageTheme}/>
             <div className="title-container">
                 <h2>My Insurance Plans</h2>
             </div>
-            <div className="insurance-plan">
+            <div className={`insurance-plan ${pageTheme}`}>
                 <Button onClick={() => setShowModal(true)}>Add a New Insurance Plan</Button>
             </div>
             <div className="insurance-content">

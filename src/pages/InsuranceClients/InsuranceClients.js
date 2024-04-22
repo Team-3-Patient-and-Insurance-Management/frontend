@@ -2,9 +2,16 @@ import {useEffect, useState} from "react";
 import myInsuranceClients from "../../contexts/getInsuranceClients";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./InsuranceClients.css";
+import { useParams } from "react-router-dom";
 
 export default function InsuranceClients() {
     const [clients, setClients] = useState([]);
+    const {theme} = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
+
+    console.log("Theme: ", theme);
+    console.log("Pagetheme", pageTheme);
+
     useEffect(() => {
         fetchClients();
     }, []);
@@ -34,8 +41,8 @@ export default function InsuranceClients() {
                 <div className="insurance-clients-card" key={index}>
                     <div className="insurance-clients-details">
                         <h3>{client.patientName}</h3>
-                        <p>Plan Name: {client.planName}</p>
-                        <p>Description: {client.description}</p>
+                        <p><span>Plan Name:</span> {client.planName}</p>
+                        <p><span>Description:</span>  {client.description}</p>
                     </div>
                 </div>
             ));
@@ -45,8 +52,8 @@ export default function InsuranceClients() {
         }
     }
     return (
-        <div className="insurance-page">
-            <InsuranceHeader />
+        <div className={`insurance-page ${pageTheme}`}>
+            <InsuranceHeader theme={pageTheme} />
             <div className="title-container">
                 <h2>My Clients</h2>
             </div>

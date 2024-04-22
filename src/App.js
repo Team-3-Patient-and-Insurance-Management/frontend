@@ -51,10 +51,10 @@ export default function App() {
                     <Route path="doctor/finishAppointment/:theme" element={<FinishAppointment />} />
 
                     <Route path="patient/appointments" element={<PatientAppointments />} />
-                    <Route path="insurance/dashboard" element={<InsuranceDashboard />} />
-                    <Route path="insurance/clients" element={<InsuranceClients />} />
-                    <Route path="insurance/account" element={<Account />} />
-                    <Route path="insurance/plans" element={<InsurancePlans />} />
+                    <Route path="insurance/dashboard/:theme" element={<InsuranceDashboard />} />
+                    <Route path="insurance/clients/:theme" element={<InsuranceClients />} />
+                    <Route path="insurance/account/:theme" element={<Account />} />
+                    <Route path="insurance/plans/:theme" element={<InsurancePlans />} />
 
                 </Routes>
             </AuthProvider>

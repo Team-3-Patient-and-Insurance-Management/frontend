@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./InsuranceProvider.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState  } from "react";
+import { useParams } from "react-router-dom";
 
 export default function InsuranceProvider() {
+    const {theme} = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
+
+    console.log("Theme: ", theme);
+    console.log("Pagetheme", pageTheme);
 
     // const chartRef = useRef(null);
     //
@@ -51,8 +57,8 @@ export default function InsuranceProvider() {
 
 // TODO add stats of amt paid by patients adn insurance providers, total amt of paid and unpaid bills
     return (
-        <div className="insurance-page">
-            <InsuranceHeader />
+        <div className={`insurance-page ${pageTheme}`}>
+            <InsuranceHeader theme={pageTheme}/>
             <div className="insurance-content">
                 <h1 className="insurance-welcome">Hello Insurance Provider</h1>
                 <div className="insurance-services">
@@ -60,7 +66,7 @@ export default function InsuranceProvider() {
                         <h2>View Client List</h2>
                         <hr/>
                         <p>Want to see all of your clients' plans? Look at them all here!</p>
-                        <Link to="/insurance/clients">
+                        <Link to={`/insurance/clients/${pageTheme}`}>
                             <button>Browse Plans</button>
                         </Link>
                     </div>
@@ -68,7 +74,7 @@ export default function InsuranceProvider() {
                         <h2>View Insurance Plans</h2>
                         <hr/>
                         <p>CareConnect360 has a large variety of insurance plans. Compare them all here!</p>
-                        <Link to="/insurance/plans">
+                        <Link to={`/insurance/plans/${pageTheme}`}>
                             <button>SEARCH PLANS</button>
                         </Link>
                     </div>

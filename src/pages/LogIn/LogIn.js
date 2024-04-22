@@ -70,7 +70,7 @@ export default function LogIn() {
                 navigate('/patient/dashboard')
             }
             else {
-                navigate('/insurance/dashboard');
+                navigate('/insurance/dashboard/light');
             }
 
         }

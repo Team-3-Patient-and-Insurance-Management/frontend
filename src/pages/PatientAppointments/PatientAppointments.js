@@ -17,6 +17,8 @@ export default function PatientAppointments() {
     const [ratings, setRatings] = useState('');
     const [comments, setComments] = useState('');
     const naviagte = useNavigate();
+
+    
     useEffect(() => {
         axios.get('https://backend-careconnect360.onrender.com/patientUpcomingAppointments')
             .then(response => {

@@ -31,6 +31,13 @@
     background-color: rgb(113, 176, 227);
 }
 
+.insurance-page.dark .browse-insurance-plans,
+.insurance-page.dark .find-an-insurance {
+    background-color: #2e3757; 
+}
+
+
+
 .insurance-page .insurance-services {
     display: flex;
 }
@@ -52,6 +59,14 @@
 
 .insurance-page .insurance-services button:hover {
     background-color: rgb(111, 25, 25);
+}
+
+.insurance-page.dark .insurance-services button{
+    background-color: rgb(152, 100, 147);
+}
+
+.insurance-page.dark .insurance-services button:hover {
+    background-color: rgb(37, 32, 130);
 }
 
 .insurance-page .header {
@@ -78,6 +93,15 @@
     color: white; /* White text color */
     font-weight: bold; /* Bold font weight */
 }
+
+.insurance-page.dark #myTable th{
+    background-color: #3d477d;
+    color: #1f2753; /* White text color */
+    font-weight: bold; /* Bold font weight */
+    border: 1px solid #1f2753;
+}
+
+
 
 #myTable td:first-child,
 #myTable th:first-child {
