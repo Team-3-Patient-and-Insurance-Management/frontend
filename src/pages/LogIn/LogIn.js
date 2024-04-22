@@ -64,7 +64,6 @@ export default function LogIn() {
             console.log("Role", response_role);
 
             if (response_role == "doctor") {
-
                 navigate('/doctor/dashboard/light');
             }
             else if (response_role == "patient") {
