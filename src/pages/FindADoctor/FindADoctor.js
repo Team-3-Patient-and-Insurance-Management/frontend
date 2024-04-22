@@ -23,7 +23,7 @@ export default function FindADoctor() {
     const handleBookOnlineClick = (uId) => {
         console.log(uId)
         const userId = "994Ecqu3SmYHG12sylvMp1yQA7P2";
-        navigate(`/book-appointment/${uId}`);
+        navigate(`/book-appointment/${uId}/${pageTheme}`);
     };
 
     const handleCovid19CareChange = () => {
