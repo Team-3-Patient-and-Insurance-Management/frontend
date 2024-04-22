@@ -238,7 +238,7 @@ export default function Account() {
                 <div className="heading">
                     <h1>Account</h1>
                     <div>
-                        <button className="save-btn" disabled={!isModified || loading || !photo} onClick={saveData}>
+                        <button className="save-btn" disabled={!isModified} onClick={saveData}>
                             SAVE
                         </button>
 

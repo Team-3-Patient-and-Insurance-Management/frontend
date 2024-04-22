@@ -30,23 +30,13 @@ export default app;
 export async function upload(file, currentUser, setLoading) {
     const fileRef = ref(storage, "images/" + currentUser.uid + '.png');
 
-    const profilePictureUrl = "";
-
-    const userData = {};
-
     setLoading(true);
 
     const snapshot = await uploadBytes(fileRef, file);
 
     const photoURL = await getDownloadURL(fileRef);
 
-    userData.profilePictureUrl = photoURL;
-
-    console.log("firebase user data:", userData.profilePictureUrl)
-
-    updateUser(userData);
-
-    updateProfile(currentUser, { photoURL });
+    updateProfile(currentUser, {photoURL});
 
     setLoading(false);
     alert('Profile picture saved!');
