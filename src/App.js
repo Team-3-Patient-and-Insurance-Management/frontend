@@ -38,7 +38,7 @@ export default function App() {
                     <Route path="patient/insurance/:theme" element={<FindAnInsurance />} />
                     <Route path="patient/myinsurance/:theme" element={<MyInsurance />} />
                     <Route path="patient/appointments/:theme" element={<PatientAppointments />} />
-                    <Route path="/book-appointment/:doctorUid" element={<BookAppointment />} />
+                    <Route path="/book-appointment/:doctorUid/:theme" element={<BookAppointment />} />
 
                     <Route path="doctor/dashboard/:theme" element={<Doctor />} />
                     <Route path="doctor/myPatients/:theme" element={<MyPatients />} />

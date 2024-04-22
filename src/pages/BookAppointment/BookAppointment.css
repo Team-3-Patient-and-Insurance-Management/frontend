@@ -6,6 +6,27 @@
   align-items: flex-start;
 }
 
+.content.dark {
+  background-color: #2e3757;
+  color: rgb(204, 205, 224);
+
+}
+
+.content.dark h2 {
+  color: rgb(204, 205, 224);
+}
+
+.content.dark p {
+  color: rgb(204, 205, 224);
+}
+.content.dark strong {
+   color: #0584ba;
+}
+
+.content.dark .doctor-info {
+  background-color: #2e3757; 
+}
+
 .doctor-info {
   background-color: #f3f8fa;
   border-radius: 8px;
@@ -34,6 +55,14 @@
   min-width: 100px;
   box-sizing: border-box;
   border-radius: 7px;
+}
+
+.content.dark .time-slot-button {
+  background-color: #618cab;
+  border: 1px solid rgb(5, 64, 89);
+}
+.content.dark .time-slot-button.selected {
+  background-color: #313f6b;
 }
 
 .time-slot-button.selected {

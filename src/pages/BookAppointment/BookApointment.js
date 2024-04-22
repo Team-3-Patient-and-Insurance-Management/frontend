@@ -24,7 +24,8 @@ const times = [
 
 
 export default function BookAppointment(props) {
-    const { doctorUid } = useParams();
+    const { doctorUid, theme } = useParams();
+    const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
     const [bookingDate, setBookingDate] = useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -122,8 +123,8 @@ export default function BookAppointment(props) {
 
 
     return (
-        <div className="content">
-            <PatientHeader />
+        <div className={`content ${pageTheme}`}>
+            <PatientHeader theme={theme}/>
             <div><h2 className="insuranceheader">Schedule an Appointment</h2></div>
             <ToastContainer />
             <div className="book-appointment-container">
