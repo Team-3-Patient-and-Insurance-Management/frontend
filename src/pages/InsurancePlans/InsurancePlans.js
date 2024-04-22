@@ -17,7 +17,8 @@ function InsurancePlans() {
     const [medicalCoverage, setMedicalCoverage] = useState(false);
     const [dentalCoverage, setDentalCoverage] = useState(false);
     const [planName, setPlanName] = useState('');
-    const {theme} = useParams();
+
+    const { theme } = useParams();
     const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
 
     console.log("Theme: ", theme);
@@ -28,7 +29,7 @@ function InsurancePlans() {
     }, []);
 
     const fetchInsurancePlans = async () => {
-        
+
         try {
             const response = await myInsurancePlans();
             if (response.status !== 200) {
@@ -69,24 +70,24 @@ function InsurancePlans() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+
         const premiumValue = parseFloat(premium);
         const deductibleValue = parseFloat(deductible);
-    
+
         const visionCoverageValue = visionCoverage === 'Yes';
         const dentalCoverageValue = dentalCoverage === 'Yes';
         const medicalCoverageValue = medicalCoverage === 'Yes';
-    
+
         if (typeof planName !== 'string' || typeof description !== 'string') {
             console.error('Plan name and description must be strings');
             return;
         }
-    
+
         if (isNaN(premiumValue) || isNaN(deductibleValue)) {
             console.error('Premium and deductible must be numbers');
             return;
         }
-    
+
         const planData = {
             planName,
             description,
@@ -96,7 +97,7 @@ function InsurancePlans() {
             dentalCoverage: dentalCoverageValue,
             medicalCoverage: medicalCoverageValue
         };
-    
+
         try {
             const response = await axios.post(`${API_URL}/addInsurancePlan`, planData);
             console.log('Response:', response.data);
@@ -106,11 +107,11 @@ function InsurancePlans() {
             setShowModal(false);
         }
     };
-    
+
 
     return (
         <div className={`insurance-page ${pageTheme}`}>
-            <InsuranceHeader theme={pageTheme}/>
+            <InsuranceHeader theme={pageTheme} />
             <div className="title-container">
                 <h2>My Insurance Plans</h2>
             </div>
@@ -121,11 +122,11 @@ function InsurancePlans() {
                 {displayInsurancePlans()}
             </div>
             <Modal show={showModal} fullscreen={true} onHide={() => setShowModal(false)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add a New Insurance Plan</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form onSubmit={handleSubmit}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add a New Insurance Plan</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="planName">
                             <Form.Label>What is the name of the plan?</Form.Label>
                             <Form.Control
@@ -165,63 +166,63 @@ function InsurancePlans() {
                         <Form.Group controlId="visionCoverage">
                             <Form.Label>Do you support vision coverage?</Form.Label>
                             <Form.Check
-                                    type="radio"
-                                    label="Yes"
-                                    name="visionCoverage"
-                                    id="visionCoverageYes"
-                                    onChange={() => setVisionCoverage(true)}
-                                />
-                                <Form.Check
-                                    type="radio"
-                                    label="No"
-                                    name="visionCoverage"
-                                    id="visionCoverageNo"
-                                    onChange={() => setVisionCoverage(false)}
-                                    defaultChecked
-                                />
+                                type="radio"
+                                label="Yes"
+                                name="visionCoverage"
+                                id="visionCoverageYes"
+                                onChange={() => setVisionCoverage(true)}
+                            />
+                            <Form.Check
+                                type="radio"
+                                label="No"
+                                name="visionCoverage"
+                                id="visionCoverageNo"
+                                onChange={() => setVisionCoverage(false)}
+                                defaultChecked
+                            />
                         </Form.Group>
                         <Form.Group controlId="dentalCoverage">
                             <Form.Label>Do you support dental coverage?</Form.Label>
                             <Form.Check
-                                    type="radio"
-                                    label="Yes"
-                                    name="dentalCoverage"
-                                    id="dentalCoverageYes"
-                                    onChange={() => setDentalCoverage(true)}
-                                />
-                                <Form.Check
-                                    type="radio"
-                                    label="No"
-                                    name="dentalCoverage"
-                                    id="dentalCoverageNo"
-                                    onChange={() => setDentalCoverage(false)}
-                                    defaultChecked
-                                />
+                                type="radio"
+                                label="Yes"
+                                name="dentalCoverage"
+                                id="dentalCoverageYes"
+                                onChange={() => setDentalCoverage(true)}
+                            />
+                            <Form.Check
+                                type="radio"
+                                label="No"
+                                name="dentalCoverage"
+                                id="dentalCoverageNo"
+                                onChange={() => setDentalCoverage(false)}
+                                defaultChecked
+                            />
                         </Form.Group>
                         <Form.Group controlId="medicalCoverage">
                             <Form.Label>Do you support medical coverage?</Form.Label>
                             <Form.Check
-                                    type="radio"
-                                    label="Yes"
-                                    name="medicalCoverage"
-                                    id="medicalCoverageYes"
-                                    onChange={() => setMedicalCoverage(true)}
-                                />
-                                <Form.Check
-                                    type="radio"
-                                    label="No"
-                                    name="medicalCoverage"
-                                    id="medicalCoverageNo"
-                                    onChange={() => setMedicalCoverage(false)}
-                                    defaultChecked
-                                />
+                                type="radio"
+                                label="Yes"
+                                name="medicalCoverage"
+                                id="medicalCoverageYes"
+                                onChange={() => setMedicalCoverage(true)}
+                            />
+                            <Form.Check
+                                type="radio"
+                                label="No"
+                                name="medicalCoverage"
+                                id="medicalCoverageNo"
+                                onChange={() => setMedicalCoverage(false)}
+                                defaultChecked
+                            />
                         </Form.Group>
-                        
+
                         <Button type="submit">Submit</Button>
 
-                        </Form>
-                    </Modal.Body>
-                </Modal>
+                    </Form>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }

@@ -1,4 +1,5 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import myInsuranceClients from "../../contexts/getInsuranceClients";
 import InsuranceHeader from "../../components/InsuranceHeader/InsuranceHeader";
 import "./InsuranceClients.css";
@@ -6,7 +7,8 @@ import { useParams } from "react-router-dom";
 
 export default function InsuranceClients() {
     const [clients, setClients] = useState([]);
-    const {theme} = useParams();
+    
+    const { theme } = useParams();
     const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
 
     console.log("Theme: ", theme);
@@ -17,7 +19,7 @@ export default function InsuranceClients() {
     }, []);
 
     const fetchClients = async () => {
-        
+
         try {
             const response = await myInsuranceClients();
             if (response.status !== 200) {

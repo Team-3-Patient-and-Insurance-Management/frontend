@@ -2,7 +2,7 @@
     padding: 0px 15% 10px;
 }
 
-.doctor-page.dark{
+.doctor-page.dark {
     color: rgb(204, 205, 224);
     background-color: #5d627f;
 }
@@ -14,8 +14,8 @@
 }
 
 .doctor-page.light .dr-info h1 {
-    color: brown;
-    font-size: 23px;
+    color: rgb(101, 110, 158);
+    font-size: 30px;
     margin-bottom: 15px;
 }
 
@@ -28,7 +28,7 @@
 
 .doctor-page .hospitals {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Display two columns */
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
 }
 

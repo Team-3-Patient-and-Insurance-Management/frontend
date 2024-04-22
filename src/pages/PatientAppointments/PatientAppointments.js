@@ -30,7 +30,6 @@ export default function PatientAppointments() {
             });
     }, []);
 
-
     const handleOpenReviewModal = (appointment) => {
         setSelectedAppointment(appointment);
         setComments('');
@@ -68,10 +67,6 @@ export default function PatientAppointments() {
         }
     };
 
-
-
-
-
     return (
         <div>
             <PatientHeader />
@@ -94,8 +89,6 @@ export default function PatientAppointments() {
                 <Modal.Body>
                     <Form onSubmit={handleSubmitReview}>
                         <>
-
-
                             <FloatingLabel controlId="floatingTextarea2" label="Comments">
                                 <Form.Control
                                     as="textarea"

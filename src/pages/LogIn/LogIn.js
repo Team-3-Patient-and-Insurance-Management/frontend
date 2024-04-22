@@ -63,11 +63,11 @@ export default function LogIn() {
             const response_role = await signin.verifyOTP(otp);
             console.log("Role", response_role);
 
-            if (response_role == "doctor") {
+            if (response_role === "doctor") {
                 navigate('/doctor/dashboard/light');
             }
-            else if (response_role == "patient") {
-                navigate('/patient/dashboard')
+            else if (response_role === "patient") {
+                navigate('/patient/dashboard/light');
             }
             else {
                 navigate('/insurance/dashboard/light');

@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-top: 20px;
-    width:100%;
+    width: 100%;
 }
 
 .insurance-clients-card {
@@ -29,15 +29,18 @@
 }
 
 .insurance-page.dark .insurance-clients-card {
-    background-color: #2e3757; 
-    border: 2px solid #2e3757; 
+    background-color: #2e3757;
+    border: 2px solid #2e3757;
 }
+
 .insurance-page.dark .insurance-clients-card h3 {
     color: #0584ba;
 }
+
 .insurance-page.dark .insurance-clients-card span {
     color: #6570ab;
 }
+
 .insurance-clients-details {
     display: flex;
     flex-direction: column;

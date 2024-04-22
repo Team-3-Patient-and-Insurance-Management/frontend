@@ -4,7 +4,7 @@
 }
 
 .insurance-page.dark {
-    color: rgb(204, 205, 224); 
+    color: rgb(204, 205, 224);
     background-color: #5d627f;
 }
 
@@ -27,9 +27,10 @@
     padding: 20px;
     box-sizing: border-box;
 }
+
 .insurance-page.dark .insurance-plan-card {
-    background-color: #2e3757; 
-    border: 1px solid #2e3757; 
+    background-color: #2e3757;
+    border: 1px solid #2e3757;
 }
 
 .insurance-page.dark .insurance-plan-card h3 {
@@ -92,7 +93,7 @@
 
 .insurance-plan {
     width: 30%;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .insurance-plan button {

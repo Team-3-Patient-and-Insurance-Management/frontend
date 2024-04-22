@@ -6,11 +6,11 @@ import "./InsuranceHeader.css";
 export default function InsuranceHeader({ theme }) {
     console.log("THIS IS THEME", theme)
 
-    if(theme === "undefined" || theme === ""){
+    if (theme === "undefined" || theme === "") {
         theme = "light";
     }
     console.log("THIS IS THEME2", theme)
-    
+
     return (
         <div className={`insurance-header ${theme === "dark" ? "dark" : ""}`}>
             <nav>

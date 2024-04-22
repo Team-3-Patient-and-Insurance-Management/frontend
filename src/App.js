@@ -8,7 +8,6 @@ import Patient from "./pages/Patient/Patient";
 import Account from "./pages/Account/Account";
 import FindADoctor from "./pages/FindADoctor/FindADoctor";
 import FindAnInsurance from "./pages/FindAnInsurance/FindAnInsurance";
-import PrivateRoute from "./components/PrivateRoute";
 import MyInsurance from "./pages/MyInsurance/MyInsurance";
 import BookAppointment from "./pages/BookAppointment/BookApointment";
 import Doctor from "./pages/Doctor/Doctor";
@@ -32,16 +31,14 @@ export default function App() {
                     <Route path="login" element={<LogIn />} />
                     <Route path="register" element={<Register />} />
                     <Route path="forgot-password" element={<ForgotPassword />} />
+
                     <Route path="patient/dashboard" element={<Patient />} />
                     <Route path="patient/account" element={<Account />} />
                     <Route path="patient/doctor" element={<FindADoctor />} />
                     <Route path="patient/insurance" element={<FindAnInsurance />} />
                     <Route path="patient/myinsurance" element={<MyInsurance />} />
-
+                    <Route path="patient/appointments" element={<PatientAppointments />} />
                     <Route path="/book-appointment/:doctorUid" element={<BookAppointment />} />
-                    <Route path="patient/myinsurance" element={<MyInsurance />} />
-
-                    {/* <Route path="patient/appointments" element={<Appointments />} /> */}
 
                     <Route path="doctor/dashboard/:theme" element={<Doctor />} />
                     <Route path="doctor/myPatients/:theme" element={<MyPatients />} />
@@ -50,12 +47,10 @@ export default function App() {
                     <Route path="doctor/account/:theme" element={<Account />} />
                     <Route path="doctor/finishAppointment/:theme" element={<FinishAppointment />} />
 
-                    <Route path="patient/appointments" element={<PatientAppointments />} />
                     <Route path="insurance/dashboard/:theme" element={<InsuranceDashboard />} />
                     <Route path="insurance/clients/:theme" element={<InsuranceClients />} />
-                    <Route path="insurance/account/:theme" element={<Account />} />
                     <Route path="insurance/plans/:theme" element={<InsurancePlans />} />
-
+                    <Route path="insurance/account/:theme" element={<Account />} />
                 </Routes>
             </AuthProvider>
         </Router>
