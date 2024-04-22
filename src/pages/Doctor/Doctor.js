@@ -15,6 +15,7 @@ export default function Doctor() {
     const [pageTheme, setPageTheme] = useState(theme == "undefined" || "" ? "light" : theme);
 
     console.log("Theme: ", theme);
+    console.log("Pagetheme", pageTheme);
     
     const [userProfilePictureUrl, setUserProfilePictureUrl] = useState("");
     const [avgRating, setAvgRating] = useState(0);
@@ -23,12 +24,6 @@ export default function Doctor() {
     ]);
     const [drInfo, setDrInfo] = useState({});
 
-    const ifThemePresent = () => {
-        if (theme !== "undefined") {
-            console.log("Theme present: ", theme)
-            setPageTheme(theme);
-        }
-    }
 
     const fetchRatings = async () => {
         try {
@@ -44,7 +39,6 @@ export default function Doctor() {
 
     const fetchInfo = async () => {
         try {
-            ifThemePresent();
             const userData = await getUser();
             console.log(userData);
             if(userData){
@@ -119,7 +113,7 @@ export default function Doctor() {
                         <h2>Find Bed Availability</h2>
                         <hr />
                         <p>CareConnect360 simplifies your patient care experience. Pick a hospital, and find bed availablility for your patients comfort.</p>
-                        <Link to={`/doctor/myPatients/${pageTheme}`}>
+                        <Link to={`/doctor/bedAvailability/${pageTheme}`}>
                             <button>SEARCH BED AVAILABILITY</button>
                         </Link>
                     </div>

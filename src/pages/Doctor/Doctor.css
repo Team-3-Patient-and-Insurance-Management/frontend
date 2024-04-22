@@ -79,6 +79,10 @@
     border: 0.5px solid black;
 }
 
+.doctor-page .dr-info h3 {
+    color:rgb(93, 97, 200);
+}
+
 .doctor-page .doctor-services button {
     background-color: rgb(102, 71, 180);
     color: white;
@@ -111,7 +115,7 @@
   padding: 0.5rem;
   box-shadow: 0 10px 8px 0 rgba(15, 7, 72, 0.2);
   transition: 0.3s;
-  background-color: #e7e7e7;
+  background-color: rgb(220, 226, 234);
 }
 .doctor-page.dark .review {
   background-color: #3e4989;
@@ -142,6 +146,17 @@
 
 .doctor-page.dark .review-info h3 {
   color: rgb(34, 18, 56);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.doctor-page .review-info h3 {
+  color: rgb(60, 63, 146);
+  font-size: 18px;
+  font-weight: bold;
+}
+.doctor-page .text-content p {
+  color: rgb(121, 123, 192);
 }
 
 .doctor-page p {

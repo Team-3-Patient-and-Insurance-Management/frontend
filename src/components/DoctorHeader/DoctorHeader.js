@@ -6,6 +6,11 @@ import "./DoctorHeader.css";
 export default function DoctorHeader({ theme }) {
     console.log("THIS IS THEME", theme)
 
+    if(theme === "undefined" || theme === ""){
+        theme = "light";
+    }
+    console.log("THIS IS THEME2", theme)
+
     return (
         <div className={`doctor-header ${theme === "dark" ? "dark" : ""}`}>
             <nav>
