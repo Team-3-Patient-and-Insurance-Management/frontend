@@ -62,7 +62,7 @@ export default function PatientAppointments() {
 
             toast.success("Thank you for submitting the review!");
             setTimeout(() => {
-                naviagte(`/patient/dashboard`);
+                naviagte(`/patient/dashboard/${pageTheme}`);
             }, 7000);
             setShowReviewModal(false);
         } catch (error) {
