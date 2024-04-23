@@ -96,7 +96,7 @@ export default function BookAppointment(props) {
                 if (response.data === true) {
                     toast.success("Your appointment has been successfully booked.");
                     setTimeout(() => {
-                        navigate(`/patient/appointments`);
+                        navigate(`/patient/appointments/${pageTheme}`);
                     }, 7000);
                    
                 } else {
@@ -124,7 +124,7 @@ export default function BookAppointment(props) {
 
     return (
         <div className={`content ${pageTheme}`}>
-            <PatientHeader theme={theme}/>
+            <PatientHeader theme={pageTheme}/>
             <div><h2 className="insuranceheader">Schedule an Appointment</h2></div>
             <ToastContainer />
             <div className="book-appointment-container">
