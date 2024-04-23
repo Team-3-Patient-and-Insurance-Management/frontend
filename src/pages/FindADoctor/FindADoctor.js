@@ -107,7 +107,7 @@ export default function FindADoctor() {
             ));
             return <div className="content">{doctorsContent}</div>;
         } else {
-            return <div className="content"><p>No doctors match this search criteria.</p></div>;
+            return <div className="content "><p>No doctors match this search criteria.</p></div>;
         }
     };
 

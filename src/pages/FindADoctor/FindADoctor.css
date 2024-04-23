@@ -1,3 +1,7 @@
+.findADoctor-page {
+    min-height: 100vh;
+}
+
 .findADoctor-page .search {
     background-color: rgb(189, 41, 41);
     color: white;
